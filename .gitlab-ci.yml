@@ -19,20 +19,14 @@ stages:
   - build
   - test
 
-# Run Lint checks
-lintDebug:
-  stage: build
-  script:
-    - ./gradlew -Pci --console=plain :app:lintDebug -PbuildDir=lint
-#  except:
-#    changes:
-#      - "**/*.md"
-
-# Run Detekt checks
+# Run detekt & klint checks
 detekt:
   stage: build
   script:
     - ./gradlew -Pci --console=plain :app:detekt
+  artifacts:
+    paths:
+      - app/build/reports/detekt/*.*
 #  except:
 #    changes:
 #      - "**/*.md"

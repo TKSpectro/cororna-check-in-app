@@ -5,9 +5,9 @@ pluginManagement {
         mavenCentral()
     }
     plugins {
-        id 'com.android.application' version '7.2.0-alpha01'
-        id 'com.android.library' version '7.2.0-alpha01'
-        id 'org.jetbrains.kotlin.android' version '1.5.31'
+        id("com.android.application").version("7.2.0-alpha01")
+        id("com.android.library").version("7.2.0-alpha01")
+        id("org.jetbrains.kotlin.android").version("1.5.31")
     }
 }
 dependencyResolutionManagement {
@@ -17,5 +17,9 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "android-clean-arch-template"
-include ':app'
+
+rootProject.name = ("android-clean-arch-template")
+
+include(
+    ":app"
+)
