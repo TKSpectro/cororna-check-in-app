@@ -38,5 +38,6 @@ object Plugins {
     const val android_app = "com.android.application"
     const val kotlin_android = "org.jetbrains.kotlin.android"
     const val detekt = "io.gitlab.arturbosch.detekt"
+    const val dokka = "org.jetbrains.dokka"
 }
 

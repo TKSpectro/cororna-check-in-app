@@ -18,4 +18,5 @@ object Versions {
 
     // Plugins
     const val detekt = "1.19.0"
+    const val dokka = "1.6.10"
 }

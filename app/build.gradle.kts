@@ -2,6 +2,7 @@ plugins {
     id(Plugins.android_app)
     id(Plugins.kotlin_android)
     id(Plugins.detekt).version(Versions.detekt)
+    id(Plugins.dokka).version (Versions.dokka)
 }
 
 android {
@@ -50,6 +51,8 @@ detekt {
     config = files("../config/detekt/detekt.yml")
     buildUponDefaultConfig = true
 }
+
+apply(plugin= Plugins.dokka)
 
 dependencies {
 
