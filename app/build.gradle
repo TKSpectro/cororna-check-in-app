@@ -4,14 +4,15 @@ plugins {
 }
 
 android {
-    compileSdk 31
+    compileSdk Config.compileSdkVersion
+    buildToolsVersion Config.buildToolsVersion
 
     defaultConfig {
-        applicationId "com.example.android_clean_arch_template"
-        minSdk 25
-        targetSdk 31
-        versionCode 1
-        versionName "1.0"
+        applicationId Config.application_id
+        minSdk Config.minSdkVersion
+        targetSdk Config.targetSdkVersion
+        versionCode Config.versionCode
+        versionName Config.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -30,13 +31,13 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = Versions.jvm_target
     }
     buildFeatures {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion compose_version
+        kotlinCompilerExtensionVersion Versions.compose
     }
     packagingOptions {
         resources {
@@ -47,15 +48,17 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.6.0'
-    implementation "androidx.compose.ui:ui:$compose_version"
-    implementation "androidx.compose.material:material:$compose_version"
-    implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
-    implementation 'androidx.activity:activity-compose:1.3.1'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
-    debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+    implementation Dependencies.androidx_core_ktx
+    implementation Dependencies.androidx_compose_ui
+    implementation Dependencies.androidx_compose_material
+    implementation Dependencies.androidx_compose_tooling_preview
+    implementation Dependencies.androidx_lifecycle_ktx
+    implementation Dependencies.androidx_activity_compose
+
+    testImplementation TestDependencies.junit
+    androidTestImplementation TestDependencies.androidx_compose_junit
+    androidTestImplementation TestDependencies.androidx_espresso_core
+    androidTestImplementation TestDependencies.androidx_compose_junit
+
+    debugImplementation DebugDependencies.androidx_compose_ui_tooling
 }

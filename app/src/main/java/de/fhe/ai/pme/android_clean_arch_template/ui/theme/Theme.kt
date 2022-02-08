@@ -1,4 +1,4 @@
-package com.example.android_clean_arch_template.ui.theme
+package de.fhe.ai.pme.android_clean_arch_template.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme

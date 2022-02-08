@@ -1,4 +1,4 @@
-package com.example.android_clean_arch_template
+package de.fhe.ai.pme.android_clean_arch_template
 
 import org.junit.Test
 
