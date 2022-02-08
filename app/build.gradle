@@ -4,15 +4,15 @@ plugins {
 }
 
 android {
-    compileSdk Config.compileSdkVersion
-    buildToolsVersion Config.buildToolsVersion
+    compileSdk Config.compile_sdk_version
+    buildToolsVersion Config.build_tools_version
 
     defaultConfig {
         applicationId Config.application_id
-        minSdk Config.minSdkVersion
-        targetSdk Config.targetSdkVersion
-        versionCode Config.versionCode
-        versionName Config.versionName
+        minSdk Config.min_sdk_version
+        targetSdk Config.target_sdk_version
+        versionCode Config.version_code
+        versionName Config.version_name
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
