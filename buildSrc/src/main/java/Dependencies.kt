@@ -10,6 +10,9 @@ object TestDependencies {
     const val androidx_espresso_core =
         "androidx.test.espresso:espresso-core:${Versions.androidx_espresso_core}"
     const val androidx_compose_junit = "androidx.compose.ui:ui-test-junit4:${Versions.compose}"
+
+    // Added for Android 12 workaround (exported = true) TODO: Remove as soon as possible
+    const val androidx_test_ext_junit = "androidx.test.ext:junit-ktx:${Versions.androidx_test_ext_junit}"
 }
 
 object Dependencies {

@@ -59,6 +59,7 @@ dependencies {
     androidTestImplementation TestDependencies.androidx_compose_junit
     androidTestImplementation TestDependencies.androidx_espresso_core
     androidTestImplementation TestDependencies.androidx_compose_junit
+    androidTestImplementation TestDependencies.androidx_test_ext_junit
 
     debugImplementation DebugDependencies.androidx_compose_ui_tooling
 }
