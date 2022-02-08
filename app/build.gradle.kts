@@ -47,7 +47,7 @@ android {
 }
 
 detekt {
-    toolVersion = "1.19.0"
+    toolVersion = Versions.detekt
     config = files("../config/detekt/detekt.yml")
     buildUponDefaultConfig = true
 }
@@ -71,5 +71,5 @@ dependencies {
 
     debugImplementation( DebugDependencies.androidx_compose_ui_tooling)
 
-    detektPlugins( DebugDependencies.detekt_plugin_formatting)
+    detektPlugins( Plugins.detekt_plugin_formatting)
 }

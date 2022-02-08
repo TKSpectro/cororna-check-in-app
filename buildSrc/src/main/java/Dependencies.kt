@@ -30,14 +30,13 @@ object Dependencies {
 
 object DebugDependencies {
     const val androidx_compose_ui_tooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"
-
-    const val detekt_plugin_formatting = "io.gitlab.arturbosch.detekt:detekt-formatting:${Versions.detekt}"
 }
 
 object Plugins {
     const val android_app = "com.android.application"
     const val kotlin_android = "org.jetbrains.kotlin.android"
     const val detekt = "io.gitlab.arturbosch.detekt"
+    const val detekt_plugin_formatting = "io.gitlab.arturbosch.detekt:detekt-formatting:${Versions.detekt}"
     const val dokka = "org.jetbrains.dokka"
 }
 

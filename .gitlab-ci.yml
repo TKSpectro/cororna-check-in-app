@@ -18,6 +18,7 @@ before_script:
 stages:
   - build
   - test
+  - docs
 
 # Run detekt & klint checks
 detekt:
@@ -52,6 +53,18 @@ testDebug:
   artifacts:
     reports:
       junit: app/build/test-results/**/TEST-*.xml
+#  except:
+#    changes:
+#      - "**/*.md"
+
+# Generate Docs via Dokka
+generateDocs:
+  stage: docs
+  script:
+    - ./gradlew dokkaHtml
+  artifacts:
+    paths:
+      - app/build/dokka/html/**
 #  except:
 #    changes:
 #      - "**/*.md"
