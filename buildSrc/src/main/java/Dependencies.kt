@@ -30,5 +30,7 @@ object Dependencies {
 
 object DebugDependencies {
     const val androidx_compose_ui_tooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"
+
+    const val detekt_plugin_formatting = "io.gitlab.arturbosch.detekt:detekt-formatting:${Versions.detekt_plugin_formatting}"
 }
 

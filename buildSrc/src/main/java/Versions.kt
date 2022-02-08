@@ -16,4 +16,5 @@ object Versions {
     const val androidx_espresso_core = "3.4.0"
     const val androidx_test_ext_junit = "1.1.3"
 
+    const val detekt_plugin_formatting = "1.19.0"
 }

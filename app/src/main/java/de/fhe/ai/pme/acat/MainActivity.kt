@@ -1,4 +1,4 @@
-package de.fhe.ai.pme.android_clean_arch_template
+package de.fhe.ai.pme.acat
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,13 +10,13 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import de.fhe.ai.pme.android_clean_arch_template.ui.theme.AndroidcleanarchtemplateTheme
+import de.fhe.ai.pme.acat.ui.theme.AndroidCleanArchTemplateTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            AndroidcleanarchtemplateTheme {
+            AndroidCleanArchTemplateTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -37,7 +37,7 @@ fun Greeting(name: String) {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    AndroidcleanarchtemplateTheme {
+    AndroidCleanArchTemplateTheme {
         Greeting("Android")
     }
 }

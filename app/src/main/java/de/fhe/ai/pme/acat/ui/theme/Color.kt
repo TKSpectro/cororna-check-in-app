@@ -1,4 +1,4 @@
-package de.fhe.ai.pme.android_clean_arch_template.ui.theme
+package de.fhe.ai.pme.acat.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

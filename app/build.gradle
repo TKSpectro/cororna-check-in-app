@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'io.gitlab.arturbosch.detekt' version '1.19.0'
+
 }
 
 android {
@@ -46,6 +48,12 @@ android {
     }
 }
 
+detekt {
+    toolVersion = "1.19.0"
+    config = files("../config/detekt/detekt.yml")
+    buildUponDefaultConfig = true
+}
+
 dependencies {
 
     implementation Dependencies.androidx_core_ktx
@@ -62,4 +70,6 @@ dependencies {
     androidTestImplementation TestDependencies.androidx_test_ext_junit
 
     debugImplementation DebugDependencies.androidx_compose_ui_tooling
+
+    detektPlugins DebugDependencies.detekt_plugin_formatting
 }

@@ -28,6 +28,16 @@ lintDebug:
 #    changes:
 #      - "**/*.md"
 
+# Run Detekt checks
+detekt:
+  stage: build
+  script:
+    - ./gradlew -Pci --console=plain :app:detekt
+#  except:
+#    changes:
+#      - "**/*.md"
+
+
 # Build a debug apk
 assembleDebug:
   stage: build

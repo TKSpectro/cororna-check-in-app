@@ -1,4 +1,4 @@
-package de.fhe.ai.pme.android_clean_arch_template.ui.theme
+package de.fhe.ai.pme.acat.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
@@ -28,7 +28,7 @@ private val LightColorPalette = lightColors(
 )
 
 @Composable
-fun AndroidcleanarchtemplateTheme(
+fun AndroidCleanArchTemplateTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {

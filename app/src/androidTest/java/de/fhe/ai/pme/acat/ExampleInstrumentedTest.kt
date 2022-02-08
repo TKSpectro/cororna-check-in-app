@@ -1,4 +1,4 @@
-package de.fhe.ai.pme.android_clean_arch_template
+package de.fhe.ai.pme.acat
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
