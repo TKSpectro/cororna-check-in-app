@@ -27,7 +27,7 @@ detekt:
     - ./gradlew -Pci --console=plain :app:detekt
   artifacts:
     paths:
-      - app/build/reports/detekt/*.*
+      - app/build/reports/detekt/detekt.*
 #  except:
 #    changes:
 #      - "**/*.md"

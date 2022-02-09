@@ -1,8 +1,6 @@
 plugins {
     id(Plugins.android_app)
     id(Plugins.kotlin_android)
-    id(Plugins.detekt).version(Versions.detekt)
-    id(Plugins.dokka).version (Versions.dokka)
 }
 
 android {
@@ -46,14 +44,6 @@ android {
     }
 }
 
-detekt {
-    toolVersion = Versions.detekt
-    config = files("../config/detekt/detekt.yml")
-    buildUponDefaultConfig = true
-}
-
-apply(plugin= Plugins.dokka)
-
 dependencies {
 
     implementation( Dependencies.androidx_core_ktx)
@@ -70,6 +60,4 @@ dependencies {
     androidTestImplementation( TestDependencies.androidx_test_ext_junit)
 
     debugImplementation( DebugDependencies.androidx_compose_ui_tooling)
-
-    detektPlugins( Plugins.detekt_plugin_formatting)
 }
