@@ -21,7 +21,7 @@ android {
     }
 
     buildTypes {
-        getByName("release") {
+        release {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
@@ -45,6 +45,9 @@ android {
 }
 
 dependencies {
+
+    implementation(project(mapOf("path" to ":domain")))
+    implementation(project(mapOf("path" to ":android-core")))
 
     implementation( Dependencies.androidx_core_ktx)
     implementation( Dependencies.androidx_compose_ui)

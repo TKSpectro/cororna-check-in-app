@@ -26,6 +26,12 @@ object Dependencies {
         "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.androidx_lifecycle_ktx}"
     const val androidx_activity_compose =
         "androidx.activity:activity-compose:${Versions.androidx_activity_compose}"
+
+    // Kotlin
+    const val kotlin_coroutines_core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlin_coroutines_core}"
+
+    // Timber - Android Logging https://github.com/JakeWharton/timber
+    const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
 }
 
 object DebugDependencies {
@@ -34,7 +40,10 @@ object DebugDependencies {
 
 object Plugins {
     const val android_app = "com.android.application"
+    const val android_library = "com.android.library"
     const val kotlin_android = "org.jetbrains.kotlin.android"
+    const val java_library = "java-library"
+    const val kotlin_jvm = "org.jetbrains.kotlin.jvm"
     const val detekt = "io.gitlab.arturbosch.detekt"
     const val detekt_plugin_formatting = "io.gitlab.arturbosch.detekt:detekt-formatting:${Versions.detekt}"
     const val dokka = "org.jetbrains.dokka"

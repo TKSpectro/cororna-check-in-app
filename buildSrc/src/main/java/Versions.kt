@@ -10,6 +10,11 @@ object Versions {
     const val androidx_lifecycle_ktx = "2.4.0"
     const val androidx_activity_compose = "1.4.0"
 
+    const val kotlin_coroutines_core = "1.6.0"
+
+    // 3rd Party Libs
+    const val timber = "4.7.1"
+
     // Test related Versions
     const val junit = "4.13.2"
     const val androidx_junit = "1.1.3"

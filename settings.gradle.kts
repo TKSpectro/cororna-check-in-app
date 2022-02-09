@@ -19,3 +19,5 @@ rootProject.name = ("android-clean-arch-template")
 include(
     ":app"
 )
+include(":domain")
+include(":android-core")
