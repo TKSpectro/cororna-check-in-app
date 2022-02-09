@@ -1,4 +1,4 @@
-package de.fhe.ai.pme.acat
+package de.fhe.ai.pmc.acat
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,7 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import de.fhe.ai.pme.acat.ui.theme.AndroidCleanArchTemplateTheme
+import de.fhe.ai.pmc.acat.ui.theme.AndroidCleanArchTemplateTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

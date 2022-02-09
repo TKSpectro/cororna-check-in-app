@@ -1,4 +1,4 @@
-package de.fhe.ai.pme.acat
+package de.fhe.ai.pmc.acat
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

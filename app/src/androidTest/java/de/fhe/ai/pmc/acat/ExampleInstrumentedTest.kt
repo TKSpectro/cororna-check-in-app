@@ -1,4 +1,4 @@
-package de.fhe.ai.pme.acat
+package de.fhe.ai.pmc.acat
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

@@ -1,5 +1,5 @@
 object Config {
-    const val application_id = "de.fhe.ai.pme.android_clean_arch_template"
+    const val application_id = "de.fhe.ai.pmc.acat"
     const val compile_sdk_version = 31
     const val build_tools_version = "30.0.3"
     const val min_sdk_version = 25
