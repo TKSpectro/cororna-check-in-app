@@ -11,6 +11,10 @@ object Versions {
     const val androidx_activity_compose = "1.4.0"
 
     const val kotlin_coroutines_core = "1.6.0"
+    const val kotlin_coroutines_android = "1.3.9"
+
+    // Room
+    const val room = "2.4.1"
 
     // 3rd Party Libs
     const val timber = "4.7.1"

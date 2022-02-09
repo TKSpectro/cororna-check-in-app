@@ -1,3 +1,3 @@
 package de.fhe.ai.pmc.acat.domain
 
-data class Entity( val text: String )
+data class User( val name: String, val id: Long = 0 )

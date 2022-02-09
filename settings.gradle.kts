@@ -21,3 +21,4 @@ include(
 )
 include(":domain")
 include(":android-core")
+include(":data")

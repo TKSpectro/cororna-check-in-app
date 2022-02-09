@@ -29,9 +29,17 @@ object Dependencies {
 
     // Kotlin
     const val kotlin_coroutines_core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlin_coroutines_core}"
+    const val kotlin_coroutines_android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.kotlin_coroutines_android}"
 
     // Timber - Android Logging https://github.com/JakeWharton/timber
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
+
+    // Room
+    const val room_runtime = "androidx.room:room-runtime:${Versions.room}"
+    const val room_compiler ="androidx.room:room-compiler:${Versions.room}"
+    const val room_testing = "androidx.room:room-testing:${Versions.room}"
+    const val room_ktx = "androidx.room:room-ktx:${Versions.room}"
+    const val room_coroutine = "androidx.room:room-coroutines:${Versions.room}"
 }
 
 object DebugDependencies {
@@ -42,6 +50,7 @@ object Plugins {
     const val android_app = "com.android.application"
     const val android_library = "com.android.library"
     const val kotlin_android = "org.jetbrains.kotlin.android"
+    const val kotlin_kapt = "kotlin-kapt"
     const val java_library = "java-library"
     const val kotlin_jvm = "org.jetbrains.kotlin.jvm"
     const val detekt = "io.gitlab.arturbosch.detekt"

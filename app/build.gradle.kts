@@ -48,6 +48,7 @@ dependencies {
 
     implementation(project(mapOf("path" to ":domain")))
     implementation(project(mapOf("path" to ":android-core")))
+    implementation(project(mapOf("path" to ":data")))
 
     implementation( Dependencies.androidx_core_ktx)
     implementation( Dependencies.androidx_compose_ui)
