@@ -1,4 +1,4 @@
-package de.fhe.ai.pmc.acat.ui.theme
+package de.fhe.ai.pmc.acat.app.ui.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

@@ -23,7 +23,7 @@ subprojects {
 }
 
 dependencies {
-    detektPlugins( Plugins.detekt_plugin_formatting)
+    detektPlugins( Plugins.detekt_plugin_formatting )
 }
 
 tasks.register("clean",Delete::class){

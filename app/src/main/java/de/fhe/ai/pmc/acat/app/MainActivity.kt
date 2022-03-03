@@ -1,4 +1,4 @@
-package de.fhe.ai.pmc.acat
+package de.fhe.ai.pmc.acat.app
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -13,7 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import de.fhe.ai.pmc.acat.android_core.LoggerImpl
 import de.fhe.ai.pmc.acat.data.init
 import de.fhe.ai.pmc.acat.domain.User
-import de.fhe.ai.pmc.acat.ui.theme.AndroidCleanArchTemplateTheme
+import de.fhe.ai.pmc.acat.app.ui.theme.AndroidCleanArchTemplateTheme
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
