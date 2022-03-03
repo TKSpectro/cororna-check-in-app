@@ -1,5 +1,5 @@
 package de.fhe.ai.pmc.acat.domain
 
-class GetEntities(private val repository: Repository) {
-    operator fun invoke() = repository.getEntities()
+class GetUsers(private val repository: Repository) {
+    operator fun invoke() = repository.getUsers()
 }

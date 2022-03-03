@@ -11,6 +11,9 @@ interface UserEntityDao {
     @Query("SELECT * FROM UserEntity")
     fun getAll(): Flow<List<UserEntity>>
 
+    @Query("SELECT * FROM UserEntity WHERE id = :id")
+    suspend fun get(id: Long): UserEntity?
+
     @Insert
     suspend fun insert(entity: UserEntity): Long
 }

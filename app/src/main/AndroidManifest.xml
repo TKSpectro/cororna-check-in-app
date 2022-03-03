@@ -4,6 +4,7 @@
     package="de.fhe.ai.pmc.acat.app" >
 
     <application
+        android:name=".Bootstrap"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
