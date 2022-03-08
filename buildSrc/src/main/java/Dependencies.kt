@@ -29,6 +29,7 @@ object Dependencies {
         "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.androidx_lifecycle_ktx}"
     const val androidx_activity_compose =
         "androidx.activity:activity-compose:${Versions.androidx_activity_compose}"
+    const val androidx_compose_navigation = "androidx.navigation:navigation-compose:${Versions.compose_navigation}"
 
     // Kotlin
     const val kotlin_coroutines_core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlin_coroutines_core}"

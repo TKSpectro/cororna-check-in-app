@@ -54,8 +54,9 @@ dependencies {
     implementation( Dependencies.androidx_compose_ui )
     implementation( Dependencies.androidx_compose_material )
     implementation( Dependencies.androidx_compose_tooling_preview )
-    implementation( Dependencies.androidx_lifecycle_ktx )
     implementation( Dependencies.androidx_activity_compose )
+    implementation( Dependencies.androidx_compose_navigation )
+    implementation( Dependencies.androidx_lifecycle_ktx )
 
     implementation( Dependencies.koin_core )
     implementation( Dependencies.koin_android )
