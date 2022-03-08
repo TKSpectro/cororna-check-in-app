@@ -9,7 +9,7 @@ class RepositoryImpl(
     ): Repository {
 
     override fun getUsers() =
-        userEntityDao.getAll()
+        userEntityDao.getAllAsFlow()
             .map { entityList ->
                 val returnValue = mutableListOf<User>()
 

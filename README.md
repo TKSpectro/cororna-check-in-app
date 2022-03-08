@@ -96,16 +96,15 @@ implementation that conforms to the interface defined in our domain module.
 Thus, all database related dependencies are only present in this module which prevents the usage of 
 database classes/frameworks in other modules. A nice effect of separating the different layers of 
 Clean Architecture with Gradle modules - each single module only references third party frameworks
-that are absolutely necessary. We don't get a single *Über* module that contains everything.
+that are absolutely necessary. We don't get a single *Uber* module that contains everything.
 
 ### app
 
-Our *frontend* module that contains all UI related stuff. ViewModels use our use cases to perform 
-business operations to query/alter data which afterwards will be displayed in our UI.
+Our *frontend* module that contains all UI related stuff. ViewModels access use cases to perform 
+business operations like query/alter data. The Jetpack Compose UI listens for data changes and 
+automatically reflects all updates.
 
-## Static Analysis
-
-### detekt & klint
+## Static Analysis with detekt & klint
 
 Run `detekt` Gradle target to run a static code analysis and generate a report that contains 
 for example code smells and complexity data based on lines of code, cyclomatic complexity and amount 
@@ -120,3 +119,7 @@ For more information on `detekt` see [`https://detekt.dev`](https://detekt.dev)
 ## Test
 
 *tbd*
+
+## Documentation with [Dokka](https://github.com/Kotlin/dokka)
+
+Generate with Gradle target `dokkaHtmlMultiModule`. Found in `build/dokkaMultiModuleOutput`.
