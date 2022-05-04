@@ -10,16 +10,10 @@ import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
 
 val databaseModule = module {
-    single<AppDatabase> {
-        AppDatabase.getDatabase(androidApplication())
-    }
-
-    single<UserEntityDao> {
-        AppDatabase.getUserEntityDao(get())
-    }
-
     single<Repository> {
-        RepositoryImpl(get())
+        RepositoryImpl(
+            AppDatabase.getUserEntityDao(get())
+        )
     }
 }
 
