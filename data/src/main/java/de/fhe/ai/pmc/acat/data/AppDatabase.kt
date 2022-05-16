@@ -11,14 +11,14 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun userEntityDao(): UserEntityDao
 
     companion object {
-        fun getDatabase(app: Context): AppDatabase {
+        private fun getDatabase(app: Context): AppDatabase {
             return Room.databaseBuilder( app, AppDatabase::class.java, "app-db")
                 .fallbackToDestructiveMigration()
                 .build()
         }
 
-        fun getUserEntityDao(database: AppDatabase): UserEntityDao {
-            return database.userEntityDao()
+        fun getUserEntityDao(app: Context): UserEntityDao {
+            return getDatabase(app).userEntityDao()
         }
     }
 }
