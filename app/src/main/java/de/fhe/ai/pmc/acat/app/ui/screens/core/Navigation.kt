@@ -1,32 +1,34 @@
 package de.fhe.ai.pmc.acat.app.ui.screens.core
 
 import androidx.compose.runtime.Composable
-import androidx.compose.material.Text
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import de.fhe.ai.pmc.acat.app.ui.screens.main.MainScreen
+import de.fhe.ai.pmc.acat.app.ui.screens.map.MapScreen
+import de.fhe.ai.pmc.acat.app.ui.screens.settings.SettingsScreen
 
 @Composable
 fun AppNavigationHost(
-    onNavigation: ( screen:Screen ) -> Unit,
+    onNavigation: ( screen:ScreensEnum ) -> Unit,
     modifier: Modifier = Modifier
 ) {
     NavHost(
         navController = LocalNavCtrl.current,
-        startDestination = Screen.Main.name,
+        startDestination = ScreensEnum.Main.name,
         modifier = modifier
     ) {
-        composable(Screen.Main.name) {
-            onNavigation( Screen.Main )
-            Text("Hello")
+        composable(ScreensEnum.Main.name) {
+            onNavigation( ScreensEnum.Main )
+            MainScreen()
         }
-        composable(Screen.Map.name) {
-            onNavigation( Screen.Map )
-            Text("Map")
+        composable(ScreensEnum.Map.name) {
+            onNavigation( ScreensEnum.Map )
+            MapScreen()
         }
-        composable(Screen.Settings.name) {
-            onNavigation( Screen.Settings )
-            Text("Settings")
+        composable(ScreensEnum.Settings.name) {
+            onNavigation( ScreensEnum.Settings )
+            SettingsScreen()
         }
     }
 }

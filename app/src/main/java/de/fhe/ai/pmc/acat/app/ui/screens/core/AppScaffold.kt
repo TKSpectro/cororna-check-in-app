@@ -15,7 +15,7 @@ val LocalScaffoldState = staticCompositionLocalOf<ScaffoldState> { error("no sca
 fun AppScaffold() {
     val navController = rememberNavController()
     val scaffoldState = rememberScaffoldState()
-    var currentScreen by rememberSaveable { mutableStateOf( Screen.Main ) }
+    var currentScreen by rememberSaveable { mutableStateOf( ScreensEnum.Main ) }
 
     CompositionLocalProvider(
         LocalNavCtrl provides navController,

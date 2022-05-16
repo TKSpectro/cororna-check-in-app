@@ -10,7 +10,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
  * Enum Class that describes our main screens.
  * Corresponding Tab Icons are also stored.
  */
-enum class Screen(val icon: ImageVector) {
+enum class ScreensEnum(val icon: ImageVector) {
     Main( Icons.Filled.Home ),
     Map( Icons.Filled.Place ),
     Settings( Icons.Filled.Settings );

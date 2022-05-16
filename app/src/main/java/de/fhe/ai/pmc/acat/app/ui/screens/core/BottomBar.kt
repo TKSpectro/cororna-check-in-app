@@ -16,14 +16,14 @@ fun BottomBar() {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
 
-        for( item in Screen.values() )
+        for( screen in ScreensEnum.values() )
         {
             BottomNavigationItem(
-                icon = { Icon(imageVector = item.icon, contentDescription = null) },
-                label = { Text(item.name) },
-                selected = currentRoute == item.name,
+                icon = { Icon(imageVector = screen.icon, contentDescription = screen.name) },
+                label = { Text(screen.name) },
+                selected = currentRoute == screen.name,
                 onClick = {
-                    navController.navigate(item.name) {
+                    navController.navigate(screen.name) {
                         navController.graph.startDestinationRoute?.let { route ->
                             popUpTo(route) {
                                 saveState = true
