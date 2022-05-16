@@ -6,16 +6,17 @@ import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 
 @Composable
-fun BottomBar(navController: NavHostController) {
+fun BottomBar() {
     BottomNavigation {
+        val navController = LocalNavCtrl.current
+
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
 
-        for( item in Screens.values() )
+        for( item in Screen.values() )
         {
             BottomNavigationItem(
                 icon = { Icon(imageVector = item.icon, contentDescription = null) },

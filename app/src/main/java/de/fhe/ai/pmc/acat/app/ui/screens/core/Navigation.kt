@@ -1,38 +1,32 @@
 package de.fhe.ai.pmc.acat.app.ui.screens.core
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.material.Text
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import de.fhe.ai.pmc.acat.app.Greeting
-
-enum class Screens( val icon: ImageVector) {
-    Main( Icons.Filled.Home ),
-    Settings( Icons.Filled.Settings );
-}
 
 @Composable
 fun AppNavigationHost(
-    onNavigation: ( title:String ) -> Unit,
+    onNavigation: ( screen:Screen ) -> Unit,
     modifier: Modifier = Modifier
 ) {
     NavHost(
         navController = LocalNavCtrl.current,
-        startDestination = Screens.Main.name,
+        startDestination = Screen.Main.name,
         modifier = modifier
     ) {
-        composable(Screens.Main.name) {
-            onNavigation( Screens.Main.name )
-            Greeting(name = "hello")
+        composable(Screen.Main.name) {
+            onNavigation( Screen.Main )
+            Text("Hello")
         }
-        composable(Screens.Settings.name) {
-            onNavigation( Screens.Settings.name )
-            Greeting(name = "settings")
+        composable(Screen.Map.name) {
+            onNavigation( Screen.Map )
+            Text("Map")
+        }
+        composable(Screen.Settings.name) {
+            onNavigation( Screen.Settings )
+            Text("Settings")
         }
     }
 }
