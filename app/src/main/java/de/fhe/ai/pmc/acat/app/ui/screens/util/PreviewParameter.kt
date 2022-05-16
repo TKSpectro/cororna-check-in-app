@@ -15,9 +15,10 @@ private val userList = listOf(
     User("Max"),
     User("User with a really really very unbelievable long first name"),
     User("Siegfried"),
-    User("User with a really really very unbelievable long first name, yes a User with a really really very unbelievable long first name"),
+    User("User with a really really very unbelievable long first name, yes a User with a " +
+            "really really very unbelievable long first name"),
     User("Another first name"),
     User("Well, yes another one"),
 )
 
-const val previewBackgroundColor = 0xbbbbbbbb
+const val PREVIEW_BACKGROUND_COLOR = 0xbbbbbbbb

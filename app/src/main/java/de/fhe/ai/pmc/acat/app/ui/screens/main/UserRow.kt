@@ -16,7 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import de.fhe.ai.pmc.acat.app.ui.screens.util.UserPreviewParameterProvider
-import de.fhe.ai.pmc.acat.app.ui.screens.util.previewBackgroundColor
+import de.fhe.ai.pmc.acat.app.ui.screens.util.PREVIEW_BACKGROUND_COLOR
 import de.fhe.ai.pmc.acat.domain.User
 
 @Composable
@@ -39,7 +39,7 @@ fun UserRow(user: User, modifier: Modifier = Modifier) {
 
 @Preview(
     showBackground = true,
-    backgroundColor = previewBackgroundColor
+    backgroundColor = PREVIEW_BACKGROUND_COLOR
 )
 @Composable
 fun PreviewUserRow(
