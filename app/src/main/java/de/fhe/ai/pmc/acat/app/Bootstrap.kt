@@ -3,6 +3,8 @@ package de.fhe.ai.pmc.acat.app
 import android.app.Application
 import de.fhe.ai.pmc.acat.app.di.modules.androidCoreModule
 import de.fhe.ai.pmc.acat.app.di.modules.databaseModule
+import de.fhe.ai.pmc.acat.app.di.modules.useCaseModule
+import de.fhe.ai.pmc.acat.app.di.modules.viewModelModule
 import de.fhe.ai.pmc.acat.domain.Logger
 import de.fhe.ai.pmc.acat.domain.Repository
 import de.fhe.ai.pmc.acat.domain.User
@@ -25,8 +27,10 @@ class Bootstrap : Application() {
         startKoin{
             androidLogger(if (BuildConfig.DEBUG) Level.ERROR else Level.NONE)
             androidContext(this@Bootstrap)
-            modules(databaseModule)
             modules(androidCoreModule)
+            modules(databaseModule)
+            modules(useCaseModule)
+            modules(viewModelModule)
         }
 
         DbTest().run()

@@ -1,10 +1,12 @@
 package de.fhe.ai.pmc.acat.app.ui.screens.core
 
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.material.ScaffoldState
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 
@@ -25,10 +27,12 @@ fun AppScaffold() {
             scaffoldState = scaffoldState,
             topBar = { AppBar(currentScreen) },
             bottomBar = { BottomBar() }
-        ) { AppNavigationHost(
+        ) { innerPadding ->
+            AppNavigationHost(
                 onNavigation = {
                     currentScreen = it
-                }
+                },
+                modifier = Modifier.padding(innerPadding)
             )
         }
 
