@@ -50,6 +50,7 @@ object Dependencies {
     const val room_testing = "androidx.room:room-testing:${Versions.room}"
     const val room_ktx = "androidx.room:room-ktx:${Versions.room}"
     const val room_coroutine = "androidx.room:room-coroutines:${Versions.room}"
+
 }
 
 object DebugDependencies {
