@@ -1,4 +1,4 @@
-package de.fhe.ai.pmc.acat.app.ui.screens.main
+package de.fhe.ai.pmc.acat.app.ui.screens.userlist
 
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items

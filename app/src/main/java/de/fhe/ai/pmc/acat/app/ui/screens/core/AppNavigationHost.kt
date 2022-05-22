@@ -1,55 +1,54 @@
 package de.fhe.ai.pmc.acat.app.ui.screens.core
 
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.navArgument
 import de.fhe.ai.pmc.acat.app.ui.screens.detail.DetailScreen
-import de.fhe.ai.pmc.acat.app.ui.screens.main.MainScreen
+import de.fhe.ai.pmc.acat.app.ui.screens.userlist.UserListScreen
 import de.fhe.ai.pmc.acat.app.ui.screens.map.MapScreen
 import de.fhe.ai.pmc.acat.app.ui.screens.settings.SettingsScreen
+import org.koin.androidx.compose.inject
 
 @Composable
 fun AppNavigationHost(
-    onNavigation: ( screen:ScreensEnum ) -> Unit,
+    onNavigation: ( screen: Screen ) -> Unit,
     modifier: Modifier = Modifier
 ) {
 
     val navCtrl = LocalNavCtrl.current
+    val navigationManager by inject<NavigationManager>()
+
+    navigationManager.commands.collectAsState().value.also { command ->
+        if (command.destination.isNotEmpty())
+            navCtrl.navigate(command.destination)
+    }
+
 
     NavHost(
         navController = navCtrl,
-        startDestination = ScreensEnum.Main.name,
+        startDestination = Screen.UserList.route,
         modifier = modifier
     ) {
-        composable(ScreensEnum.Main.name) {
-            onNavigation( ScreensEnum.Main )
-            MainScreen()
+        composable(Screen.UserList.route) {
+            onNavigation( Screen.UserList )
+            UserListScreen()
         }
         composable(
-            "${ScreensEnum.UserDetail.name}/{userId}",
-            arguments = listOf(
-                navArgument("userId") {
-                    type = NavType.LongType
-                }
-            )
+            Screen.UserDetail.route,
+            Screen.UserDetail.navigationCommand(0).arguments
         ) { entry ->
             val userId = entry.arguments?.getLong("userId")
-            onNavigation( ScreensEnum.UserDetail )
+            onNavigation( Screen.UserDetail )
             DetailScreen( userId )
         }
-        composable(ScreensEnum.Map.name) {
-            onNavigation( ScreensEnum.Map )
+        composable(Screen.Map.route) {
+            onNavigation( Screen.Map )
             MapScreen()
         }
-        composable(ScreensEnum.Settings.name) {
-            onNavigation( ScreensEnum.Settings )
+        composable(Screen.Settings.route) {
+            onNavigation( Screen.Settings )
             SettingsScreen()
         }
     }

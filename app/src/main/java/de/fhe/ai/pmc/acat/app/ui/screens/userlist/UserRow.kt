@@ -1,4 +1,4 @@
-package de.fhe.ai.pmc.acat.app.ui.screens.main
+package de.fhe.ai.pmc.acat.app.ui.screens.userlist
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -23,8 +23,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import de.fhe.ai.pmc.acat.app.R
-import de.fhe.ai.pmc.acat.app.ui.screens.core.LocalNavCtrl
-import de.fhe.ai.pmc.acat.app.ui.screens.core.ScreensEnum
 import de.fhe.ai.pmc.acat.app.ui.screens.util.UserPreviewParameterProvider
 import de.fhe.ai.pmc.acat.app.ui.screens.util.PREVIEW_BACKGROUND_COLOR
 import de.fhe.ai.pmc.acat.domain.User

@@ -7,35 +7,33 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.navigation.compose.currentBackStackEntryAsState
+import org.koin.androidx.compose.inject
 
 @Composable
 fun BottomBar() {
     BottomNavigation {
         val navController = LocalNavCtrl.current
-
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
 
-        for( screen in ScreensEnum.values() )
+        for( screen in RootScreens )
         {
-            if( screen.isRootScreen ) {
-                BottomNavigationItem(
-                    icon = { Icon(imageVector = screen.icon, contentDescription = screen.name) },
-                    label = { Text(screen.name) },
-                    selected = currentRoute == screen.name,
-                    onClick = {
-                        navController.navigate(screen.name) {
-                            navController.graph.startDestinationRoute?.let { route ->
-                                popUpTo(route) {
-                                    saveState = true
-                                }
+            BottomNavigationItem(
+                icon = { Icon(imageVector = screen.icon, contentDescription = screen.title) },
+                label = { Text(screen.title) },
+                selected = currentRoute == screen.route,
+                onClick = {
+                    navController.navigate(screen.navigationCommand().destination) {
+                        navController.graph.startDestinationRoute?.let { route ->
+                            popUpTo(route) {
+                                saveState = true
                             }
-                            launchSingleTop = true
-                            restoreState = true
                         }
+                        launchSingleTop = true
+                        restoreState = true
                     }
-                )
-            }
+                }
+            )
         }
     }
 }

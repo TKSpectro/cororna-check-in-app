@@ -7,9 +7,9 @@ import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -22,7 +22,7 @@ val LocalScaffoldState = staticCompositionLocalOf<ScaffoldState> { error("no sca
 fun AppScaffold() {
     val navController = rememberNavController()
     val scaffoldState = rememberScaffoldState()
-    var currentScreen by rememberSaveable { mutableStateOf( ScreensEnum.Main ) }
+    var currentScreen by remember { mutableStateOf<Screen>( Screen.UserList ) }
 
     CompositionLocalProvider(
         LocalNavCtrl provides navController,

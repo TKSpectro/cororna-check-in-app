@@ -10,42 +10,42 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun AppBar( screen: ScreensEnum ) {
+fun AppBar( screen: Screen ) {
     TopAppBar(
         title = {
-                Text( text = screen.name )
+            Text( text = screen.title )
         },
         navigationIcon = {
             Icon(
                 screen.icon,
-                screen.name,
+                screen.title,
                 modifier = Modifier.padding(horizontal = 12.dp)
             )
         },
-        actions = screen.actions
+        actions = screen.appBarActions
     )
 }
 
 @Preview()
 @Composable
 fun HomeAppBar() {
-    AppBar(screen = ScreensEnum.Main)
+    AppBar(screen = Screen.UserList)
 }
 
 @Preview()
 @Composable
 fun UserDetailAppBar() {
-    AppBar(screen = ScreensEnum.UserDetail)
+    AppBar(screen = Screen.UserDetail)
 }
 
 @Preview()
 @Composable
 fun MapAppBar() {
-    AppBar(screen = ScreensEnum.Map)
+    AppBar(screen = Screen.Map)
 }
 
 @Preview()
 @Composable
 fun SettingsAppBar() {
-    AppBar(screen = ScreensEnum.Settings)
+    AppBar(screen = Screen.Settings)
 }
