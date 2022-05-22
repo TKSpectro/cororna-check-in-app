@@ -21,7 +21,8 @@ fun AppBar( screen: ScreensEnum ) {
                 screen.name,
                 modifier = Modifier.padding(horizontal = 12.dp)
             )
-        }
+        },
+        actions = screen.actions
     )
 }
 
@@ -29,6 +30,12 @@ fun AppBar( screen: ScreensEnum ) {
 @Composable
 fun HomeAppBar() {
     AppBar(screen = ScreensEnum.Main)
+}
+
+@Preview()
+@Composable
+fun UserDetailAppBar() {
+    AppBar(screen = ScreensEnum.UserDetail)
 }
 
 @Preview()

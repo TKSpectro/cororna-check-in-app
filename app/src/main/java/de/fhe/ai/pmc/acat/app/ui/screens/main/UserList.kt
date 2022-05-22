@@ -12,11 +12,15 @@ import de.fhe.ai.pmc.acat.app.ui.screens.util.UserListPreviewParameterProvider
 import de.fhe.ai.pmc.acat.domain.User
 
 @Composable
-fun UserList(users: List<User>, modifier: Modifier = Modifier) {
+fun UserList(
+    users: List<User>,
+    modifier: Modifier = Modifier,
+    onItemPressed: ( itemId: Long ) -> Unit
+) {
     val scrollState = rememberLazyListState()
     LazyColumn(state = scrollState, modifier = modifier) {
         items(users) {
-            UserRow(it, modifier = modifier)
+            UserRow( it, modifier = modifier, onItemPressed )
         }
     }
 }
@@ -30,5 +34,5 @@ fun UserList(users: List<User>, modifier: Modifier = Modifier) {
 fun PreviewUserList(
     @PreviewParameter(UserListPreviewParameterProvider::class) users: List<User>
 ) {
-    UserList( users )
+    UserList( users ) {}
 }

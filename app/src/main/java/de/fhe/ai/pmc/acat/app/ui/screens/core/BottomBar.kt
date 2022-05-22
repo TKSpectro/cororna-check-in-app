@@ -18,22 +18,24 @@ fun BottomBar() {
 
         for( screen in ScreensEnum.values() )
         {
-            BottomNavigationItem(
-                icon = { Icon(imageVector = screen.icon, contentDescription = screen.name) },
-                label = { Text(screen.name) },
-                selected = currentRoute == screen.name,
-                onClick = {
-                    navController.navigate(screen.name) {
-                        navController.graph.startDestinationRoute?.let { route ->
-                            popUpTo(route) {
-                                saveState = true
+            if( screen.isRootScreen ) {
+                BottomNavigationItem(
+                    icon = { Icon(imageVector = screen.icon, contentDescription = screen.name) },
+                    label = { Text(screen.name) },
+                    selected = currentRoute == screen.name,
+                    onClick = {
+                        navController.navigate(screen.name) {
+                            navController.graph.startDestinationRoute?.let { route ->
+                                popUpTo(route) {
+                                    saveState = true
+                                }
                             }
+                            launchSingleTop = true
+                            restoreState = true
                         }
-                        launchSingleTop = true
-                        restoreState = true
                     }
-                }
-            )
+                )
+            }
         }
     }
 }

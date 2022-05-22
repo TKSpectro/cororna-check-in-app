@@ -2,8 +2,11 @@ package de.fhe.ai.pmc.acat.app.ui.screens.core
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
+import de.fhe.ai.pmc.acat.app.ui.screens.detail.DetailScreen
 import de.fhe.ai.pmc.acat.app.ui.screens.main.MainScreen
 import de.fhe.ai.pmc.acat.app.ui.screens.map.MapScreen
 import de.fhe.ai.pmc.acat.app.ui.screens.settings.SettingsScreen
@@ -21,6 +24,18 @@ fun AppNavigationHost(
         composable(ScreensEnum.Main.name) {
             onNavigation( ScreensEnum.Main )
             MainScreen()
+        }
+        composable(
+            "${ScreensEnum.UserDetail.name}/{userId}",
+            arguments = listOf(
+                navArgument("userId") {
+                    type = NavType.LongType
+                }
+            )
+        ) { entry ->
+            val userId = entry.arguments?.getLong("userId")
+            onNavigation( ScreensEnum.UserDetail )
+            DetailScreen( userId )
         }
         composable(ScreensEnum.Map.name) {
             onNavigation( ScreensEnum.Map )
