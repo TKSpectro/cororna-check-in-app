@@ -16,37 +16,22 @@ import androidx.compose.ui.graphics.vector.ImageVector
 enum class ScreensEnum(
     val icon: ImageVector = Icons.Filled.Favorite,
     val isRootScreen: Boolean = false,
-    val actions: @Composable RowScope.() -> Unit = {}
+    var actions: @Composable RowScope.() -> Unit = {},
     ) {
 
     // Users
     Main(
         Icons.Filled.Home,
-        true,
-        actions = {
-            IconButton( onClick = { println("Add User") } ) {
-                Icon(Icons.Filled.Add, contentDescription = null)
-            }
-        }
+        true
     ),
     UserDetail(
-        Icons.Filled.AccountBox,
-        actions = {
-            IconButton( onClick = { println("Remove User") } ) {
-                Icon(Icons.Filled.Delete, contentDescription = null)
-            }
-        }
+        Icons.Filled.AccountBox
     ),
 
     // Map
     Map(
         Icons.Filled.Place,
-        true,
-        actions = {
-            IconButton( onClick = { println("Map Mode") } ) {
-                Icon(Icons.Filled.Build, contentDescription = null)
-            }
-        }
+        true
     ),
 
     // Settings

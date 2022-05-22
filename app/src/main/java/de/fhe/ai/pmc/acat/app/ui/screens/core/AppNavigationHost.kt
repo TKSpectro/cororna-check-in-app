@@ -1,5 +1,9 @@
 package de.fhe.ai.pmc.acat.app.ui.screens.core
 
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavType
@@ -16,8 +20,11 @@ fun AppNavigationHost(
     onNavigation: ( screen:ScreensEnum ) -> Unit,
     modifier: Modifier = Modifier
 ) {
+
+    val navCtrl = LocalNavCtrl.current
+
     NavHost(
-        navController = LocalNavCtrl.current,
+        navController = navCtrl,
         startDestination = ScreensEnum.Main.name,
         modifier = modifier
     ) {

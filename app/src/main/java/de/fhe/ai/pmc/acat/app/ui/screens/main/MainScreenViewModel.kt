@@ -6,17 +6,20 @@ import de.fhe.ai.pmc.acat.domain.GetUsers
 import de.fhe.ai.pmc.acat.domain.GetUsersAsync
 import de.fhe.ai.pmc.acat.domain.User
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 
 class MainScreenViewModel(
     private val getUsersUseCase: GetUsers,
     private val getUsersAsyncUseCase: GetUsersAsync,
     ) : ViewModel() {
 
-    fun getUsers(): Flow<List<User>> {
-        return getUsersUseCase()
+    suspend fun getUsers(): List<User> {
+        return getUsersUseCase().first()
     }
 
     fun getUsersAsync(): Flow<AsyncOperation> {
         return getUsersAsyncUseCase()
     }
+
+
 }

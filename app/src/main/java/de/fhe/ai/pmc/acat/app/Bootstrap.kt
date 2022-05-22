@@ -33,7 +33,7 @@ class Bootstrap : Application() {
             modules(viewModelModule)
         }
 
-        DbTest().run()
+        //DbTest().run()
     }
 }
 
