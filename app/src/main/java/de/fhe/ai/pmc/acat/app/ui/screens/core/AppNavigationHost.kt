@@ -3,6 +3,8 @@ package de.fhe.ai.pmc.acat.app.ui.screens.core
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import de.fhe.ai.pmc.acat.app.ui.screens.detail.DetailScreen
@@ -13,18 +15,16 @@ import org.koin.androidx.compose.inject
 
 @Composable
 fun AppNavigationHost(
+    navCtrl: NavHostController,
     onNavigation: ( screen: Screen ) -> Unit,
     modifier: Modifier = Modifier
 ) {
-
-    val navCtrl = LocalNavCtrl.current
     val navigationManager by inject<NavigationManager>()
 
     navigationManager.commands.collectAsState().value.also { command ->
         if (command.destination.isNotEmpty())
             navCtrl.navigate(command.destination)
     }
-
 
     NavHost(
         navController = navCtrl,

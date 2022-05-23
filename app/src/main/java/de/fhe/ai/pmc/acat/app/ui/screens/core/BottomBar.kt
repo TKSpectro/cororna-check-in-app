@@ -6,13 +6,12 @@ import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import org.koin.androidx.compose.inject
 
 @Composable
-fun BottomBar() {
+fun BottomBar(navController: NavController) {
     BottomNavigation {
-        val navController = LocalNavCtrl.current
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
 
@@ -23,7 +22,7 @@ fun BottomBar() {
                 label = { Text(screen.title) },
                 selected = currentRoute == screen.route,
                 onClick = {
-                    navController.navigate(screen.navigationCommand().destination) {
+                    navController.navigate(screen.route) {
                         navController.graph.startDestinationRoute?.let { route ->
                             popUpTo(route) {
                                 saveState = true

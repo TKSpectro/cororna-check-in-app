@@ -15,7 +15,6 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 
-val LocalNavCtrl = staticCompositionLocalOf<NavHostController> { error("no nav controller set") }
 val LocalScaffoldState = staticCompositionLocalOf<ScaffoldState> { error("no scaffolded state set") }
 
 @Composable
@@ -24,16 +23,15 @@ fun AppScaffold() {
     val scaffoldState = rememberScaffoldState()
     var currentScreen by remember { mutableStateOf<Screen>( Screen.UserList ) }
 
-    CompositionLocalProvider(
-        LocalNavCtrl provides navController,
-        LocalScaffoldState provides scaffoldState) {
+    CompositionLocalProvider(LocalScaffoldState provides scaffoldState) {
 
         Scaffold(
             scaffoldState = scaffoldState,
             topBar = { AppBar(currentScreen) },
-            bottomBar = { BottomBar() }
+            bottomBar = { BottomBar(navController) }
         ) { innerPadding ->
             AppNavigationHost(
+                navController,
                 onNavigation = {
                     currentScreen = it
                 },

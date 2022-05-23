@@ -20,15 +20,12 @@ sealed class Screen(
     val title: String = "Title",
     val icon: ImageVector = Icons.Filled.Favorite,
     var appBarActions: @Composable RowScope.() -> Unit = {},
-    val route: String = "",
-    val navArguments: List<NamedNavArgument> = emptyList()
+    val route: String = ""
     ) {
 
-    open fun navigationCommand( vararg value: Any ): NavigationCommand {
-        return object : NavigationCommand {
-            override val arguments = navArguments
+    open fun navigationCommand( vararg value: Any ) = object : NavigationCommand {
+            override val arguments = emptyList<NamedNavArgument>()
             override val destination = route
-        }
     }
 
     object UserList : Screen(

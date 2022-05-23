@@ -8,15 +8,15 @@ interface NavigationCommand {
     val arguments: List<NamedNavArgument>
 }
 
-val DefaultDestination = object : NavigationCommand {
+val EmptyDestination = object : NavigationCommand {
     override val arguments = emptyList<NamedNavArgument>()
     override val destination = ""
 }
 
 class NavigationManager {
-    var commands = MutableStateFlow(DefaultDestination)
+    var commands = MutableStateFlow(EmptyDestination)
 
-    fun navigate( directions: NavigationCommand ) {
-        commands.value = directions
+    fun navigate( navCommand: NavigationCommand ) {
+        commands.value = navCommand
     }
 }
