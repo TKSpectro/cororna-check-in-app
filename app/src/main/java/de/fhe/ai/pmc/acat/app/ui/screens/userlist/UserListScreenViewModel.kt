@@ -25,11 +25,7 @@ class UserListScreenViewModel(
     var usersAsync by mutableStateOf(AsyncOperation.undefined())
 
     init {
-        viewModelScope.launch {
-            getUsersAsync().collect {
-                usersAsync = it
-            }
-        }
+        this.update()
     }
 
     suspend fun getUsers(): List<User> {
@@ -38,6 +34,14 @@ class UserListScreenViewModel(
 
     fun getUsersAsync(): Flow<AsyncOperation> {
         return getUsersAsyncUseCase()
+    }
+
+    fun update() {
+        viewModelScope.launch {
+            getUsersAsync().collect {
+                usersAsync = it
+            }
+        }
     }
 
     fun navigateToAddUser() {

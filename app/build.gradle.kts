@@ -69,6 +69,8 @@ dependencies {
     implementation( Libs.Koin.compose )
     implementation( Libs.Koin.navigation )
 
+    implementation( Libs.Accompanist.swipeRefresh )
+
     testImplementation( Libs.JUnit.core )
     androidTestImplementation( Libs.AndroidX.Compose.uiTest )
     androidTestImplementation( Libs.AndroidX.Espresso.core )

@@ -113,6 +113,12 @@ object Libs {
         const val test = "io.insert-koin:koin-test:${version}"
     }
 
+    // https://google.github.io/accompanist
+    object Accompanist {
+        private const val version = "0.24.9-beta"
+        const val swipeRefresh = "com.google.accompanist:accompanist-swiperefresh:$version"
+    }
+
     object JUnit {
         private const val jUVersion = "4.13.2"
         private const val version = "1.1.3"
