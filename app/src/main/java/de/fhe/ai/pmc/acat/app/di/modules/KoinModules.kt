@@ -2,6 +2,7 @@ package de.fhe.ai.pmc.acat.app.di.modules
 
 import de.fhe.ai.pmc.acat.android_core.LoggerImpl
 import de.fhe.ai.pmc.acat.app.ui.screens.core.NavigationManager
+import de.fhe.ai.pmc.acat.app.ui.screens.detail.DetailScreenViewModel
 import de.fhe.ai.pmc.acat.app.ui.screens.userlist.UserListScreenViewModel
 import de.fhe.ai.pmc.acat.data.AppDatabase
 import de.fhe.ai.pmc.acat.data.RepositoryImpl
@@ -36,4 +37,5 @@ val useCaseModule = module {
 
 val viewModelModule = module {
     viewModel { UserListScreenViewModel(get(), get(), get()) }
+    viewModel { DetailScreenViewModel() }
 }

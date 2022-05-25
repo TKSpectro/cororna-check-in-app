@@ -7,11 +7,8 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.SnackbarDuration
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 
 import androidx.compose.ui.Modifier
 import de.fhe.ai.pmc.acat.app.ui.screens.core.LocalScaffoldState
@@ -35,7 +32,7 @@ val UserListScreenAppBarActions: @Composable RowScope.() -> Unit = {
 fun UserListScreen(modifier: Modifier = Modifier) {
     val vm = getViewModel<UserListScreenViewModel>()
 
-    val usersAsync by remember(vm) { vm.getUsersAsync() }.collectAsState( AsyncOperation.undefined() )
+    val usersAsync = vm.usersAsync
 
     // Side Effect: Show Snack Bar on Status Changes
     val state = LocalScaffoldState.current

@@ -8,6 +8,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavType
 import androidx.navigation.navArgument
+import de.fhe.ai.pmc.acat.app.ui.screens.detail.DetailScreenAppBarActions
 import de.fhe.ai.pmc.acat.app.ui.screens.userlist.UserListScreenAppBarActions
 
 val RootScreens = listOf(
@@ -38,6 +39,7 @@ sealed class Screen(
     object UserDetail : Screen(
         title = "User",
         icon = Icons.Filled.AccountBox,
+        appBarActions = DetailScreenAppBarActions,
         route = "UserDetail/{userId}"
     ) {
         override fun navigationCommand(vararg value : Any ) = object : NavigationCommand {

@@ -11,8 +11,9 @@ class GetUsers(private val repository: Repository) {
 class GetUsersAsync(private val repository: Repository) {
     operator fun invoke(): Flow<AsyncOperation> = flow {
 
+        emit( AsyncOperation.loading("Start loading users...") )
+
         repository.getUsers().collect() {
-            emit( AsyncOperation.loading("Start loading users...") )
             delay(500)
             emit( AsyncOperation.success("Users loaded", it ))
         }
