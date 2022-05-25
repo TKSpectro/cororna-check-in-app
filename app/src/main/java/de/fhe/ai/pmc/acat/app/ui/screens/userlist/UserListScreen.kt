@@ -8,12 +8,10 @@ import androidx.compose.material.SnackbarDuration
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.rememberSaveable
 
 import androidx.compose.ui.Modifier
 import de.fhe.ai.pmc.acat.app.ui.screens.core.LocalScaffoldState
 import de.fhe.ai.pmc.acat.app.ui.screens.util.AsyncPlaceholderView
-import de.fhe.ai.pmc.acat.domain.AsyncOperation
 import de.fhe.ai.pmc.acat.domain.AsyncOperationState
 import de.fhe.ai.pmc.acat.domain.User
 import org.koin.androidx.compose.getViewModel

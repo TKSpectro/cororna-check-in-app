@@ -37,9 +37,7 @@ dependencies {
     implementation(project(mapOf("path" to ":domain")))
     implementation( Libs.AndroidX.coreKtx )
 
-    implementation( Dependencies.timber )
-
-    //implementation("androidx.appcompat:appcompat:1.4.1")
+    implementation( Libs.Timber.core )
 
     testImplementation( TestDependencies.junit)
     androidTestImplementation( TestDependencies.androidx_test_ext_junit)

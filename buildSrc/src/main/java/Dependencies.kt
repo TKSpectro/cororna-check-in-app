@@ -5,7 +5,7 @@ object BuildPlugins {
 
 object Libs {
     object Kotlin {
-        private const val version = "1.6.21"
+        const val version = "1.6.21"
         const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$version"
         const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
         const val extensions = "org.jetbrains.kotlin:kotlin-android-extensions:$version"
@@ -27,7 +27,7 @@ object Libs {
         }
 
         object Compose {
-            private const val version = "1.2.0-beta02"
+            const val version = "1.2.0-beta02"
 
             const val ui = "androidx.compose.ui:ui:$version"
             const val foundation = "androidx.compose.foundation:foundation:$version"
@@ -46,6 +46,38 @@ object Libs {
             const val viewBinding = "androidx.compose.ui:ui-viewbinding:$version"
         }
 
+        object Navigation {
+            private const val version = "2.4.2"
+            const val fragment = "androidx.navigation:navigation-fragment-ktx:$version"
+            const val ui = "androidx.navigation:navigation-ui-ktx:$version"
+            const val dynamicFeature = "androidx.navigation:navigation-dynamic-features-fragment:$version"
+            const val test = "androidx.navigation:navigation-testing:$version"
+            const val compose = "androidx.navigation:navigation-compose:$version"
+        }
+
+        object Lifecycle {
+            private const val version = "2.4.1"
+            const val runtime = "androidx.lifecycle:lifecycle-runtime-ktx:$version"
+            const val extensions = "androidx.lifecycle:lifecycle-extensions:$version"
+            const val livedata = "androidx.lifecycle:lifecycle-livedata-ktx:$version"
+            const val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$version"
+            const val viewModelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:$version"
+        }
+
+    }
+
+    object Timber {
+        // https://github.com/JakeWharton/timber
+        private const val version = "5.0.1"
+        const val core = "com.jakewharton.timber:timber:$version"
+    }
+
+    object Room {
+        private const val version = "2.4.2"
+        const val runtime = "androidx.room:room-runtime:$version"
+        const val compiler ="androidx.room:room-compiler:$version"
+        const val ktx = "androidx.room:room-ktx:$version"
+        const val testing = "androidx.room:room-testing:$version"
     }
 
     // https://insert-koin.io
@@ -67,32 +99,6 @@ object TestDependencies {
 
     // Added for Android 12 workaround (exported = true) TODO: Remove as soon as possible
     const val androidx_test_ext_junit = "androidx.test.ext:junit-ktx:${Versions.androidx_test_ext_junit}"
-}
-
-object Dependencies {
-
-
-    const val androidx_lifecycle_ktx =
-        "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.androidx_lifecycle_ktx}"
-
-    const val androidx_compose_navigation = "androidx.navigation:navigation-compose:${Versions.compose_navigation}"
-
-    // Timber - Android Logging https://github.com/JakeWharton/timber
-    const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
-
-
-
-    // Room
-    const val room_runtime = "androidx.room:room-runtime:${Versions.room}"
-    const val room_compiler ="androidx.room:room-compiler:${Versions.room}"
-    const val room_testing = "androidx.room:room-testing:${Versions.room}"
-    const val room_ktx = "androidx.room:room-ktx:${Versions.room}"
-    const val room_coroutine = "androidx.room:room-coroutines:${Versions.room}"
-
-}
-
-object DebugDependencies {
-    const val androidx_compose_ui_tooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"
 }
 
 object Plugins {

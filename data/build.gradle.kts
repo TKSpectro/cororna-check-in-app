@@ -47,11 +47,10 @@ dependencies {
     implementation( Libs.AndroidX.coreKtx )
     implementation( Libs.Coroutines.android )
 
-    // Room
-    kapt( Dependencies.room_compiler )
-    implementation( Dependencies.room_runtime )
-    implementation( Dependencies.room_ktx )
-    androidTestImplementation( Dependencies.room_testing )
+    kapt( Libs.Room.compiler )
+    implementation( Libs.Room.runtime )
+    implementation( Libs.Room.ktx )
+    androidTestImplementation( Libs.Room.testing )
 
     testImplementation( TestDependencies.junit)
     androidTestImplementation( TestDependencies.androidx_test_ext_junit)

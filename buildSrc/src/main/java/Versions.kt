@@ -1,20 +1,7 @@
 object Versions {
 
     // Build related Versions
-    const val gradlePlugin = "4.2.1"
-    const val kotlin = "1.5.31"
     const val jvm_target = "1.8"
-    const val compose = "1.0.5"
-    const val compose_navigation = "2.4.1"
-    
-
-    const val androidx_lifecycle_ktx = "2.4.0"
-
-    // Room
-    const val room = "2.4.1"
-
-    // 3rd Party Libs
-    const val timber = "4.7.1"
 
     // Test related Versions
     const val junit = "4.13.2"

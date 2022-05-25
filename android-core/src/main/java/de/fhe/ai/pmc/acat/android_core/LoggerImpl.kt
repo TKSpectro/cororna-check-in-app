@@ -22,9 +22,9 @@ class LoggerImpl : Logger {
         Timber.tag(callingCallName()).i( message )
     }
 
-    private fun callingCallName(): String? {
+    private fun callingCallName(): String {
         val fullClassName = Thread.currentThread().stackTrace[4]?.className
-        return fullClassName?.substring(fullClassName.lastIndexOf('.'))
+        return fullClassName?.substring(fullClassName.lastIndexOf('.'))?:"UnknownCaller"
     }
 
 }

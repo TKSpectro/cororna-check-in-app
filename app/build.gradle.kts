@@ -37,7 +37,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = Versions.compose
+        kotlinCompilerExtensionVersion = Libs.AndroidX.Compose.version
     }
     packagingOptions {
         resources.excludes.add("/META-INF/{AL2.0,LGPL2.1}")
@@ -53,14 +53,15 @@ dependencies {
     implementation( Libs.Coroutines.core )
     implementation( Libs.Coroutines.android )
 
-
     implementation( Libs.AndroidX.coreKtx)
+    implementation( Libs.AndroidX.Activity.activityCompose )
     implementation( Libs.AndroidX.Compose.ui )
     implementation( Libs.AndroidX.Compose.material )
     implementation( Libs.AndroidX.Compose.toolingPreview )
-    implementation( Libs.AndroidX.Activity.activityCompose )
-    implementation( Dependencies.androidx_compose_navigation )
-    implementation( Dependencies.androidx_lifecycle_ktx )
+    implementation( Libs.AndroidX.Navigation.compose )
+    implementation( Libs.AndroidX.Lifecycle.runtime )
+    implementation( Libs.AndroidX.Lifecycle.viewmodel )
+    implementation( Libs.AndroidX.Lifecycle.viewModelCompose )
 
     implementation( Libs.Koin.core )
     implementation( Libs.Koin.android )
@@ -73,5 +74,5 @@ dependencies {
     androidTestImplementation( TestDependencies.androidx_test_ext_junit )
     androidTestImplementation( Libs.Koin.test )
 
-    debugImplementation( DebugDependencies.androidx_compose_ui_tooling )
+    debugImplementation( Libs.AndroidX.Compose.tooling )
 }
