@@ -4,17 +4,12 @@ import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.ViewModel
 
-class DetailScreenViewModel : ViewModel() {
-
-    var userId: Long = 0
+class DetailScreenViewModel(val userId: Long) : ViewModel() {
 
     fun share(context: Context) {
-
-        println( "$this -- $userId -- share")
-
         val sendIntent: Intent = Intent().apply {
             action = Intent.ACTION_SEND
-            putExtra(Intent.EXTRA_TEXT, "This is my text to send - $userId.")
+            putExtra(Intent.EXTRA_TEXT, "This is my text to send: UserID $userId.")
             type = "text/plain"
         }
 

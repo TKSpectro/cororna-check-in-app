@@ -37,5 +37,5 @@ val useCaseModule = module {
 
 val viewModelModule = module {
     viewModel { UserListScreenViewModel(get(), get(), get()) }
-    viewModel { DetailScreenViewModel() }
+    viewModel { DetailScreenViewModel(get()) }
 }

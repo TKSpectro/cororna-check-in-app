@@ -12,7 +12,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 
 val LocalScaffoldState = staticCompositionLocalOf<ScaffoldState> { error("no scaffolded state set") }
@@ -21,10 +20,9 @@ val LocalScaffoldState = staticCompositionLocalOf<ScaffoldState> { error("no sca
 fun AppScaffold() {
     val navController = rememberNavController()
     val scaffoldState = rememberScaffoldState()
-    var currentScreen by remember { mutableStateOf<Screen>( Screen.UserList ) }
+    var currentScreen by remember { mutableStateOf<Screen>( Screen.Undefined ) }
 
     CompositionLocalProvider(LocalScaffoldState provides scaffoldState) {
-
         Scaffold(
             scaffoldState = scaffoldState,
             topBar = { AppBar(currentScreen) },
@@ -38,6 +36,6 @@ fun AppScaffold() {
                 modifier = Modifier.padding(innerPadding)
             )
         }
-
     }
 }
+
