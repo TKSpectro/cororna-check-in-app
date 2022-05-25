@@ -10,7 +10,7 @@ class DetailScreenViewModel() : ViewModel() {
 
     fun share(context: Context) {
 
-        println( this )
+        println( "$this -- $userId -- share")
 
         val sendIntent: Intent = Intent().apply {
             action = Intent.ACTION_SEND

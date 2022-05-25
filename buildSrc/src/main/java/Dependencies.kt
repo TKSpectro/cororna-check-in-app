@@ -4,6 +4,18 @@ object BuildPlugins {
     //const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
 }
 
+object Libs {
+    // https://insert-koin.io
+    object Koin {
+        private const val version = "3.1.6"
+        const val core = "io.insert-koin:koin-core:${version}"
+        const val android = "io.insert-koin:koin-android:${version}"
+        const val compose = "io.insert-koin:koin-androidx-compose:${version}"
+        const val navigation = "io.insert-koin:koin-androidx-navigation:${version}"
+        const val test = "io.insert-koin:koin-test:${version}"
+    }
+}
+
 object TestDependencies {
     const val junit = "junit:junit:${Versions.junit}"
     const val androidx_junit = "androidx.test.ext:junit:${Versions.androidx_junit}"
@@ -13,9 +25,6 @@ object TestDependencies {
 
     // Added for Android 12 workaround (exported = true) TODO: Remove as soon as possible
     const val androidx_test_ext_junit = "androidx.test.ext:junit-ktx:${Versions.androidx_test_ext_junit}"
-
-    // https://insert-koin.io
-    const val koin_test = "io.insert-koin:koin-test:${Versions.koin}"
 }
 
 object Dependencies {
@@ -38,11 +47,7 @@ object Dependencies {
     // Timber - Android Logging https://github.com/JakeWharton/timber
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
 
-    // https://insert-koin.io
-    const val koin_core = "io.insert-koin:koin-core:${Versions.koin}"
-    const val koin_android = "io.insert-koin:koin-android:${Versions.koin}"
-    const val koin_android_compose = "io.insert-koin:koin-androidx-compose:${Versions.koin}"
-    const val koin_android_navigation = "io.insert-koin:koin-androidx-navigation:${Versions.koin}"
+
 
     // Room
     const val room_runtime = "androidx.room:room-runtime:${Versions.room}"

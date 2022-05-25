@@ -14,8 +14,7 @@ object Versions {
     const val kotlin_coroutines_core = "1.6.0"
     const val kotlin_coroutines_android = "1.3.9"
 
-    // Koin DI
-    const val koin = "3.2.0-beta-1"
+
 
     // Room
     const val room = "2.4.1"

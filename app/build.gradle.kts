@@ -58,17 +58,17 @@ dependencies {
     implementation( Dependencies.androidx_compose_navigation )
     implementation( Dependencies.androidx_lifecycle_ktx )
 
-    implementation( Dependencies.koin_core )
-    implementation( Dependencies.koin_android )
-    implementation( Dependencies.koin_android_compose )
-    implementation( Dependencies.koin_android_navigation )
+    implementation( Libs.Koin.core )
+    implementation( Libs.Koin.android )
+    implementation( Libs.Koin.compose )
+    implementation( Libs.Koin.navigation )
 
     testImplementation( TestDependencies.junit )
     androidTestImplementation( TestDependencies.androidx_compose_junit )
     androidTestImplementation( TestDependencies.androidx_espresso_core )
     androidTestImplementation( TestDependencies.androidx_compose_junit )
     androidTestImplementation( TestDependencies.androidx_test_ext_junit )
-    androidTestImplementation( TestDependencies.koin_test )
+    androidTestImplementation( Libs.Koin.test )
 
     debugImplementation( DebugDependencies.androidx_compose_ui_tooling )
 }

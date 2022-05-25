@@ -15,6 +15,8 @@ val DetailScreenAppBarActions: @Composable RowScope.() -> Unit = {
     val vm by viewModel<DetailScreenViewModel>()
     val context = LocalContext.current
 
+    println(vm)
+
     IconButton(
         onClick = {
             vm.share(context)
@@ -31,5 +33,5 @@ fun DetailScreen( userId: Long? ) {
 
     Text("Detail: $userId")
 
-    println(vm)
+    println(println( "$vm -- $userId"))
 }
