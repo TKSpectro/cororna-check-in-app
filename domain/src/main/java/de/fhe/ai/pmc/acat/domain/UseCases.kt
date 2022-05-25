@@ -8,13 +8,15 @@ class GetUsers(private val repository: Repository) {
     operator fun invoke() = repository.getUsers()
 }
 
+private const val ASYNC_WAIT_DELAY = 500L
+
 class GetUsersAsync(private val repository: Repository) {
     operator fun invoke(): Flow<AsyncOperation> = flow {
 
         emit( AsyncOperation.loading("Start loading users...") )
 
         repository.getUsers().collect() {
-            delay(500)
+            delay(ASYNC_WAIT_DELAY)
             emit( AsyncOperation.success("Users loaded", it ))
         }
 

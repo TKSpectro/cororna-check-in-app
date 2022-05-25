@@ -3,6 +3,8 @@ package de.fhe.ai.pmc.acat.android_core
 import de.fhe.ai.pmc.acat.domain.Logger
 import timber.log.Timber
 
+private const val CALLER_STACK_TRACE_POSITION = 4
+
 class LoggerImpl : Logger {
 
     companion object {
@@ -23,7 +25,7 @@ class LoggerImpl : Logger {
     }
 
     private fun callingCallName(): String {
-        val fullClassName = Thread.currentThread().stackTrace[4]?.className
+        val fullClassName = Thread.currentThread().stackTrace[CALLER_STACK_TRACE_POSITION]?.className
         return fullClassName?.substring(fullClassName.lastIndexOf('.'))?:"UnknownCaller"
     }
 

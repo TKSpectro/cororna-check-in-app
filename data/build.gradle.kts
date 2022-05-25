@@ -1,7 +1,7 @@
 plugins {
-    id(Plugins.android_library)
-    id(Plugins.kotlin_android)
-    id(Plugins.kotlin_kapt)
+    id(Libs.Plugins.android_library)
+    id(Libs.Plugins.kotlin_android)
+    id(Libs.Plugins.kotlin_kapt)
 }
 
 android {
@@ -35,7 +35,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = Versions.jvm_target
+        jvmTarget = Config.jvm_target
     }
 }
 
@@ -52,7 +52,7 @@ dependencies {
     implementation( Libs.Room.ktx )
     androidTestImplementation( Libs.Room.testing )
 
-    testImplementation( TestDependencies.junit)
-    androidTestImplementation( TestDependencies.androidx_test_ext_junit)
-    androidTestImplementation( TestDependencies.androidx_espresso_core)
+    testImplementation( Libs.JUnit.core )
+    androidTestImplementation( Libs.JUnit.ktx )
+    androidTestImplementation( Libs.AndroidX.Espresso.core )
 }

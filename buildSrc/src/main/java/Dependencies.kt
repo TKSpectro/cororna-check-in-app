@@ -1,9 +1,14 @@
-
-object BuildPlugins {
-    //const val android = "com.android.tools.build:gradle:${Versions.gradlePlugin}"
-}
-
 object Libs {
+
+    object Plugins {
+        const val android_app = "com.android.application"
+        const val android_library = "com.android.library"
+        const val kotlin_android = "org.jetbrains.kotlin.android"
+        const val kotlin_kapt = "kotlin-kapt"
+        const val java_library = "java-library"
+        const val kotlin_jvm = "org.jetbrains.kotlin.jvm"
+    }
+
     object Kotlin {
         const val version = "1.6.21"
         const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$version"
@@ -46,6 +51,11 @@ object Libs {
             const val viewBinding = "androidx.compose.ui:ui-viewbinding:$version"
         }
 
+        object Espresso {
+            private const val version = "3.4.0"
+            const val core = "androidx.test.espresso:espresso-core:$version"
+        }
+
         object Navigation {
             private const val version = "2.4.2"
             const val fragment = "androidx.navigation:navigation-fragment-ktx:$version"
@@ -63,21 +73,34 @@ object Libs {
             const val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$version"
             const val viewModelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:$version"
         }
-
     }
 
-    object Timber {
-        // https://github.com/JakeWharton/timber
-        private const val version = "5.0.1"
-        const val core = "com.jakewharton.timber:timber:$version"
-    }
-
+    // https://developer.android.com/jetpack/androidx/releases/room
     object Room {
         private const val version = "2.4.2"
         const val runtime = "androidx.room:room-runtime:$version"
         const val compiler ="androidx.room:room-compiler:$version"
         const val ktx = "androidx.room:room-ktx:$version"
         const val testing = "androidx.room:room-testing:$version"
+    }
+
+    // https://github.com/JakeWharton/timber
+    object Timber {
+        private const val version = "5.0.1"
+        const val core = "com.jakewharton.timber:timber:$version"
+    }
+
+    // https://github.com/Kotlin/dokka
+    object Dokka {
+        const val version = "1.6.21"
+        const val core = "org.jetbrains.dokka"
+    }
+
+    // https://github.com/detekt/detekt
+    object Detekt {
+        const val version = "1.20.0"
+        const val core = "io.gitlab.arturbosch.detekt"
+        const val formatting = "io.gitlab.arturbosch.detekt:detekt-formatting:$version"
     }
 
     // https://insert-koin.io
@@ -89,27 +112,15 @@ object Libs {
         const val navigation = "io.insert-koin:koin-androidx-navigation:${version}"
         const val test = "io.insert-koin:koin-test:${version}"
     }
+
+    object JUnit {
+        private const val jUVersion = "4.13.2"
+        private const val version = "1.1.3"
+
+        const val core = "junit:junit:$jUVersion"
+        const val androidx = "androidx.test.ext:junit:$version"
+
+        // Added for Android 12 workaround (exported = true) TODO: Remove as soon as possible
+        const val ktx = "androidx.test.ext:junit-ktx:$version"
+    }
 }
-
-object TestDependencies {
-    const val junit = "junit:junit:${Versions.junit}"
-    const val androidx_junit = "androidx.test.ext:junit:${Versions.androidx_junit}"
-    const val androidx_espresso_core =
-        "androidx.test.espresso:espresso-core:${Versions.androidx_espresso_core}"
-
-    // Added for Android 12 workaround (exported = true) TODO: Remove as soon as possible
-    const val androidx_test_ext_junit = "androidx.test.ext:junit-ktx:${Versions.androidx_test_ext_junit}"
-}
-
-object Plugins {
-    const val android_app = "com.android.application"
-    const val android_library = "com.android.library"
-    const val kotlin_android = "org.jetbrains.kotlin.android"
-    const val kotlin_kapt = "kotlin-kapt"
-    const val java_library = "java-library"
-    const val kotlin_jvm = "org.jetbrains.kotlin.jvm"
-    const val detekt = "io.gitlab.arturbosch.detekt"
-    const val detekt_plugin_formatting = "io.gitlab.arturbosch.detekt:detekt-formatting:${Versions.detekt}"
-    const val dokka = "org.jetbrains.dokka"
-}
-

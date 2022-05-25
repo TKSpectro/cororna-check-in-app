@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.ViewModel
 
-class DetailScreenViewModel() : ViewModel() {
+class DetailScreenViewModel : ViewModel() {
 
     var userId: Long = 0
 

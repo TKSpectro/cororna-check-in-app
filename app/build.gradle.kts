@@ -1,6 +1,6 @@
 plugins {
-    id(Plugins.android_app)
-    id(Plugins.kotlin_android)
+    id(Libs.Plugins.android_app)
+    id(Libs.Plugins.kotlin_android)
 }
 
 android {
@@ -31,7 +31,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = Versions.jvm_target
+        jvmTarget = Config.jvm_target
     }
     buildFeatures {
         compose = true
@@ -68,10 +68,10 @@ dependencies {
     implementation( Libs.Koin.compose )
     implementation( Libs.Koin.navigation )
 
-    testImplementation( TestDependencies.junit )
+    testImplementation( Libs.JUnit.core )
     androidTestImplementation( Libs.AndroidX.Compose.uiTest )
-    androidTestImplementation( TestDependencies.androidx_espresso_core )
-    androidTestImplementation( TestDependencies.androidx_test_ext_junit )
+    androidTestImplementation( Libs.AndroidX.Espresso.core )
+    androidTestImplementation( Libs.JUnit.ktx )
     androidTestImplementation( Libs.Koin.test )
 
     debugImplementation( Libs.AndroidX.Compose.tooling )
