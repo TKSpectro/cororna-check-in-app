@@ -7,14 +7,8 @@ object Versions {
     const val compose = "1.0.5"
     const val compose_navigation = "2.4.1"
     
-    const val androidx_core_ktx = "1.7.0"
+
     const val androidx_lifecycle_ktx = "2.4.0"
-    const val androidx_activity_compose = "1.4.0"
-
-    const val kotlin_coroutines_core = "1.6.0"
-    const val kotlin_coroutines_android = "1.3.9"
-
-
 
     // Room
     const val room = "2.4.1"

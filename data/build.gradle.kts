@@ -44,8 +44,8 @@ dependencies {
 
     implementation( project(mapOf("path" to ":domain")) )
     implementation( project(mapOf("path" to ":android-core")) )
-    implementation( Dependencies.androidx_core_ktx )
-    implementation( Dependencies.kotlin_coroutines_android )
+    implementation( Libs.AndroidX.coreKtx )
+    implementation( Libs.Coroutines.android )
 
     // Room
     kapt( Dependencies.room_compiler )

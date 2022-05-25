@@ -50,11 +50,15 @@ dependencies {
     implementation(project(mapOf("path" to ":android-core")))
     implementation(project(mapOf("path" to ":data")))
 
-    implementation( Dependencies.androidx_core_ktx )
-    implementation( Dependencies.androidx_compose_ui )
-    implementation( Dependencies.androidx_compose_material )
-    implementation( Dependencies.androidx_compose_tooling_preview )
-    implementation( Dependencies.androidx_activity_compose )
+    implementation( Libs.Coroutines.core )
+    implementation( Libs.Coroutines.android )
+
+
+    implementation( Libs.AndroidX.coreKtx)
+    implementation( Libs.AndroidX.Compose.ui )
+    implementation( Libs.AndroidX.Compose.material )
+    implementation( Libs.AndroidX.Compose.toolingPreview )
+    implementation( Libs.AndroidX.Activity.activityCompose )
     implementation( Dependencies.androidx_compose_navigation )
     implementation( Dependencies.androidx_lifecycle_ktx )
 
@@ -64,9 +68,8 @@ dependencies {
     implementation( Libs.Koin.navigation )
 
     testImplementation( TestDependencies.junit )
-    androidTestImplementation( TestDependencies.androidx_compose_junit )
+    androidTestImplementation( Libs.AndroidX.Compose.uiTest )
     androidTestImplementation( TestDependencies.androidx_espresso_core )
-    androidTestImplementation( TestDependencies.androidx_compose_junit )
     androidTestImplementation( TestDependencies.androidx_test_ext_junit )
     androidTestImplementation( Libs.Koin.test )
 

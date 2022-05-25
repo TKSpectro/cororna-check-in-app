@@ -1,10 +1,53 @@
 
 object BuildPlugins {
     //const val android = "com.android.tools.build:gradle:${Versions.gradlePlugin}"
-    //const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
 }
 
 object Libs {
+    object Kotlin {
+        private const val version = "1.6.21"
+        const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$version"
+        const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
+        const val extensions = "org.jetbrains.kotlin:kotlin-android-extensions:$version"
+    }
+
+    object Coroutines {
+        private const val version = "1.6.0"
+        const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
+        const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
+        const val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$version"
+    }
+
+    object AndroidX {
+        const val coreKtx = "androidx.core:core-ktx:1.7.0"
+
+        object Activity {
+            private const val version = "1.4.0"
+            const val activityCompose = "androidx.activity:activity-compose:$version"
+        }
+
+        object Compose {
+            private const val version = "1.2.0-beta02"
+
+            const val ui = "androidx.compose.ui:ui:$version"
+            const val foundation = "androidx.compose.foundation:foundation:$version"
+            const val layout = "androidx.compose.foundation:foundation-layout:$version"
+            const val material = "androidx.compose.material:material:$version"
+            const val materialIconsExtended = "androidx.compose.material:material-icons-extended:$version"
+            const val runtime = "androidx.compose.runtime:runtime:$version"
+            const val runtimeLivedata = "androidx.compose.runtime:runtime-livedata:$version"
+            const val tooling = "androidx.compose.ui:ui-tooling:$version"
+            const val toolingPreview = "androidx.compose.ui:ui-tooling-preview:$version"
+            const val test = "androidx.compose.ui:ui-test:$version"
+            const val uiTest = "androidx.compose.ui:ui-test-junit4:$version"
+            const val uiText = "androidx.compose.ui:ui-text-google-fonts:$version"
+            const val uiTestManifest = "androidx.compose.ui:ui-test-manifest:$version"
+            const val uiUtil = "androidx.compose.ui:ui-util:${version}"
+            const val viewBinding = "androidx.compose.ui:ui-viewbinding:$version"
+        }
+
+    }
+
     // https://insert-koin.io
     object Koin {
         private const val version = "3.1.6"
@@ -21,7 +64,6 @@ object TestDependencies {
     const val androidx_junit = "androidx.test.ext:junit:${Versions.androidx_junit}"
     const val androidx_espresso_core =
         "androidx.test.espresso:espresso-core:${Versions.androidx_espresso_core}"
-    const val androidx_compose_junit = "androidx.compose.ui:ui-test-junit4:${Versions.compose}"
 
     // Added for Android 12 workaround (exported = true) TODO: Remove as soon as possible
     const val androidx_test_ext_junit = "androidx.test.ext:junit-ktx:${Versions.androidx_test_ext_junit}"
@@ -29,20 +71,11 @@ object TestDependencies {
 
 object Dependencies {
 
-    const val androidx_core_ktx = "androidx.core:core-ktx:${Versions.androidx_core_ktx}"
-    const val androidx_compose_ui = "androidx.compose.ui:ui:${Versions.compose}"
-    const val androidx_compose_material = "androidx.compose.material:material:${Versions.compose}"
-    const val androidx_compose_tooling_preview =
-        "androidx.compose.ui:ui-tooling-preview:${Versions.compose}"
+
     const val androidx_lifecycle_ktx =
         "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.androidx_lifecycle_ktx}"
-    const val androidx_activity_compose =
-        "androidx.activity:activity-compose:${Versions.androidx_activity_compose}"
-    const val androidx_compose_navigation = "androidx.navigation:navigation-compose:${Versions.compose_navigation}"
 
-    // Kotlin
-    const val kotlin_coroutines_core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlin_coroutines_core}"
-    const val kotlin_coroutines_android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.kotlin_coroutines_android}"
+    const val androidx_compose_navigation = "androidx.navigation:navigation-compose:${Versions.compose_navigation}"
 
     // Timber - Android Logging https://github.com/JakeWharton/timber
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"

@@ -35,7 +35,7 @@ android {
 dependencies {
 
     implementation(project(mapOf("path" to ":domain")))
-    implementation( Dependencies.androidx_core_ktx)
+    implementation( Libs.AndroidX.coreKtx )
 
     implementation( Dependencies.timber )
 
