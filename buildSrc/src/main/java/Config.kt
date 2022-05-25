@@ -8,4 +8,5 @@ object Config {
     const val version_name = "1.0"
 
     const val jvm_target = "1.8"
+    const val gradle_version = "7.2.0"
 }

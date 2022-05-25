@@ -15,9 +15,7 @@ dependencyResolutionManagement {
 
 rootProject.name = ("android-clean-arch-template")
 
-include(
-    ":app"
-)
+include(":app")
 include(":domain")
 include(":android-core")
 include(":data")

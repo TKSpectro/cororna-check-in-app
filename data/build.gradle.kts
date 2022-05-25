@@ -37,6 +37,7 @@ android {
     kotlinOptions {
         jvmTarget = Config.jvm_target
     }
+    namespace = "de.fhe.ai.pmc.acat.data"
 }
 
 

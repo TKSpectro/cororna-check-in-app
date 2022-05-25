@@ -1,9 +1,9 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 plugins {
-    id("com.android.application") version "7.2.0-rc02" apply false
-    id("com.android.library") version "7.2.0-rc02" apply false
-    id("org.jetbrains.kotlin.android") version Libs.Kotlin.version apply false
+    id(Libs.Plugins.android_app) version Config.gradle_version apply false
+    id(Libs.Plugins.android_library) version Config.gradle_version apply false
+    id(Libs.Plugins.kotlin_android) version Libs.Kotlin.version apply false
 
     id(Libs.Detekt.core) version Libs.Detekt.version
     id(Libs.Dokka.core) version Libs.Dokka.version
@@ -11,8 +11,8 @@ plugins {
 
 subprojects {
     apply {
-        plugin(Libs.Detekt.core)
-        plugin(Libs.Dokka.core)
+        plugin( Libs.Detekt.core )
+        plugin( Libs.Dokka.core )
     }
 
     detekt {
@@ -31,7 +31,7 @@ tasks.register("clean",Delete::class){
 }
 buildscript {
     dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.30")
+        classpath(Libs.Kotlin.gradlePlugin)
     }
 }
 
