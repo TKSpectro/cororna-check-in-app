@@ -34,7 +34,9 @@ fun AndroidCleanArchTemplateTheme(
     content: @Composable () -> Unit
 ) {
     val colors = if (darkTheme) {
-        DarkColorPalette
+        // Force Light Theme for now
+        // DarkColorPalette
+        LightColorPalette
     } else {
         LightColorPalette
     }

@@ -13,7 +13,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = ("android-clean-arch-template")
+rootProject.name = ("corona-check-in-app")
 
 include(":app")
 include(":domain")

@@ -7,10 +7,12 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import de.fhe.ai.pmc.acat.app.ui.screens.dashboard.DashboardScreen
 import de.fhe.ai.pmc.acat.app.ui.screens.detail.DetailScreen
 import de.fhe.ai.pmc.acat.app.ui.screens.detail.DetailScreenViewModel
 import de.fhe.ai.pmc.acat.app.ui.screens.userlist.UserListScreen
 import de.fhe.ai.pmc.acat.app.ui.screens.map.MapScreen
+import de.fhe.ai.pmc.acat.app.ui.screens.scan.ScanScreen
 import de.fhe.ai.pmc.acat.app.ui.screens.settings.SettingsScreen
 import de.fhe.ai.pmc.acat.app.ui.screens.userlist.UserListScreenViewModel
 import org.koin.androidx.compose.inject
@@ -32,7 +34,7 @@ fun AppNavigationHost(
 
     NavHost(
         navController = navCtrl,
-        startDestination = Screen.UserList.route,
+        startDestination = Screen.Dashboard.route,
         modifier = modifier
     ) {
         composable(Screen.UserList.route) {
@@ -55,9 +57,13 @@ fun AppNavigationHost(
 
             DetailScreen( vm )
         }
-        composable(Screen.Map.route) {
-            onNavigation( Screen.Map )
-            MapScreen()
+        composable(Screen.Dashboard.route) {
+            onNavigation( Screen.Dashboard )
+            DashboardScreen()
+        }
+        composable(Screen.Scan.route) {
+            onNavigation( Screen.Scan )
+            ScanScreen()
         }
         composable(Screen.Settings.route) {
             onNavigation( Screen.Settings )

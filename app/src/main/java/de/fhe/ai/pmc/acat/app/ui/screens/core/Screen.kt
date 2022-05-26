@@ -15,8 +15,8 @@ import de.fhe.ai.pmc.acat.app.ui.screens.detail.DetailScreenViewModel
 import de.fhe.ai.pmc.acat.app.ui.screens.userlist.UserListScreenViewModel
 
 val RootScreens = listOf(
-    Screen.UserList,
-    Screen.Map,
+    Screen.Dashboard,
+    Screen.Scan,
     Screen.Settings
 )
 
@@ -92,10 +92,16 @@ sealed class Screen(
         }
     }
 
-    object Map : Screen(
-        title ="Map",
-        icon = Icons.Filled.Place,
-        route = "Map"
+    object Dashboard : Screen(
+        title = "Dashboard",
+        icon = Icons.Filled.Home,
+        route = "Dashboard"
+    )
+
+    object Scan : Screen(
+        title = "Scan",
+        icon = Icons.Filled.Search,
+        route = "Scan"
     )
 
     object Settings : Screen(

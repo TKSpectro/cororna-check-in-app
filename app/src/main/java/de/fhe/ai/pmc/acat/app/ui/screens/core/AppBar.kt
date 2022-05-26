@@ -40,8 +40,8 @@ fun UserDetailAppBar() {
 
 @Preview()
 @Composable
-fun MapAppBar() {
-    AppBar(screen = Screen.Map)
+fun ScanAppBar() {
+    AppBar(screen = Screen.Scan)
 }
 
 @Preview()
