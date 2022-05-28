@@ -110,5 +110,10 @@ sealed class Screen(
         route = "Settings"
     )
 
+    object Login : Screen(
+        title = "Login",
+        icon = Icons.Filled.Lock,
+        route = "Login"
+    )
 }
 

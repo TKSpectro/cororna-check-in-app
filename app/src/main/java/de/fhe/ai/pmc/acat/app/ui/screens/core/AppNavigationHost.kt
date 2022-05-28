@@ -7,13 +7,14 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import de.fhe.ai.pmc.acat.app.ui.screens.auth.LoginScreen
+import de.fhe.ai.pmc.acat.app.ui.screens.auth.LoginScreenViewModel
 import de.fhe.ai.pmc.acat.app.ui.screens.dashboard.DashboardScreen
 import de.fhe.ai.pmc.acat.app.ui.screens.detail.DetailScreen
 import de.fhe.ai.pmc.acat.app.ui.screens.detail.DetailScreenViewModel
-import de.fhe.ai.pmc.acat.app.ui.screens.userlist.UserListScreen
-import de.fhe.ai.pmc.acat.app.ui.screens.map.MapScreen
 import de.fhe.ai.pmc.acat.app.ui.screens.scan.ScanScreen
 import de.fhe.ai.pmc.acat.app.ui.screens.settings.SettingsScreen
+import de.fhe.ai.pmc.acat.app.ui.screens.userlist.UserListScreen
 import de.fhe.ai.pmc.acat.app.ui.screens.userlist.UserListScreenViewModel
 import org.koin.androidx.compose.inject
 import org.koin.androidx.compose.viewModel
@@ -34,7 +35,7 @@ fun AppNavigationHost(
 
     NavHost(
         navController = navCtrl,
-        startDestination = Screen.Dashboard.route,
+        startDestination = Screen.Login.route,
         modifier = modifier
     ) {
         composable(Screen.UserList.route) {
@@ -68,6 +69,12 @@ fun AppNavigationHost(
         composable(Screen.Settings.route) {
             onNavigation( Screen.Settings )
             SettingsScreen()
+        }
+        composable(Screen.Login.route){
+            val vm by viewModel<LoginScreenViewModel>()
+
+            onNavigation( Screen.Login )
+            LoginScreen( vm )
         }
     }
 }
