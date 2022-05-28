@@ -1,5 +1,7 @@
 package de.fhe.ai.pmc.acat.domain
 
+import java.time.LocalDateTime
+
 enum class AsyncOperationState {
     LOADING,
     SAVING,
@@ -35,3 +37,5 @@ data class AsyncOperation(val status: AsyncOperationState, val message: String, 
 }
 
 data class User( val name: String, val id: Long = 0 )
+
+data class Session (val id: String, val roomName: String, val startedAt: LocalDateTime, val endedAt: LocalDateTime)

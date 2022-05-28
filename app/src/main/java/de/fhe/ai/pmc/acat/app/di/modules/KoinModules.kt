@@ -3,14 +3,13 @@ package de.fhe.ai.pmc.acat.app.di.modules
 import de.fhe.ai.pmc.acat.android_core.LoggerImpl
 import de.fhe.ai.pmc.acat.app.ui.screens.auth.LoginScreenViewModel
 import de.fhe.ai.pmc.acat.app.ui.screens.core.NavigationManager
+import de.fhe.ai.pmc.acat.app.ui.screens.dashboard.DashboardScreenViewModel
 import de.fhe.ai.pmc.acat.app.ui.screens.detail.DetailScreenViewModel
+import de.fhe.ai.pmc.acat.app.ui.screens.sessionlist.SessionListScreenViewModel
 import de.fhe.ai.pmc.acat.app.ui.screens.userlist.UserListScreenViewModel
 import de.fhe.ai.pmc.acat.data.AppDatabase
 import de.fhe.ai.pmc.acat.data.RepositoryImpl
-import de.fhe.ai.pmc.acat.domain.GetUsers
-import de.fhe.ai.pmc.acat.domain.GetUsersAsync
-import de.fhe.ai.pmc.acat.domain.Logger
-import de.fhe.ai.pmc.acat.domain.Repository
+import de.fhe.ai.pmc.acat.domain.*
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -34,10 +33,14 @@ val databaseModule = module {
 val useCaseModule = module {
     factory { GetUsers(get()) }
     factory { GetUsersAsync(get()) }
+
+    factory { GetSessionsAsync(get()) }
 }
 
 val viewModelModule = module {
     viewModel { UserListScreenViewModel(get(), get(), get()) }
     viewModel { DetailScreenViewModel(get()) }
     viewModel { LoginScreenViewModel(get()) }
+    viewModel { SessionListScreenViewModel(get(), get()) }
+    viewModel { DashboardScreenViewModel(get()) }
 }

@@ -8,6 +8,7 @@ interface Repository {
     suspend fun insertUser( user: User ): Long
     suspend fun updateUser( user: User ): Long // Check Return Type
 
+    fun getSessions(): Flow<List<Session>>
 }
 
 interface Logger {

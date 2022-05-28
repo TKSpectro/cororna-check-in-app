@@ -10,9 +10,12 @@ import androidx.navigation.compose.composable
 import de.fhe.ai.pmc.acat.app.ui.screens.auth.LoginScreen
 import de.fhe.ai.pmc.acat.app.ui.screens.auth.LoginScreenViewModel
 import de.fhe.ai.pmc.acat.app.ui.screens.dashboard.DashboardScreen
+import de.fhe.ai.pmc.acat.app.ui.screens.dashboard.DashboardScreenViewModel
 import de.fhe.ai.pmc.acat.app.ui.screens.detail.DetailScreen
 import de.fhe.ai.pmc.acat.app.ui.screens.detail.DetailScreenViewModel
 import de.fhe.ai.pmc.acat.app.ui.screens.scan.ScanScreen
+import de.fhe.ai.pmc.acat.app.ui.screens.sessionlist.SessionListScreenViewModel
+import de.fhe.ai.pmc.acat.app.ui.screens.sessionlist.SessionsListScreen
 import de.fhe.ai.pmc.acat.app.ui.screens.settings.SettingsScreen
 import de.fhe.ai.pmc.acat.app.ui.screens.userlist.UserListScreen
 import de.fhe.ai.pmc.acat.app.ui.screens.userlist.UserListScreenViewModel
@@ -59,8 +62,10 @@ fun AppNavigationHost(
             DetailScreen( vm )
         }
         composable(Screen.Dashboard.route) {
+            val vm by viewModel<DashboardScreenViewModel>()
+
             onNavigation( Screen.Dashboard )
-            DashboardScreen()
+            DashboardScreen( vm )
         }
         composable(Screen.Scan.route) {
             onNavigation( Screen.Scan )
@@ -75,6 +80,12 @@ fun AppNavigationHost(
 
             onNavigation( Screen.Login )
             LoginScreen( vm )
+        }
+        composable(Screen.SessionList.route){
+            val vm by viewModel<SessionListScreenViewModel>()
+
+            onNavigation( Screen.SessionList )
+            SessionsListScreen( vm )
         }
     }
 }

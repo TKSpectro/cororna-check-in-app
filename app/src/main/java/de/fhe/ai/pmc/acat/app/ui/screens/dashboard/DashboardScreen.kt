@@ -1,5 +1,6 @@
 package de.fhe.ai.pmc.acat.app.ui.screens.dashboard
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -17,7 +18,7 @@ import de.fhe.ai.pmc.acat.app.ui.components.CustomCard
 import de.fhe.ai.pmc.acat.app.ui.screens.util.PREVIEW_BACKGROUND_COLOR
 
 @Composable
-fun DashboardScreen() {
+fun DashboardScreen(vm: DashboardScreenViewModel) {
     Column {
         CustomCard(heading = "Test Heading") {
             Text("This is some other information text")
@@ -35,7 +36,7 @@ fun DashboardScreen() {
                 }
             }
         }
-        CustomCard(heading = "Last sessions") {
+        CustomCard(heading = "Last sessions", modifier = Modifier.clickable { vm.navigateToSessionList() }) {
             Text("Session 1")
             Text("Session 2")
             Text("Session 3")
@@ -54,5 +55,5 @@ fun DashboardScreen() {
 @Composable
 fun PreviewDashboardScreen(
 ) {
-    DashboardScreen()
+//    DashboardScreen()
 }

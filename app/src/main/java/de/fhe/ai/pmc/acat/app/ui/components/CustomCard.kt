@@ -11,11 +11,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun CustomCard(heading: String? = null, content: @Composable() () -> Unit){
+fun CustomCard(modifier: Modifier = Modifier, heading: String? = null, content: @Composable () -> Unit){
     Card(
         elevation = 8.dp,
         shape = RoundedCornerShape(8.dp),
-        modifier = Modifier
+        modifier = modifier
             .padding(8.dp)
             .fillMaxWidth()
     ) {
