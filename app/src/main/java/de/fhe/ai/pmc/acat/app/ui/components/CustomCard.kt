@@ -6,8 +6,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -26,6 +28,36 @@ fun CustomCard(modifier: Modifier = Modifier, heading: String? = null, content: 
                 }
                 content()
             }
+        }
+    }
+}
+
+@Preview
+@Composable
+fun PreviewCustomCard(
+) {
+    CustomCard(){
+        Text("Test")
+    }
+}
+
+@Preview
+@Composable
+fun PreviewCustomCardWithHeading(
+) {
+    CustomCard(heading = "Heading"){
+        Text("Test")
+    }
+}
+
+@Preview
+@Composable
+fun PreviewCustomCardWithHeadingAndColumn(
+) {
+    CustomCard(heading = "Heading"){
+        Column {
+            Text("First line of text")
+            Text("Second line of text")
         }
     }
 }

@@ -13,9 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import de.fhe.ai.pmc.acat.app.ui.components.CustomCard
-import de.fhe.ai.pmc.acat.app.ui.screens.util.PREVIEW_BACKGROUND_COLOR
 
 @Composable
 fun DashboardScreen(vm: DashboardScreenViewModel) {
@@ -45,15 +43,4 @@ fun DashboardScreen(vm: DashboardScreenViewModel) {
             Text("Some random information")
         }
     }
-}
-
-@Preview(
-    showBackground = true,
-    showSystemUi = true,
-    backgroundColor = PREVIEW_BACKGROUND_COLOR
-)
-@Composable
-fun PreviewDashboardScreen(
-) {
-//    DashboardScreen()
 }
