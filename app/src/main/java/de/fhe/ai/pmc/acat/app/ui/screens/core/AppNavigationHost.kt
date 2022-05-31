@@ -14,6 +14,7 @@ import de.fhe.ai.pmc.acat.app.ui.screens.dashboard.DashboardScreenViewModel
 import de.fhe.ai.pmc.acat.app.ui.screens.detail.DetailScreen
 import de.fhe.ai.pmc.acat.app.ui.screens.detail.DetailScreenViewModel
 import de.fhe.ai.pmc.acat.app.ui.screens.scan.ScanScreen
+import de.fhe.ai.pmc.acat.app.ui.screens.scan.ScanScreenViewModel
 import de.fhe.ai.pmc.acat.app.ui.screens.sessionlist.SessionListScreenViewModel
 import de.fhe.ai.pmc.acat.app.ui.screens.sessionlist.SessionsListScreen
 import de.fhe.ai.pmc.acat.app.ui.screens.settings.SettingsScreen
@@ -68,8 +69,10 @@ fun AppNavigationHost(
             DashboardScreen( vm )
         }
         composable(Screen.Scan.route) {
+            val vm by viewModel<ScanScreenViewModel>()
+
             onNavigation( Screen.Scan )
-            ScanScreen()
+            ScanScreen( vm )
         }
         composable(Screen.Settings.route) {
             onNavigation( Screen.Settings )

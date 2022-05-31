@@ -5,6 +5,7 @@ import de.fhe.ai.pmc.acat.app.ui.screens.auth.LoginScreenViewModel
 import de.fhe.ai.pmc.acat.app.ui.screens.core.NavigationManager
 import de.fhe.ai.pmc.acat.app.ui.screens.dashboard.DashboardScreenViewModel
 import de.fhe.ai.pmc.acat.app.ui.screens.detail.DetailScreenViewModel
+import de.fhe.ai.pmc.acat.app.ui.screens.scan.ScanScreenViewModel
 import de.fhe.ai.pmc.acat.app.ui.screens.sessionlist.SessionListScreenViewModel
 import de.fhe.ai.pmc.acat.app.ui.screens.userlist.UserListScreenViewModel
 import de.fhe.ai.pmc.acat.data.AppDatabase
@@ -43,4 +44,5 @@ val viewModelModule = module {
     viewModel { LoginScreenViewModel(get()) }
     viewModel { SessionListScreenViewModel(get(), get()) }
     viewModel { DashboardScreenViewModel(get()) }
+    viewModel { ScanScreenViewModel(get()) }
 }

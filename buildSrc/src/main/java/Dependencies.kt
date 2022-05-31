@@ -73,6 +73,28 @@ object Libs {
             const val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$version"
             const val viewModelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:$version"
         }
+
+        object Camera {
+            const val lifecycle = "androidx.camera:camera-lifecycle:1.0.0"
+        }
+
+        // https://developer.android.com/training/camerax
+        object CameraX {
+            private const val version = "1.1.0-beta01"
+            const val core = "androidx.camera:camera-core:$version"
+            const val camera2 =  "androidx.camera:camera-camera2:$version"
+            const val lifecycle =  "androidx.camera:camera-lifecycle:$version"
+            const val video =  "androidx.camera:camera-video:$version"
+
+            const val view =  "androidx.camera:camera-view:$version"
+            const val extensions =  "androidx.camera:camera-extensions:$version"
+        }
+    }
+
+    // https://github.com/zxing/zxing
+    object Zxing {
+        const val core = "com.google.zxing:core:3.4.0"
+        const val embedded = "com.journeyapps:zxing-android-embedded:4.1.0"
     }
 
     // https://developer.android.com/jetpack/androidx/releases/room

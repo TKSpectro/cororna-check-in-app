@@ -64,12 +64,26 @@ dependencies {
     implementation( Libs.AndroidX.Lifecycle.viewmodel )
     implementation( Libs.AndroidX.Lifecycle.viewModelCompose )
 
+    implementation( Libs.AndroidX.CameraX.core )
+    implementation( Libs.AndroidX.CameraX.camera2 )
+    implementation( Libs.AndroidX.CameraX.lifecycle )
+    implementation( Libs.AndroidX.CameraX.video )
+    implementation( Libs.AndroidX.CameraX.view )
+    implementation( Libs.AndroidX.CameraX.extensions )
+    // https://proandroiddev.com/compose-camerax-on-android-58578f37e6df
+    implementation( Libs.AndroidX.Camera.lifecycle )
+
+    // https://sasikanth.dev/qr-scanning-using-camerax/
+    implementation( Libs.Zxing.core )
+    implementation( Libs.Zxing.embedded )
+
     implementation( Libs.Koin.core )
     implementation( Libs.Koin.android )
     implementation( Libs.Koin.compose )
     implementation( Libs.Koin.navigation )
 
     implementation( Libs.Accompanist.swipeRefresh )
+
 
     testImplementation( Libs.JUnit.core )
     androidTestImplementation( Libs.AndroidX.Compose.uiTest )
