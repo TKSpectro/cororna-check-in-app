@@ -59,6 +59,8 @@ dependencies {
     implementation( Libs.AndroidX.Compose.ui )
     implementation( Libs.AndroidX.Compose.material )
     implementation( Libs.AndroidX.Compose.toolingPreview )
+    implementation( Libs.AndroidX.Compose.runtimeLivedata )
+    implementation( Libs.AndroidX.Compose.runtime )
     implementation( Libs.AndroidX.Navigation.compose )
     implementation( Libs.AndroidX.Lifecycle.runtime )
     implementation( Libs.AndroidX.Lifecycle.viewmodel )
@@ -76,6 +78,12 @@ dependencies {
     // https://sasikanth.dev/qr-scanning-using-camerax/
     implementation( Libs.Zxing.core )
     implementation( Libs.Zxing.embedded )
+
+    // https://github.com/square/retrofit
+    implementation( Libs.Retrofit.retrofit )
+    implementation( Libs.Retrofit.converter )
+
+    implementation( Libs.Moshi.moshi )
 
     implementation( Libs.Koin.core )
     implementation( Libs.Koin.android )

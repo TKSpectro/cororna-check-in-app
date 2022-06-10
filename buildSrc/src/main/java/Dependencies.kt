@@ -97,6 +97,17 @@ object Libs {
         const val embedded = "com.journeyapps:zxing-android-embedded:4.1.0"
     }
 
+    object Retrofit {
+        private const val version = "2.9.0"
+        const val retrofit = "com.squareup.retrofit2:retrofit:$version"
+        const val converter = "com.squareup.retrofit2:converter-moshi:$version"
+    }
+
+    object Moshi {
+        private const val version = "1.9.3"
+        const val moshi = "com.squareup.moshi:moshi-kotlin:$version"
+    }
+
     // https://developer.android.com/jetpack/androidx/releases/room
     object Room {
         private const val version = "2.4.2"

@@ -5,18 +5,26 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import de.fhe.ai.pmc.acat.app.network.RoomType
 import de.fhe.ai.pmc.acat.app.ui.components.CustomCard
 
 @Composable
 fun DashboardScreen(vm: DashboardScreenViewModel) {
+    val estateList by vm.roomItems.observeAsState()
+    vm.getRooms()
+
     Column {
         CustomCard(heading = "Test Heading") {
             Text("This is some other information text")
@@ -39,8 +47,12 @@ fun DashboardScreen(vm: DashboardScreenViewModel) {
             Text("Session 2")
             Text("Session 3")
         }
-        CustomCard {
-            Text("Some random information")
+        CustomCard(heading = "Rooms") {
+            LazyColumn{
+                itemsIndexed(items = estateList!!) { index, item: RoomType ->
+                    Text(text = item.Name)
+                }
+            }
         }
     }
 }

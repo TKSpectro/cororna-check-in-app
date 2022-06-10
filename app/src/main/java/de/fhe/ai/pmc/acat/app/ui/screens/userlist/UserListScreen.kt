@@ -1,8 +1,7 @@
 package de.fhe.ai.pmc.acat.app.ui.screens.userlist
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.runtime.*
-
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import de.fhe.ai.pmc.acat.app.ui.screens.util.AsyncPlaceholderView
 import de.fhe.ai.pmc.acat.domain.AsyncOperation
@@ -32,8 +31,5 @@ fun UserListScreen(vm: UserListScreenViewModel, modifier: Modifier = Modifier) {
             data = emptyList<User>()
             AsyncPlaceholderView(asyncOperation = AsyncOperation.loading())
         }
-            
-
-        
     }
 }
