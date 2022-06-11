@@ -54,7 +54,7 @@ data class Session (
     @Json(name = "RoomId")
     val roomId: String,
     @Json(name = "Room")
-    val room : String?,
+    val room : Room?,
     @Json(name = "UserId")
     val userId: String,
     @Json(name = "User")

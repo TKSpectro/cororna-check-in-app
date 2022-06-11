@@ -1,6 +1,7 @@
 package de.fhe.ai.pmc.acat.data
 
 import de.fhe.ai.pmc.acat.domain.Repository
+import de.fhe.ai.pmc.acat.domain.Room
 import de.fhe.ai.pmc.acat.domain.Session
 import de.fhe.ai.pmc.acat.domain.User
 import kotlinx.coroutines.flow.flowOf
@@ -33,12 +34,13 @@ class RepositoryImpl(
     }
 
     private val date: LocalDateTime = LocalDateTime.now()
+    private val room = Room(UUID.randomUUID().toString(), "Room 1", 10, 90, 1, "", "")
     private val sessionList = listOf<Session>(
-        Session(UUID.randomUUID().toString(), LocalDateTime.now(), LocalDateTime.now(), false, "123", "", "123", ""),
-        Session(UUID.randomUUID().toString(), LocalDateTime.now(), LocalDateTime.now(), false, "123", "", "123", ""),
-        Session(UUID.randomUUID().toString(), LocalDateTime.now(), LocalDateTime.now(), false, "123", "", "123", ""),
-        Session(UUID.randomUUID().toString(), LocalDateTime.now(), LocalDateTime.now(), false, "123", "", "123", ""),
-        Session(UUID.randomUUID().toString(), LocalDateTime.now(), LocalDateTime.now(), false, "123", "", "123", "")
+        Session(UUID.randomUUID().toString(), LocalDateTime.now(), LocalDateTime.now(), false, "123", room, "123", ""),
+        Session(UUID.randomUUID().toString(), LocalDateTime.now(), LocalDateTime.now(), false, "123", room, "123", ""),
+        Session(UUID.randomUUID().toString(), LocalDateTime.now(), LocalDateTime.now(), false, "123", room, "123", ""),
+        Session(UUID.randomUUID().toString(), LocalDateTime.now(), LocalDateTime.now(), false, "123", room, "123", ""),
+        Session(UUID.randomUUID().toString(), LocalDateTime.now(), LocalDateTime.now(), false, "123", room, "123", "")
     )
 
     override fun getSessions() = flowOf(sessionList)

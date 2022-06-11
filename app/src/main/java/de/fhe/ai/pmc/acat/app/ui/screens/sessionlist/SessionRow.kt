@@ -43,7 +43,7 @@ fun SessionRow(
             Row() {
                 Spacer(modifier = modifier.width(10.dp))
                 Text(
-                    session.roomId,
+                    session.room?.name ?: "",
                     modifier = modifier
                         .align(Alignment.CenterVertically)
                         .fillMaxWidth(0.9f))

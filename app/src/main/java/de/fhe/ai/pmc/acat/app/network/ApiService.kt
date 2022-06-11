@@ -17,7 +17,7 @@ interface RequestService {
     @GET("rooms")
     fun listRooms(): Call<List<Room>>
 
-    @GET("sessions")
+    @GET("sessions?includeRoom=true")
     fun listSessions(): Call<List<Session>>
 
 //    @POST(value = "login")

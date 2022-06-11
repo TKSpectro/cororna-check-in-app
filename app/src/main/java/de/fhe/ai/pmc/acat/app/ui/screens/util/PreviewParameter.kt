@@ -2,6 +2,7 @@ package de.fhe.ai.pmc.acat.app.ui.screens.util
 
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import de.fhe.ai.pmc.acat.domain.AsyncOperation
+import de.fhe.ai.pmc.acat.domain.Room
 import de.fhe.ai.pmc.acat.domain.Session
 import de.fhe.ai.pmc.acat.domain.User
 import java.time.LocalDateTime
@@ -38,12 +39,13 @@ private val userList = listOf(
 )
 
 val date: LocalDateTime = LocalDateTime.now()
+private val room = Room(UUID.randomUUID().toString(), "Room 1", 10, 90, 1, "", "")
 private val sessionList = listOf<Session>(
-    Session(UUID.randomUUID().toString(), LocalDateTime.now(), LocalDateTime.now(), false, "123", "", "123", ""),
-    Session(UUID.randomUUID().toString(), LocalDateTime.now(), LocalDateTime.now(), false, "123", "", "123", ""),
-    Session(UUID.randomUUID().toString(), LocalDateTime.now(), LocalDateTime.now(), false, "123", "", "123", ""),
-    Session(UUID.randomUUID().toString(), LocalDateTime.now(), LocalDateTime.now(), false, "123", "", "123", ""),
-    Session(UUID.randomUUID().toString(), LocalDateTime.now(), LocalDateTime.now(), false, "123", "", "123", "")
+    Session(UUID.randomUUID().toString(), LocalDateTime.now(), LocalDateTime.now(), false, "123", room, "123", ""),
+    Session(UUID.randomUUID().toString(), LocalDateTime.now(), LocalDateTime.now(), false, "123", room, "123", ""),
+    Session(UUID.randomUUID().toString(), LocalDateTime.now(), LocalDateTime.now(), false, "123", room, "123", ""),
+    Session(UUID.randomUUID().toString(), LocalDateTime.now(), LocalDateTime.now(), false, "123", room, "123", ""),
+    Session(UUID.randomUUID().toString(), LocalDateTime.now(), LocalDateTime.now(), false, "123", room, "123", "")
 )
 
 private val asyncOpList = listOf(

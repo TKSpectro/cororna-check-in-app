@@ -24,7 +24,7 @@ fun SessionsListScreen(vm: SessionListScreenViewModel, modifier: Modifier = Modi
     LazyColumn{
         itemsIndexed(items = sessionList!!) { index, item: Session ->
             Column(Modifier.padding(6.dp)) {
-                Text(text = item.id)
+                Text(text = item.room?.name ?: "Room name not found")
                 Row {
                     Text(text = "From: ")
                     Text(text = item.startTime.format(pattern))
