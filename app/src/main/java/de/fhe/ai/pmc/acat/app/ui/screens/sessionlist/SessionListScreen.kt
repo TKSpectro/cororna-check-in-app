@@ -1,37 +1,43 @@
 package de.fhe.ai.pmc.acat.app.ui.screens.sessionlist
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.material.Text
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import de.fhe.ai.pmc.acat.domain.Session
-import java.time.format.DateTimeFormatter
+import com.google.accompanist.swiperefresh.SwipeRefresh
+import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
+import de.fhe.ai.pmc.acat.app.ui.components.NetworkError
 
 @Composable
 fun SessionsListScreen(vm: SessionListScreenViewModel, modifier: Modifier = Modifier) {
     val sessionList by vm.sessionItems.observeAsState()
-    vm.getSessions()
+    val loading by vm.loading.collectAsState()
+    val error by vm.error.collectAsState()
 
-    val pattern = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+    // Get sessions on first render
+    if(sessionList?.isEmpty() == true && !loading){
+        vm.getSessions()
+    }
 
-    LazyColumn{
-        itemsIndexed(items = sessionList!!) { index, item: Session ->
-            Column(Modifier.padding(6.dp)) {
-                Text(text = item.room?.name ?: "Room name not found")
-                Row {
-                    Text(text = "From: ")
-                    Text(text = item.startTime.format(pattern))
-                }
-                Row {
-                    Text(text = "To: ")
-                    Text(text = item.endTime.format(pattern))
+    val scrollState = rememberLazyListState()
+    SwipeRefresh(
+        state = rememberSwipeRefreshState(loading),
+        onRefresh = { vm.getSessions() },
+    ) {
+        Column() {
+            if(error.isNotBlank()){
+                NetworkError(text = error)
+            }
+            // TODO: Maybe render a loading spinner if loading is true
+
+            LazyColumn(state = scrollState, modifier = modifier) {
+                items(sessionList!!) { item ->
+                    SessionRow( item, modifier = modifier, onItemPressed = { vm.navigateToSession(item.id) } )
                 }
             }
         }

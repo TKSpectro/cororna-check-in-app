@@ -47,26 +47,28 @@ fun SessionRow(
                     modifier = modifier
                         .align(Alignment.CenterVertically)
                         .fillMaxWidth(0.9f))
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_baseline_arrow_forward_ios_24),
-                    contentDescription = null,
-                    modifier = modifier
-                        .align(Alignment.CenterVertically)
-                        .width(24.dp)
-                        .height(24.dp)
-                )
+
             }
             Row {
-                val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
+                val startFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy   HH:mm")
+                val endFormatter = DateTimeFormatter.ofPattern("HH:mm")
 
                 Spacer(modifier = modifier.width(20.dp))
                 Row {
-                    Text(text = session.startTime.format(formatter))
+                    Text(text = session.startTime.format(startFormatter))
                     Text(text = " - ")
-                    Text(text = session.endTime.format(formatter))
+                    Text(text = session.endTime.format(endFormatter))
                 }
             }
         }
+        Icon(
+            painter = painterResource(id = R.drawable.ic_baseline_arrow_forward_ios_24),
+            contentDescription = null,
+            modifier = modifier
+                .align(Alignment.CenterVertically)
+                .width(24.dp)
+                .height(24.dp)
+        )
     }
 }
 

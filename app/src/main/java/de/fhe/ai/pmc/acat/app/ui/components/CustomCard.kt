@@ -13,7 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun CustomCard(modifier: Modifier = Modifier, heading: String? = null, content: @Composable () -> Unit){
+fun CustomCard(modifier: Modifier = Modifier, boxModifier: Modifier = Modifier, heading: String? = null, content: @Composable () -> Unit){
     Card(
         elevation = 8.dp,
         shape = RoundedCornerShape(8.dp),
@@ -21,7 +21,7 @@ fun CustomCard(modifier: Modifier = Modifier, heading: String? = null, content: 
             .padding(8.dp)
             .fillMaxWidth()
     ) {
-        Box(modifier = Modifier.padding(8.dp)){
+        Box(modifier = boxModifier.padding(8.dp)){
             Column {
                 if (heading != null) {
                     Heading(heading)
