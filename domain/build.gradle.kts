@@ -5,6 +5,8 @@ plugins {
 
 dependencies {
     implementation( Libs.Coroutines.core )
+
+    implementation( Libs.Moshi.moshi)
 }
 
 java {

@@ -43,7 +43,7 @@ fun SessionRow(
             Row() {
                 Spacer(modifier = modifier.width(10.dp))
                 Text(
-                    session.roomName,
+                    session.roomId,
                     modifier = modifier
                         .align(Alignment.CenterVertically)
                         .fillMaxWidth(0.9f))
@@ -61,9 +61,9 @@ fun SessionRow(
 
                 Spacer(modifier = modifier.width(20.dp))
                 Row {
-                    Text(text = session.startedAt.format(formatter))
+                    Text(text = session.startTime.format(formatter))
                     Text(text = " - ")
-                    Text(text = session.endedAt.format(formatter))
+                    Text(text = session.endTime.format(formatter))
                 }
             }
         }

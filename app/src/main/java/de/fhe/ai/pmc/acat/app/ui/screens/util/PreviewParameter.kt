@@ -39,11 +39,11 @@ private val userList = listOf(
 
 val date: LocalDateTime = LocalDateTime.now()
 private val sessionList = listOf<Session>(
-    Session(UUID.randomUUID().toString(), "Room1", date, date),
-    Session(UUID.randomUUID().toString(), "Room2", date, date),
-    Session(UUID.randomUUID().toString(), "Room3", date, date),
-    Session(UUID.randomUUID().toString(), "Room4", date, date),
-    Session(UUID.randomUUID().toString(), "Room5", date, date)
+    Session(UUID.randomUUID().toString(), LocalDateTime.now(), LocalDateTime.now(), false, "123", "", "123", ""),
+    Session(UUID.randomUUID().toString(), LocalDateTime.now(), LocalDateTime.now(), false, "123", "", "123", ""),
+    Session(UUID.randomUUID().toString(), LocalDateTime.now(), LocalDateTime.now(), false, "123", "", "123", ""),
+    Session(UUID.randomUUID().toString(), LocalDateTime.now(), LocalDateTime.now(), false, "123", "", "123", ""),
+    Session(UUID.randomUUID().toString(), LocalDateTime.now(), LocalDateTime.now(), false, "123", "", "123", "")
 )
 
 private val asyncOpList = listOf(

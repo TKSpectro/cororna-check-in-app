@@ -11,8 +11,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import de.fhe.ai.pmc.acat.app.network.SessionType
-import java.time.LocalDateTime
+import de.fhe.ai.pmc.acat.domain.Session
 import java.time.format.DateTimeFormatter
 
 @Composable
@@ -23,16 +22,16 @@ fun SessionsListScreen(vm: SessionListScreenViewModel, modifier: Modifier = Modi
     val pattern = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
 
     LazyColumn{
-        itemsIndexed(items = sessionList!!) { index, item: SessionType ->
+        itemsIndexed(items = sessionList!!) { index, item: Session ->
             Column(Modifier.padding(6.dp)) {
-                Text(text = item.Id)
+                Text(text = item.id)
                 Row {
                     Text(text = "From: ")
-                    Text(text = LocalDateTime.parse(item.StartTime).format(pattern))
+                    Text(text = item.startTime.format(pattern))
                 }
                 Row {
                     Text(text = "To: ")
-                    Text(text = LocalDateTime.parse(item.EndTime).format(pattern))
+                    Text(text = item.endTime.format(pattern))
                 }
             }
         }

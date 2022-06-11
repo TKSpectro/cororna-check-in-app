@@ -17,7 +17,7 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import de.fhe.ai.pmc.acat.app.network.RoomType
+import de.fhe.ai.pmc.acat.domain.Room
 import de.fhe.ai.pmc.acat.app.ui.components.CustomCard
 
 @Composable
@@ -49,8 +49,8 @@ fun DashboardScreen(vm: DashboardScreenViewModel) {
         }
         CustomCard(heading = "Rooms") {
             LazyColumn{
-                itemsIndexed(items = estateList!!) { index, item: RoomType ->
-                    Text(text = item.Name)
+                itemsIndexed(items = estateList!!) { index, item: Room ->
+                    Text(text = item.name)
                 }
             }
         }

@@ -1,5 +1,6 @@
 package de.fhe.ai.pmc.acat.domain
 
+import com.squareup.moshi.Json
 import java.time.LocalDateTime
 
 enum class AsyncOperationState {
@@ -36,6 +37,43 @@ data class AsyncOperation(val status: AsyncOperationState, val message: String, 
     }
 }
 
-data class User( val name: String, val id: Long = 0 )
+data class User(
+    val name: String,
+    val id: Long = 0
+)
 
-data class Session (val id: String, val roomName: String, val startedAt: LocalDateTime, val endedAt: LocalDateTime)
+data class Session (
+    @Json(name = "Id")
+    val id: String,
+    @Json(name = "StartTime")
+    val startTime: LocalDateTime,
+    @Json(name = "EndTime")
+    val endTime: LocalDateTime,
+    @Json(name = "Infected")
+    val infected: Boolean,
+    @Json(name = "RoomId")
+    val roomId: String,
+    @Json(name = "Room")
+    val room : String?,
+    @Json(name = "UserId")
+    val userId: String,
+    @Json(name = "User")
+    val user : String?,
+)
+
+data class Room(
+    @Json(name = "Id")
+    val id: String,
+    @Json(name = "Name")
+    val name: String,
+    @Json(name = "MaxParticipants")
+    val maxParticipants: Int,
+    @Json(name = "MaxDuration")
+    val maxDuration: Int,
+    @Json(name = "Faculty")
+    val faculty: Int,
+    @Json(name = "QrCode")
+    val qrCode : String?,
+    @Json(name = "Sessions")
+    val sessions: String?,
+)

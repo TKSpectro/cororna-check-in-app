@@ -2,6 +2,8 @@ package de.fhe.ai.pmc.acat.app.network
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import de.fhe.ai.pmc.acat.domain.Room
+import de.fhe.ai.pmc.acat.domain.Session
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Call
@@ -13,10 +15,10 @@ import java.util.concurrent.TimeUnit
 interface RequestService {
 
     @GET("rooms")
-    fun listRooms(): Call<List<RoomType>>
+    fun listRooms(): Call<List<Room>>
 
     @GET("sessions")
-    fun listSessions(): Call<List<SessionType>>
+    fun listSessions(): Call<List<Session>>
 
 //    @POST(value = "login")
 //    fun login(
@@ -47,6 +49,7 @@ class Network {
 
         private val moshi = Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
+            .add(LocalDateTimeAdapter())
             .build()
 
         private const val BASE_URL =
