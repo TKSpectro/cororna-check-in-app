@@ -1,12 +1,10 @@
 package de.fhe.ai.pmc.acat.domain
 
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import java.util.*
 
 class GetUsers(private val repository: Repository) {
-    operator fun invoke() = repository.getUsers()
+//    operator fun invoke() = repository.getUsers()
 }
 
 private const val ASYNC_WAIT_DELAY = 500L
@@ -16,10 +14,10 @@ class GetUsersAsync(private val repository: Repository) {
 
         emit( AsyncOperation.loading("Start loading users...") )
 
-        repository.getUsers().collect() {
-            delay(ASYNC_WAIT_DELAY)
-            emit( AsyncOperation.success("Users loaded", it ))
-        }
+//        repository.getUsers().collect() {
+//            delay(ASYNC_WAIT_DELAY)
+//            emit( AsyncOperation.success("Users loaded", it ))
+//        }
 
     }
 }
@@ -29,10 +27,10 @@ class GetSessionsAsync(private val repository: Repository) {
 
         emit( AsyncOperation.loading("Start loading sessions...") )
 
-        repository.getSessions().collect() {
-            delay(ASYNC_WAIT_DELAY)
-            emit( AsyncOperation.success("Sessions loaded", it ))
-        }
+//        repository.getSessions().collect() {
+//            delay(ASYNC_WAIT_DELAY)
+//            emit( AsyncOperation.success("Sessions loaded", it ))
+//        }
 
     }
 }

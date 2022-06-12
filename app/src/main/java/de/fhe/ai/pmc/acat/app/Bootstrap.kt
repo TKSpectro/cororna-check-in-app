@@ -7,7 +7,6 @@ import de.fhe.ai.pmc.acat.app.di.modules.useCaseModule
 import de.fhe.ai.pmc.acat.app.di.modules.viewModelModule
 import de.fhe.ai.pmc.acat.domain.Logger
 import de.fhe.ai.pmc.acat.domain.Repository
-import de.fhe.ai.pmc.acat.domain.User
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -45,8 +44,8 @@ class DbTest: KoinComponent {
         val dbScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 
         dbScope.launch {
-            val newUserId = repo.insertUser( User( name = "Steff") )
-            logger.info( "${repo.getUser(newUserId)}" )
+//            val newUserId = repo.insertUser( User( id = "123", email = "mail@mail.com") )
+//            logger.info( "${repo.getUser(newUserId)}" )
         }
     }
 }

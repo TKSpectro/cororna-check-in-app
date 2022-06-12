@@ -1,6 +1,5 @@
 package de.fhe.ai.pmc.acat.domain
 
-import com.squareup.moshi.Json
 import java.time.LocalDateTime
 
 enum class AsyncOperationState {
@@ -38,42 +37,51 @@ data class AsyncOperation(val status: AsyncOperationState, val message: String, 
 }
 
 data class User(
-    val name: String,
-    val id: Long = 0
+    val id: String,
+    val firstname: String,
+    val lastname: String,
+    val userName: String,
+    val normalizedUserName: String,
+    val email: String,
+    val normalizedEmail: String,
+    val emailConfirmed: Boolean,
+    val passwordHash: String?,
+    val securityStamp: String?,
+    val concurrencyStamp: String?,
+    val phoneNumber: String,
+    val phoneNumberConfirmed: Boolean,
+    val twoFactorEnabled: Boolean,
+    val lockoutEnd: String,
+    val lockoutEnabled: Boolean,
+    val accessFailedCount: Int,
+    val sessions: List<Session>,
+    val infections: List<Infection>
 )
 
 data class Session (
-    @Json(name = "Id")
     val id: String,
-    @Json(name = "StartTime")
     val startTime: LocalDateTime,
-    @Json(name = "EndTime")
     val endTime: LocalDateTime,
-    @Json(name = "Infected")
     val infected: Boolean,
-    @Json(name = "RoomId")
     val roomId: String,
-    @Json(name = "Room")
     val room : Room?,
-    @Json(name = "UserId")
     val userId: String,
-    @Json(name = "User")
     val user : String?,
 )
 
 data class Room(
-    @Json(name = "Id")
     val id: String,
-    @Json(name = "Name")
     val name: String,
-    @Json(name = "MaxParticipants")
     val maxParticipants: Int,
-    @Json(name = "MaxDuration")
     val maxDuration: Int,
-    @Json(name = "Faculty")
     val faculty: Int,
-    @Json(name = "QrCode")
     val qrCode : String?,
-    @Json(name = "Sessions")
     val sessions: String?,
+)
+
+data class Infection(
+    val id: String,
+    val date: LocalDateTime,
+    val userId: String,
+    val user: User?
 )

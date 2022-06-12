@@ -1,10 +1,7 @@
 package de.fhe.ai.pmc.acat.app.ui.screens.util
 
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
-import de.fhe.ai.pmc.acat.domain.AsyncOperation
-import de.fhe.ai.pmc.acat.domain.Room
-import de.fhe.ai.pmc.acat.domain.Session
-import de.fhe.ai.pmc.acat.domain.User
+import de.fhe.ai.pmc.acat.domain.*
 import java.time.LocalDateTime
 import java.util.*
 
@@ -28,14 +25,14 @@ class AsyncOpPreviewParameterProvider : PreviewParameterProvider<AsyncOperation>
     override val values = asyncOpList.asSequence()
 }
 
+private val emptySessionList: List<Session> = listOf()
+private val emptyInfectionList: List<Infection> = listOf()
+
 private val userList = listOf(
-    User("Max"),
-    User("User with a really really very unbelievable long first name"),
-    User("Siegfried"),
-    User("User with a really really very unbelievable long first name, yes a User with a " +
-            "really really very unbelievable long first name"),
-    User("Another first name"),
-    User("Well, yes another one"),
+    User("123", "John", "Doe", "jdoe", "JDOE", "j.doe@fh-erfurt.de", "J.DOE@fh-erfurt.de", true, "", "", "", "", false, false, "", false, 0, emptySessionList, emptyInfectionList),
+    User("1232", "John2", "Doe2", "jdoe2", "JDOE2", "j.doe2@fh-erfurt.de", "J.DOE2@fh-erfurt.de", true, "", "", "", "", false, false, "", false, 0, emptySessionList, emptyInfectionList),
+    User("1233", "John3", "Doe3", "jdoe3", "JDOE3", "j.doe3@fh-erfurt.de", "J.DOE3@fh-erfurt.de", true, "", "", "", "", false, false, "", false, 0, emptySessionList, emptyInfectionList),
+    User("1234", "John4", "Doe4", "jdoe4", "JDOE4", "j.doe4@fh-erfurt.de", "J.DOE4@fh-erfurt.de", true, "", "", "", "", false, false, "", false, 0, emptySessionList, emptyInfectionList),
 )
 
 val date: LocalDateTime = LocalDateTime.now()

@@ -19,7 +19,7 @@ fun UserList(
     loading: Boolean,
     modifier: Modifier = Modifier,
     onRefresh: () -> Unit = {},
-    onItemPressed: ( itemId: Long ) -> Unit
+    onItemPressed: ( itemId: String ) -> Unit
 ) {
     val scrollState = rememberLazyListState()
 

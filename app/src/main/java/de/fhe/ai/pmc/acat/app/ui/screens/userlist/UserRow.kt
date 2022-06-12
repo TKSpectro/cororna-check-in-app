@@ -2,13 +2,7 @@ package de.fhe.ai.pmc.acat.app.ui.screens.userlist
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
@@ -23,15 +17,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import de.fhe.ai.pmc.acat.app.R
-import de.fhe.ai.pmc.acat.app.ui.screens.util.UserPreviewParameterProvider
 import de.fhe.ai.pmc.acat.app.ui.screens.util.PREVIEW_BACKGROUND_COLOR
+import de.fhe.ai.pmc.acat.app.ui.screens.util.UserPreviewParameterProvider
 import de.fhe.ai.pmc.acat.domain.User
 
 @Composable
 fun UserRow(
     user: User,
     modifier: Modifier = Modifier,
-    onItemPressed: ( itemId: Long ) -> Unit
+    onItemPressed: ( itemId: String ) -> Unit
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -55,7 +49,7 @@ fun UserRow(
             ) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_baseline_account_box_24),
-                    contentDescription = "Avatar for ${user.name}",
+                    contentDescription = "Avatar for ${user.email}",
                     modifier = modifier
                         .padding(6.dp)
                         .width(45.dp)
@@ -65,7 +59,7 @@ fun UserRow(
             }
             Spacer(modifier = modifier.width(10.dp))
             Text(
-                user.name,
+                user.email,
                 modifier = modifier
                     .align(Alignment.CenterVertically)
                     .fillMaxWidth(0.9f))
