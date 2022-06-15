@@ -18,12 +18,12 @@ import de.fhe.ai.pmc.acat.app.ui.components.Heading
 fun LoginScreen(vm: LoginScreenViewModel) {
     val context = LocalContext.current
     // TODO: Remove default values after implementing actual login
-    var email by remember { mutableStateOf("user@mail.com") }
-    var password by remember { mutableStateOf("Password1") }
+    var email by remember { mutableStateOf("admin@ethereal.com") }
+    var password by remember { mutableStateOf("123123123") }
 
     // https://regex101.com/library/fX8dY0?orderBy=MOST_POINTS&search=password
-    val passwordRegex = "^((?=\\S*?[A-Z])(?=\\S*?[a-z])(?=\\S*?[0-9]).{6,})\\S\$".toRegex()
-
+//    val passwordRegex = "^((?=\\S*?[A-Z])(?=\\S*?[a-z])(?=\\S*?[0-9]).{6,})\\S\$".toRegex()
+    val passwordRegex = "(.*)".toRegex()
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,

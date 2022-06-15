@@ -10,21 +10,28 @@ import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.POST
+import retrofit2.http.Query
 import java.util.concurrent.TimeUnit
 
 interface RequestService {
 
-    @GET("rooms")
+    @GET("api/rooms")
     fun listRooms(): Call<List<Room>>
 
-    @GET("sessions?includeRoom=true")
+    @GET("api/sessions?includeRoom=true")
     fun listSessions(): Call<List<Session>>
 
-//    @POST(value = "login")
-//    fun login(
-//        @Query("email") email: String,
-//        @Query("password") password: String
-//    ): Call<LogInBackData>
+    @POST("Identity/Account/Login")
+    fun login(
+        @Query("email") email: String,
+        @Query("password") password: String
+    ): Call<String>
+
+    @POST("api/sessions/start")
+    fun startSession(
+        @Query("roomId") roomId: String
+    ): Call<Room>
 }
 
 class Network {
@@ -53,7 +60,7 @@ class Network {
             .build()
 
         private const val BASE_URL =
-            "https://corona-check-in.azurewebsites.net/api/"
+            "https://corona-check-in.azurewebsites.net/"
 
         private var retrofit: Retrofit = Retrofit.Builder()
             .baseUrl (BASE_URL)

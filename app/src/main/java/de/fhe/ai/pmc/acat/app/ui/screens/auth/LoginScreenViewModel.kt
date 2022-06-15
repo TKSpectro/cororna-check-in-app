@@ -3,8 +3,11 @@ package de.fhe.ai.pmc.acat.app.ui.screens.auth
 import android.content.Context
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
+import de.fhe.ai.pmc.acat.app.network.Network
 import de.fhe.ai.pmc.acat.app.ui.screens.core.NavigationManager
-import de.fhe.ai.pmc.acat.app.ui.screens.core.Screen
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class LoginScreenViewModel(
     private val navigationManager: NavigationManager
@@ -41,6 +44,31 @@ class LoginScreenViewModel(
             Toast.LENGTH_SHORT
         ).show()
 
-        navigationManager.navigate(Screen.Dashboard.navigationCommand())
+        sendLogin(email, password)
+//        navigationManager.navigate(Screen.Dashboard.navigationCommand())
+    }
+
+    fun sendLogin(email: String, password: String){
+        Network.service.login(email, password).enqueue(object: Callback<String> {
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+//                _loading.value = false
+                response.body()?.let { it ->
+//                    _sessionItems.value = it.toMutableList()
+                }
+                var headers = response.raw().headers()
+                for (header in headers.values("set-cookie")) {
+                    var lul2 = ""
+                }
+                // TODO Run through array find set-cookies and save them somehow
+
+                var lul = ""
+            }
+
+            override fun onFailure(call: Call<String>, t: Throwable) {
+//                _loading.value = false
+                t.printStackTrace()
+//                _error.value = "Some error occurred while fetching data"
+            }
+        })
     }
 }

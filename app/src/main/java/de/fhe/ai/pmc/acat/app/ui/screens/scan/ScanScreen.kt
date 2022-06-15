@@ -2,7 +2,6 @@ package de.fhe.ai.pmc.acat.app.ui.screens.scan
 
 import android.Manifest
 import android.content.pm.PackageManager
-import android.util.Log
 import android.util.Size
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -70,7 +69,6 @@ fun ScanScreen(vm: ScanScreenViewModel) {
                     .also {
                         it.setAnalyzer(cameraExecutor, QrCodeAnalyzer { qrResult ->
                             previewView.post {
-                                Log.d("QRCodeAnalyzer", "Barcode scanned: ${qrResult.text}")
                                 vm.showQRResult(context, qrResult.text)
                             }
                         }) }

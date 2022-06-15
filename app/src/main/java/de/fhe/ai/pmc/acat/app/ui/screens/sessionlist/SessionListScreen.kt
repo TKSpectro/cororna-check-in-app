@@ -29,11 +29,10 @@ fun SessionsListScreen(vm: SessionListScreenViewModel, modifier: Modifier = Modi
         state = rememberSwipeRefreshState(loading),
         onRefresh = { vm.getSessions() },
     ) {
-        Column() {
+        Column {
             if(error.isNotBlank()){
                 NetworkError(text = error)
             }
-            // TODO: Maybe render a loading spinner if loading is true
 
             LazyColumn(state = scrollState, modifier = modifier) {
                 items(sessionList!!) { item ->
