@@ -49,7 +49,7 @@ class ScanScreenViewModel(private val navigationManager: NavigationManager) : Vi
         ).show()
 
         if (qrCode != null) {
-            startSession(qrCode.roomId)
+            startSession(qrCode.roomId, context)
         }
     }
 
@@ -61,11 +61,14 @@ class ScanScreenViewModel(private val navigationManager: NavigationManager) : Vi
         ).show()
     }
 
-    private fun startSession(roomId: String){
+    private fun startSession(roomId: String, context: Context){
         _error.value = ""
         _loading.value = true
 
-        Network.service.startSession(roomId).enqueue(object: Callback<Room> {
+        val sharedPref = context.getSharedPreferences("ccn", Context.MODE_PRIVATE)
+        val token = sharedPref.getString("auth_token", null)
+
+        Network.service.startSession(roomId, "Bearer " + token.toString()).enqueue(object: Callback<Room> {
             override fun onResponse(call: Call<Room>, response: Response<Room>) {
                 // TODO: Endpoint needs to be implemented first
                 _loading.value = false

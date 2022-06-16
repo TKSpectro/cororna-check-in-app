@@ -2,6 +2,8 @@ package de.fhe.ai.pmc.acat.app.network
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import de.fhe.ai.pmc.acat.domain.LoginBody
+import de.fhe.ai.pmc.acat.domain.LoginResponse
 import de.fhe.ai.pmc.acat.domain.Room
 import de.fhe.ai.pmc.acat.domain.Session
 import okhttp3.Interceptor
@@ -9,27 +11,29 @@ import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 import java.util.concurrent.TimeUnit
 
 interface RequestService {
 
     @GET("api/rooms")
-    fun listRooms(): Call<List<Room>>
+    fun listRooms(
+        @Header("Authorization") token: String
+    ): Call<List<Room>>
 
     @GET("api/sessions?includeRoom=true")
-    fun listSessions(): Call<List<Session>>
+    fun listSessions(
+        @Header("Authorization") token: String
+    ): Call<List<Session>>
 
-    @POST("Identity/Account/Login")
+    @POST("api/login")
     fun login(
-        @Query("email") email: String,
-        @Query("password") password: String
-    ): Call<String>
+        @Body body: LoginBody
+    ): Call<LoginResponse>
 
     @POST("api/sessions/start")
     fun startSession(
+        @Header("Authorization") token: String,
         @Query("roomId") roomId: String
     ): Call<Room>
 }
@@ -60,7 +64,7 @@ class Network {
             .build()
 
         private const val BASE_URL =
-            "https://corona-check-in.azurewebsites.net/"
+            "https://coronacheckin-we.azurewebsites.net/"
 
         private var retrofit: Retrofit = Retrofit.Builder()
             .baseUrl (BASE_URL)

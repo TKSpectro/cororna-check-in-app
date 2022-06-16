@@ -17,13 +17,16 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import de.fhe.ai.pmc.acat.app.ui.components.CustomCard
 import de.fhe.ai.pmc.acat.domain.Room
 
 @Composable
 fun DashboardScreen(vm: DashboardScreenViewModel) {
     val estateList by vm.roomItems.observeAsState()
-    vm.getRooms()
+    val context = LocalContext.current
+
+    vm.getRooms(context)
 
     Column {
         CustomCard(heading = "Test Heading") {

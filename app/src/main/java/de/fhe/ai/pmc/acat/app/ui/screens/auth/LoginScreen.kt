@@ -4,14 +4,19 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.Button
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Text
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AddCircle
+import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import de.fhe.ai.pmc.acat.app.ui.components.Heading
 
 @Composable
@@ -19,10 +24,11 @@ fun LoginScreen(vm: LoginScreenViewModel) {
     val context = LocalContext.current
     // TODO: Remove default values after implementing actual login
     var email by remember { mutableStateOf("admin@ethereal.com") }
-    var password by remember { mutableStateOf("123123123") }
+    var password by remember { mutableStateOf("CoronaCheckIn1!") }
+    var passwordVisible by remember { mutableStateOf(false) }
 
     // https://regex101.com/library/fX8dY0?orderBy=MOST_POINTS&search=password
-//    val passwordRegex = "^((?=\\S*?[A-Z])(?=\\S*?[a-z])(?=\\S*?[0-9]).{6,})\\S\$".toRegex()
+    //    val passwordRegex = "^((?=\\S*?[A-Z])(?=\\S*?[a-z])(?=\\S*?[0-9]).{6,})\\S\$".toRegex()
     val passwordRegex = "(.*)".toRegex()
     Column(
         verticalArrangement = Arrangement.Center,
@@ -47,6 +53,21 @@ fun LoginScreen(vm: LoginScreenViewModel) {
             placeholder = { Text(text = "password") },
             label = { Text(text = "Password") },
             singleLine = true,
+            visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+            trailingIcon = {
+                val image = if (passwordVisible)
+                    // TODO: Get better icons eye and crossed through eye
+                    Icons.Filled.CheckCircle
+                else Icons.Filled.AddCircle
+
+                // Please provide localized description for accessibility services
+                val description = if (passwordVisible) "Hide password" else "Show password"
+
+                IconButton(onClick = {passwordVisible = !passwordVisible}){
+                    Icon(imageVector  = image, description)
+                }
+            }
         )
 
         Button(onClick = {

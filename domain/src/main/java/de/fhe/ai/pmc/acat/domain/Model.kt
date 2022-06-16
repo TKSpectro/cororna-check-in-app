@@ -85,3 +85,12 @@ data class Infection(
     val userId: String,
     val user: User?
 )
+
+data class LoginBody(
+    val email: String,
+    val password: String
+)
+
+data class LoginResponse(
+    val token: String,
+)

@@ -1,5 +1,6 @@
 package de.fhe.ai.pmc.acat.app.ui.screens.sessionlist
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -26,11 +27,14 @@ class SessionListScreenViewModel(
     private val _error = MutableStateFlow("")
     val error: StateFlow<String> = _error
 
-    fun getSessions(){
+    fun getSessions(context: Context){
         _error.value = ""
         _loading.value = true
 
-        Network.service.listSessions().enqueue(object: Callback<List<Session>> {
+        val sharedPref = context.getSharedPreferences("ccn", Context.MODE_PRIVATE)
+        val token = sharedPref.getString("auth_token", null)
+
+        Network.service.listSessions("Bearer " + token.toString()).enqueue(object: Callback<List<Session>> {
             override fun onResponse(call: Call<List<Session>>, response: Response<List<Session>>) {
                 _loading.value = false
                 response.body()?.let { it ->

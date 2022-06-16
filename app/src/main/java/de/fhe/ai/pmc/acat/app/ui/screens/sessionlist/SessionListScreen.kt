@@ -9,6 +9,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import de.fhe.ai.pmc.acat.app.ui.components.NetworkError
@@ -18,16 +19,17 @@ fun SessionsListScreen(vm: SessionListScreenViewModel, modifier: Modifier = Modi
     val sessionList by vm.sessionItems.observeAsState()
     val loading by vm.loading.collectAsState()
     val error by vm.error.collectAsState()
+    val context = LocalContext.current
 
     // Get sessions on first render
     if(sessionList?.isEmpty() == true && !loading){
-        vm.getSessions()
+        vm.getSessions(context)
     }
 
     val scrollState = rememberLazyListState()
     SwipeRefresh(
         state = rememberSwipeRefreshState(loading),
-        onRefresh = { vm.getSessions() },
+        onRefresh = { vm.getSessions(context) },
     ) {
         Column {
             if(error.isNotBlank()){

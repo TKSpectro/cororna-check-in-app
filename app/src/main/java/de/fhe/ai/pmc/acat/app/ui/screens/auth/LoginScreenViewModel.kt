@@ -5,6 +5,9 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import de.fhe.ai.pmc.acat.app.network.Network
 import de.fhe.ai.pmc.acat.app.ui.screens.core.NavigationManager
+import de.fhe.ai.pmc.acat.app.ui.screens.core.Screen
+import de.fhe.ai.pmc.acat.domain.LoginBody
+import de.fhe.ai.pmc.acat.domain.LoginResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -37,37 +40,33 @@ class LoginScreenViewModel(
     }
 
     fun login(email: String, password: String, context: Context) {
-        // TODO: Implement actual login
-        Toast.makeText(
-            context,
-            "Login is not implemented yet",
-            Toast.LENGTH_SHORT
-        ).show()
-
-        sendLogin(email, password)
-//        navigationManager.navigate(Screen.Dashboard.navigationCommand())
+        sendLogin(email, password, context)
     }
 
-    fun sendLogin(email: String, password: String){
-        Network.service.login(email, password).enqueue(object: Callback<String> {
-            override fun onResponse(call: Call<String>, response: Response<String>) {
-//                _loading.value = false
-                response.body()?.let { it ->
-//                    _sessionItems.value = it.toMutableList()
-                }
-                var headers = response.raw().headers()
-                for (header in headers.values("set-cookie")) {
-                    var lul2 = ""
-                }
-                // TODO Run through array find set-cookies and save them somehow
+    private fun sendLogin(email: String, password: String, context: Context){
+        val body = LoginBody(email, password)
 
-                var lul = ""
+        Network.service.login(body).enqueue(object: Callback<LoginResponse> {
+            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+                response.body()?.let { it ->
+                    // Write token to the sharedPreferences
+                    val sharedPref = context.getSharedPreferences("ccn", Context.MODE_PRIVATE)
+                    val editor = sharedPref.edit()
+                    editor.putString("auth_token", it.token)
+                    editor.apply()
+
+                    navigationManager.navigate(Screen.Dashboard.navigationCommand())
+                }
             }
 
-            override fun onFailure(call: Call<String>, t: Throwable) {
-//                _loading.value = false
+            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                Toast.makeText(
+                    context,
+                    "Login was not valid.",
+                    Toast.LENGTH_SHORT
+                ).show()
+
                 t.printStackTrace()
-//                _error.value = "Some error occurred while fetching data"
             }
         })
     }
