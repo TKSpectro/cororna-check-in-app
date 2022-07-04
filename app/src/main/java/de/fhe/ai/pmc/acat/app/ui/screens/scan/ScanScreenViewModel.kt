@@ -12,6 +12,7 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import de.fhe.ai.pmc.acat.app.network.Network
 import de.fhe.ai.pmc.acat.app.ui.screens.core.NavigationManager
 import de.fhe.ai.pmc.acat.domain.Room
+import de.fhe.ai.pmc.acat.domain.ScanBody
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import retrofit2.Call
@@ -32,6 +33,8 @@ class ScanScreenViewModel(private val navigationManager: NavigationManager) : Vi
     private val _error = MutableStateFlow("")
     val error: StateFlow<String> = _error
 
+    private val alreadyScanned = MutableStateFlow(false)
+
     fun showQRResult(context: Context, text: String) {
         // Parse the text from the QR-Code as json
         val moshi = Moshi.Builder()
@@ -48,8 +51,9 @@ class ScanScreenViewModel(private val navigationManager: NavigationManager) : Vi
             Toast.LENGTH_SHORT
         ).show()
 
-        if (qrCode != null) {
+        if (qrCode != null && !alreadyScanned.value) {
             startSession(qrCode.roomId, context)
+            alreadyScanned.value = true
         }
     }
 
@@ -68,7 +72,10 @@ class ScanScreenViewModel(private val navigationManager: NavigationManager) : Vi
         val sharedPref = context.getSharedPreferences("ccn", Context.MODE_PRIVATE)
         val token = sharedPref.getString("auth_token", null)
 
-        Network.service.startSession(roomId, "Bearer " + token.toString()).enqueue(object: Callback<Room> {
+        // TODO: Get actual user id and date from qr code
+        val body = ScanBody(roomId, "00000000-0000-0000-0002-000000000001", "date")
+
+        Network.service.startSession("Bearer " + token.toString(), body).enqueue(object: Callback<Room> {
             override fun onResponse(call: Call<Room>, response: Response<Room>) {
                 // TODO: Endpoint needs to be implemented first
                 _loading.value = false

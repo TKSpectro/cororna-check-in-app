@@ -94,3 +94,9 @@ data class LoginBody(
 data class LoginResponse(
     val token: String,
 )
+
+data class ScanBody(
+    val roomId: String,
+    val userId: String,
+    val date: String,
+)
