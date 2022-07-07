@@ -50,6 +50,7 @@ fun DashboardScreen(vm: DashboardScreenViewModel) {
             Text("Session 2")
             Text("Session 3")
         }
+
         CustomCard(heading = "Rooms") {
             LazyColumn{
                 itemsIndexed(items = estateList!!) { _, item: Room ->
@@ -59,3 +60,4 @@ fun DashboardScreen(vm: DashboardScreenViewModel) {
         }
     }
 }
+

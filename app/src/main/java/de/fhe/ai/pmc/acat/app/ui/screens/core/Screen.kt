@@ -116,6 +116,12 @@ sealed class Screen(
         route = "Login"
     )
 
+    object Register : Screen(
+        title = "Register",
+        icon = Icons.Filled.Lock,
+        route = "Register"
+    )
+
     object SessionList : Screen(
         title = "Sessions",
         icon = Icons.Filled.DateRange,

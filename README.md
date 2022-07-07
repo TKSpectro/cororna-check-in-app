@@ -25,7 +25,7 @@ this architectural approach.
 
 ## Modules
 
-### buildSrc
+### buildSrc*
 
 Special directory/module which gets picked up by Gradle before anything else is build. Thus, everything
 defined in `buildSrc` will be available on successive build steps. Due to this property, this 
