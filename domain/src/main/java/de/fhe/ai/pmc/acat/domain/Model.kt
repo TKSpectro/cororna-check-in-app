@@ -61,7 +61,7 @@ data class User(
 data class Session (
     val id: String,
     val startTime: LocalDateTime,
-    val endTime: LocalDateTime,
+    val endTime: LocalDateTime?,
     val infected: Boolean,
     val roomId: String,
     val room : Room?,

@@ -57,7 +57,7 @@ fun SessionRow(
                 Row {
                     Text(text = session.startTime.format(startFormatter))
                     Text(text = " - ")
-                    Text(text = session.endTime.format(endFormatter))
+                    Text(text = session.endTime?.format(endFormatter) ?: "Running")
                 }
             }
         }
