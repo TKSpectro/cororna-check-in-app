@@ -15,6 +15,11 @@ import retrofit2.Response
 class LoginScreenViewModel(
     private val navigationManager: NavigationManager
 ) : ViewModel() {
+
+    fun navigateToRegisterScreen() {
+        navigationManager.navigate(Screen.Register.navigationCommand())
+    }
+
     fun showInputErrorToast(context: Context){
         Toast.makeText(
             context,
@@ -30,6 +35,7 @@ class LoginScreenViewModel(
             Toast.LENGTH_SHORT
         ).show()
     }
+
 
     fun showPasswordErrorToast(context: Context){
         Toast.makeText(

@@ -19,6 +19,7 @@ class DashboardScreenViewModel(
         navigationManager.navigate(Screen.SessionList.navigationCommand())
     }
 
+
     private var _roomItems = MutableLiveData(listOf<Room>())
     val roomItems: LiveData<List<Room>> = _roomItems
 
