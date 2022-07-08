@@ -127,6 +127,7 @@ fun RegisterScreen(vm: RegisterScreenViewModel) {
             Text("Sign in", modifier = Modifier.clickable { vm.navigateToLoginScreen() }, MaterialTheme.colors.primary,
                 fontWeight = FontWeight.Bold, fontSize = 16.sp)
         }
+        
 
     }
 
