@@ -1,5 +1,6 @@
 package de.fhe.ai.pmc.acat.app.ui.screens.core
 
+import android.util.Log
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
@@ -14,9 +15,15 @@ fun BottomBar(navController: NavController) {
     BottomNavigation {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
+//
+//        if (currentRoute != null) {
+//            Log.i("Route", currentRoute)
+//        }
 
         for( screen in RootScreens )
         {
+            Log.i("screen", screen.title)
+
             BottomNavigationItem(
                 icon = { Icon(imageVector = screen.icon, contentDescription = screen.title) },
                 label = { Text(screen.title) },

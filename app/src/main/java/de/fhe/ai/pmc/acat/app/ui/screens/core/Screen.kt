@@ -17,7 +17,7 @@ import de.fhe.ai.pmc.acat.app.ui.screens.userlist.UserListScreenViewModel
 val RootScreens = listOf(
     Screen.Dashboard,
     Screen.Scan,
-    Screen.Settings
+    Screen.Settings,
 )
 
 sealed class Screen(

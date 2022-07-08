@@ -38,7 +38,7 @@ fun LoginScreen(vm: LoginScreenViewModel) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
-            .background(Color.LightGray)
+            .background(MaterialTheme.colors.background)
             .fillMaxSize()
     ) {
         Heading("Login")

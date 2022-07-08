@@ -41,7 +41,7 @@ fun RegisterScreen(vm: RegisterScreenViewModel) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
-            .background(Color.LightGray)
+            .background(MaterialTheme.colors.background)
             .fillMaxSize()
     ) {
         Heading("Register")
