@@ -55,6 +55,7 @@ class LoginScreenViewModel(
 
         Network.service.login(body).enqueue(object: Callback<AuthResponse> {
             override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
+                Log.i("onResponseBody", response.toString())
                 response.body()?.let { it ->
                     // Write token to the sharedPreferences
                     val sharedPref = context.getSharedPreferences("ccn", Context.MODE_PRIVATE)
