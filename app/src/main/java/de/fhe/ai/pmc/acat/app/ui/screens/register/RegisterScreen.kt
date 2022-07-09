@@ -28,10 +28,10 @@ import de.fhe.ai.pmc.acat.app.ui.components.Heading
 fun RegisterScreen(vm: RegisterScreenViewModel) {
     val context = LocalContext.current
 
-    var firstName by remember { mutableStateOf("") }
-    var lastName by remember { mutableStateOf("") }
-    var email by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
+    var firstName by remember { mutableStateOf("test") }
+    var lastName by remember { mutableStateOf("test") }
+    var email by remember { mutableStateOf("test@test.de") }
+    var password by remember { mutableStateOf("Test_tsst_12") }
     var passwordVisible by remember { mutableStateOf(false) }
 
     // https://regex101.com/library/fX8dY0?orderBy=MOST_POINTS&search=password

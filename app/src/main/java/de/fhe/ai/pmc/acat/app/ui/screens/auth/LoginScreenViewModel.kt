@@ -1,13 +1,14 @@
 package de.fhe.ai.pmc.acat.app.ui.screens.auth
 
 import android.content.Context
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import de.fhe.ai.pmc.acat.app.network.Network
 import de.fhe.ai.pmc.acat.app.ui.screens.core.NavigationManager
 import de.fhe.ai.pmc.acat.app.ui.screens.core.Screen
 import de.fhe.ai.pmc.acat.domain.LoginBody
-import de.fhe.ai.pmc.acat.domain.LoginResponse
+import de.fhe.ai.pmc.acat.domain.AuthResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -52,8 +53,8 @@ class LoginScreenViewModel(
     private fun sendLogin(email: String, password: String, context: Context){
         val body = LoginBody(email, password)
 
-        Network.service.login(body).enqueue(object: Callback<LoginResponse> {
-            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+        Network.service.login(body).enqueue(object: Callback<AuthResponse> {
+            override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
                 response.body()?.let { it ->
                     // Write token to the sharedPreferences
                     val sharedPref = context.getSharedPreferences("ccn", Context.MODE_PRIVATE)
@@ -65,7 +66,7 @@ class LoginScreenViewModel(
                 }
             }
 
-            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+            override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
                 Toast.makeText(
                     context,
                     "Login was not valid.",
