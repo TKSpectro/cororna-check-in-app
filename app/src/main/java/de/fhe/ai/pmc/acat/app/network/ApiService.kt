@@ -32,10 +32,10 @@ interface RequestService {
     ): Call<LoginResponse>
 
     @POST("api/qr/scan")
-    fun startSession(
+    fun scan(
         @Header("Authorization") token: String,
         @Body body: ScanBody
-    ): Call<Room>
+    ): Call<ScanResponse>
 }
 
 class Network {
