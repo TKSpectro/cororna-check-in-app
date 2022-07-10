@@ -9,6 +9,7 @@ import de.fhe.ai.pmc.acat.app.ui.screens.scan.ScanScreenViewModel
 import de.fhe.ai.pmc.acat.app.ui.screens.sessionlist.SessionListScreenViewModel
 import de.fhe.ai.pmc.acat.app.ui.screens.userlist.UserListScreenViewModel
 import de.fhe.ai.pmc.acat.app.ui.screens.roomdetails.RoomDetailsScreenViewModel
+import de.fhe.ai.pmc.acat.app.ui.screens.roomlist.RoomListScreenViewModel
 import de.fhe.ai.pmc.acat.data.AppDatabase
 import de.fhe.ai.pmc.acat.data.RepositoryImpl
 import de.fhe.ai.pmc.acat.domain.*
@@ -48,4 +49,5 @@ val viewModelModule = module {
     viewModel { DashboardScreenViewModel(get()) }
     viewModel { ScanScreenViewModel(get()) }
     viewModel { RoomDetailsScreenViewModel(get()) }
+    viewModel { RoomListScreenViewModel(get()) }
 }

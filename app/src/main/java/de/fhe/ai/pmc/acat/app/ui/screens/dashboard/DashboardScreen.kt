@@ -54,7 +54,6 @@ fun DashboardScreen(vm: DashboardScreenViewModel) {
             LazyColumn{
                 itemsIndexed(items = estateList!!) { _, item: Room ->
                     Text(text = item.name)
-                    Text(text = item.id)
                 }
             }
         }

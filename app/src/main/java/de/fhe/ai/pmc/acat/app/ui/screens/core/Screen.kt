@@ -127,28 +127,10 @@ sealed class Screen(
         icon = Icons.Filled.Place,
         route = "RoomDetails"
     )
+
+    object RoomList : Screen(
+        title = "Rooms",
+        icon = Icons.Filled.Place,
+        route = "RoomList"
+    )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

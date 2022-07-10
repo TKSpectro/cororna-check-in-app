@@ -15,6 +15,8 @@ import de.fhe.ai.pmc.acat.app.ui.screens.detail.DetailScreen
 import de.fhe.ai.pmc.acat.app.ui.screens.detail.DetailScreenViewModel
 import de.fhe.ai.pmc.acat.app.ui.screens.roomdetails.RoomDetailsScreen
 import de.fhe.ai.pmc.acat.app.ui.screens.roomdetails.RoomDetailsScreenViewModel
+import de.fhe.ai.pmc.acat.app.ui.screens.roomlist.RoomListScreen
+import de.fhe.ai.pmc.acat.app.ui.screens.roomlist.RoomListScreenViewModel
 import de.fhe.ai.pmc.acat.app.ui.screens.scan.ScanScreen
 import de.fhe.ai.pmc.acat.app.ui.screens.scan.ScanScreenViewModel
 import de.fhe.ai.pmc.acat.app.ui.screens.sessionlist.SessionListScreenViewModel
@@ -97,6 +99,12 @@ fun AppNavigationHost(
 
             onNavigation( Screen.RoomDetails )
             RoomDetailsScreen( vm )
+        }
+        composable(Screen.RoomList.route) {
+            val vm by viewModel<RoomListScreenViewModel>()
+
+            onNavigation( Screen.RoomList )
+            RoomListScreen( vm )
         }
     }
 }
