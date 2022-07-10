@@ -8,10 +8,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
 import java.util.concurrent.TimeUnit
 
 interface RequestService {
@@ -20,6 +17,12 @@ interface RequestService {
     fun listRooms(
         @Header("Authorization") token: String
     ): Call<List<Room>>
+
+    @GET("api/rooms/{id}")
+    fun getRoomById(
+        @Header("Authorization") token: String,
+        @Path("id") id: String
+    ): Call<Room>
 
     @GET("api/sessions?includeRoom=true")
     fun listSessions(

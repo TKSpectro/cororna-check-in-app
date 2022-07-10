@@ -121,5 +121,34 @@ sealed class Screen(
         icon = Icons.Filled.DateRange,
         route = "SessionList"
     )
+
+    object RoomDetails : Screen(
+        title = "Room Details",
+        icon = Icons.Filled.Place,
+        route = "RoomDetails"
+    )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
