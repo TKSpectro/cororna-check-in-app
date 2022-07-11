@@ -34,8 +34,6 @@ fun RegisterScreen(vm: RegisterScreenViewModel) {
     var password by remember { mutableStateOf("Test_tsst_12") }
     var passwordVisible by remember { mutableStateOf(false) }
 
-    // https://regex101.com/library/fX8dY0?orderBy=MOST_POINTS&search=password
-    //    val passwordRegex = "^((?=\\S*?[A-Z])(?=\\S*?[a-z])(?=\\S*?[0-9]).{6,})\\S\$".toRegex()
     val passwordRegex = "(.*)".toRegex()
     Column(
         verticalArrangement = Arrangement.Center,
@@ -127,8 +125,5 @@ fun RegisterScreen(vm: RegisterScreenViewModel) {
             Text("Sign in", modifier = Modifier.clickable { vm.navigateToLoginScreen() }, MaterialTheme.colors.primary,
                 fontWeight = FontWeight.Bold, fontSize = 16.sp)
         }
-
-
     }
-
 }

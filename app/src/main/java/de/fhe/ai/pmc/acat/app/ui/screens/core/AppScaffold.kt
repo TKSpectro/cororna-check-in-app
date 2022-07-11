@@ -26,7 +26,6 @@ fun AppScaffold() {
     val scaffoldState = rememberScaffoldState()
     var currentScreen by remember { mutableStateOf<Screen>(Screen.Undefined) }
 
-
     CompositionLocalProvider(LocalScaffoldState provides scaffoldState) {
         Scaffold(
             scaffoldState = scaffoldState,

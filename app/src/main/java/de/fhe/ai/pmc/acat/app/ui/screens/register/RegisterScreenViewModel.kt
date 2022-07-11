@@ -13,7 +13,6 @@ import retrofit2.Response
 import retrofit2.Callback
 import retrofit2.Call
 
-
 class RegisterScreenViewModel(
     private val navigationManager: NavigationManager
 ) : ViewModel() {
@@ -37,7 +36,6 @@ class RegisterScreenViewModel(
             Toast.LENGTH_SHORT
         ).show()
     }
-
 
     fun showPasswordErrorToast(context: Context) {
         Toast.makeText(
@@ -101,6 +99,4 @@ class RegisterScreenViewModel(
             }
         })
     }
-
-
 }
