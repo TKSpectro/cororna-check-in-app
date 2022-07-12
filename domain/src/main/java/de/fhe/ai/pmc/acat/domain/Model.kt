@@ -103,6 +103,9 @@ data class RegisterBody(
 
 data class ScanBody(
     val roomId: String,
-    val userId: String,
     val date: String,
+)
+
+data class ScanResponse(
+    val message: String,
 )
