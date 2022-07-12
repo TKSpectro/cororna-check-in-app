@@ -11,8 +11,10 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import de.fhe.ai.pmc.acat.app.network.Network
 import de.fhe.ai.pmc.acat.app.ui.screens.core.NavigationManager
+import de.fhe.ai.pmc.acat.app.ui.screens.core.Screen
 import de.fhe.ai.pmc.acat.domain.Room
 import de.fhe.ai.pmc.acat.domain.ScanBody
+import de.fhe.ai.pmc.acat.domain.ScanResponse
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import retrofit2.Call
@@ -20,7 +22,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 data class QRCode (
-    val roomId: String
+    val roomId: String,
+    val qrCodeCreatedAt: String
 )
 
 class ScanScreenViewModel(private val navigationManager: NavigationManager) : ViewModel() {
@@ -45,14 +48,9 @@ class ScanScreenViewModel(private val navigationManager: NavigationManager) : Vi
 
         Log.d("QRCodeAnalyzer", "QRCode scanned: $text")
         Log.d("QRCodeAnalyzer", "Parsed: ${qrCode?.roomId}")
-        Toast.makeText(
-            context,
-            qrCode?.roomId,
-            Toast.LENGTH_SHORT
-        ).show()
 
         if (qrCode != null && !alreadyScanned.value) {
-            startSession(qrCode.roomId, context)
+            startSession(qrCode, context)
             alreadyScanned.value = true
         }
     }
@@ -65,26 +63,30 @@ class ScanScreenViewModel(private val navigationManager: NavigationManager) : Vi
         ).show()
     }
 
-    private fun startSession(roomId: String, context: Context){
+    private fun startSession(qrCode: QRCode, context: Context){
         _error.value = ""
         _loading.value = true
 
         val sharedPref = context.getSharedPreferences("ccn", Context.MODE_PRIVATE)
         val token = sharedPref.getString("auth_token", null)
+        
+        val body = ScanBody(qrCode.roomId, qrCode.qrCodeCreatedAt)
 
-        // TODO: Get actual user id and date from qr code
-        val body = ScanBody(roomId, "00000000-0000-0000-0002-000000000001", "date")
-
-        Network.service.startSession("Bearer " + token.toString(), body).enqueue(object: Callback<Room> {
-            override fun onResponse(call: Call<Room>, response: Response<Room>) {
-                // TODO: Endpoint needs to be implemented first
+        Network.service.scan("Bearer " + token.toString(), body).enqueue(object: Callback<ScanResponse> {
+            override fun onResponse(call: Call<ScanResponse>, response: Response<ScanResponse>) {
                 _loading.value = false
                 response.body()?.let { it ->
-                    _sessionItems.value = it
+                    Toast.makeText(
+                        context,
+                        it.message,
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    navigationManager.navigate(Screen.Dashboard.navigationCommand())
                 }
             }
 
-            override fun onFailure(call: Call<Room>, t: Throwable) {
+            override fun onFailure(call: Call<ScanResponse>, t: Throwable) {
                 _loading.value = false
                 t.printStackTrace()
                 _error.value = "Some error occurred while fetching data"
