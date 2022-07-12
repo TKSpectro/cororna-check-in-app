@@ -131,8 +131,18 @@ sealed class Screen(
     object RoomDetails : Screen(
         title = "Room Details",
         icon = Icons.Filled.Place,
-        route = "RoomDetails"
-    )
+        route = "RoomDetails/{roomId}"
+    ) {
+        override fun navigationCommand(vararg value: Any) = object : NavigationCommand {
+
+            override val arguments = listOf(
+                navArgument("roomId") {
+                    type = NavType.StringType
+                }
+            )
+            override val destination = "RoomDetails/${value[0]}"
+        }
+    }
 
     object RoomList : Screen(
         title = "Rooms",

@@ -6,15 +6,14 @@ import de.fhe.ai.pmc.acat.app.ui.screens.core.NavigationManager
 import de.fhe.ai.pmc.acat.app.ui.screens.dashboard.DashboardScreenViewModel
 import de.fhe.ai.pmc.acat.app.ui.screens.detail.DetailScreenViewModel
 import de.fhe.ai.pmc.acat.app.ui.screens.register.RegisterScreenViewModel
+import de.fhe.ai.pmc.acat.app.ui.screens.roomdetails.RoomDetailsScreenViewModel
+import de.fhe.ai.pmc.acat.app.ui.screens.roomlist.RoomListScreenViewModel
 import de.fhe.ai.pmc.acat.app.ui.screens.scan.ScanScreenViewModel
 import de.fhe.ai.pmc.acat.app.ui.screens.sessionlist.SessionListScreenViewModel
 import de.fhe.ai.pmc.acat.app.ui.screens.userlist.UserListScreenViewModel
-import de.fhe.ai.pmc.acat.app.ui.screens.roomdetails.RoomDetailsScreenViewModel
-import de.fhe.ai.pmc.acat.app.ui.screens.roomlist.RoomListScreenViewModel
 import de.fhe.ai.pmc.acat.data.AppDatabase
 import de.fhe.ai.pmc.acat.data.RepositoryImpl
 import de.fhe.ai.pmc.acat.domain.*
-import org.koin.androidx.compose.get
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -50,6 +49,6 @@ val viewModelModule = module {
     viewModel { SessionListScreenViewModel(get(), get()) }
     viewModel { DashboardScreenViewModel(get()) }
     viewModel { ScanScreenViewModel(get()) }
-    viewModel { RoomDetailsScreenViewModel(get()) }
+    viewModel { RoomDetailsScreenViewModel(get(), get()) }
     viewModel { RoomListScreenViewModel(get()) }
 }

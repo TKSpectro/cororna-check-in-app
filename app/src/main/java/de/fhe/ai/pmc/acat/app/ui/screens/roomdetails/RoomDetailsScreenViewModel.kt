@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import de.fhe.ai.pmc.acat.app.network.Network
 import de.fhe.ai.pmc.acat.app.ui.screens.core.NavigationManager
-import de.fhe.ai.pmc.acat.app.ui.screens.core.Screen
 import de.fhe.ai.pmc.acat.domain.Room
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -15,7 +14,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class RoomDetailsScreenViewModel (
-    private val navigationManager: NavigationManager
+    private val roomId: String,
+    private val navigationManager: NavigationManager,
 ) : ViewModel() {
 
     private var _roomDetails = MutableLiveData<Room>()
@@ -32,7 +32,7 @@ class RoomDetailsScreenViewModel (
         val token = sharedPref.getString("auth_token", null)
 
         // TODO: replace hardcoded id with dynamic id
-        Network.service.getRoomById("Bearer " + token.toString(), "00000000-0000-0000-0003-000000000001").enqueue(object:
+        Network.service.getRoomById("Bearer " + token.toString(), roomId).enqueue(object:
             Callback<Room> {
             override fun onResponse(call: Call<Room>, response: Response<Room>) {
                 response.body()?.let { it ->

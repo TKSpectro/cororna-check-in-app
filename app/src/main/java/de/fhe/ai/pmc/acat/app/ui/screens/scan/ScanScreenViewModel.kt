@@ -82,7 +82,12 @@ class ScanScreenViewModel(private val navigationManager: NavigationManager) : Vi
                         Toast.LENGTH_SHORT
                     ).show()
 
-                    navigationManager.navigate(Screen.Dashboard.navigationCommand())
+                    if(it.message == "Started session"){
+                        val roomId = body.roomId
+                        navigationManager.navigate(Screen.RoomDetails.navigationCommand( roomId ))
+                    }else {
+                        navigationManager.navigate(Screen.Dashboard.navigationCommand())
+                    }
                 }
             }
 

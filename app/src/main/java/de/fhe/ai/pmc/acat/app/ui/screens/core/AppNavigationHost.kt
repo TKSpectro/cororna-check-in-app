@@ -102,8 +102,9 @@ fun AppNavigationHost(
             onNavigation( Screen.SessionList )
             SessionsListScreen( vm )
         }
-        composable(Screen.RoomDetails.route) {
-            val vm by viewModel<RoomDetailsScreenViewModel>()
+        composable(Screen.RoomDetails.route, Screen.RoomDetails.navigationCommand(1).arguments) { entry ->
+            val userId = entry.arguments?.getString("roomId")
+            val vm by viewModel<RoomDetailsScreenViewModel>( parameters = { parametersOf( userId ) })
 
             onNavigation( Screen.RoomDetails )
             RoomDetailsScreen( vm )
