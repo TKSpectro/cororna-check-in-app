@@ -21,6 +21,10 @@ class SessionListPreviewParameterProvider: PreviewParameterProvider<List<Session
     override val values = sequenceOf(sessionList)
 }
 
+class RoomPreviewParameterProvider : PreviewParameterProvider<Room>{
+    override val values = roomList.asSequence()
+}
+
 class AsyncOpPreviewParameterProvider : PreviewParameterProvider<AsyncOperation> {
     override val values = asyncOpList.asSequence()
 }
@@ -43,6 +47,13 @@ private val sessionList = listOf<Session>(
     Session(UUID.randomUUID().toString(), LocalDateTime.now(), LocalDateTime.now(), false, "123", room, "123", ""),
     Session(UUID.randomUUID().toString(), LocalDateTime.now(), LocalDateTime.now(), false, "123", room, "123", ""),
     Session(UUID.randomUUID().toString(), LocalDateTime.now(), LocalDateTime.now(), false, "123", room, "123", "")
+)
+private val roomList = listOf<Room>(
+    Room(UUID.randomUUID().toString(), "1.2.3", 25, 90, 1, "", ""),
+    Room(UUID.randomUUID().toString(), "1.2.3", 25, 90, 1, "", ""),
+    Room(UUID.randomUUID().toString(), "1.2.3", 25, 90, 1, "", ""),
+    Room(UUID.randomUUID().toString(), "1.2.3", 25, 90, 1, "", ""),
+    Room(UUID.randomUUID().toString(), "1.2.3", 25, 90, 1, "", "")
 )
 
 private val asyncOpList = listOf(
