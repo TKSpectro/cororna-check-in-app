@@ -23,7 +23,7 @@ import retrofit2.Response
 
 data class QRCode (
     val roomId: String,
-    val timestamp: String
+    val qrCodeCreatedAt: String
 )
 
 class ScanScreenViewModel(private val navigationManager: NavigationManager) : ViewModel() {
@@ -70,7 +70,7 @@ class ScanScreenViewModel(private val navigationManager: NavigationManager) : Vi
         val sharedPref = context.getSharedPreferences("ccn", Context.MODE_PRIVATE)
         val token = sharedPref.getString("auth_token", null)
         
-        val body = ScanBody(qrCode.roomId, qrCode.timestamp)
+        val body = ScanBody(qrCode.roomId, qrCode.qrCodeCreatedAt)
 
         Network.service.scan("Bearer " + token.toString(), body).enqueue(object: Callback<ScanResponse> {
             override fun onResponse(call: Call<ScanResponse>, response: Response<ScanResponse>) {
