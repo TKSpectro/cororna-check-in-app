@@ -17,7 +17,7 @@ import de.fhe.ai.pmc.acat.app.ui.screens.userlist.UserListScreenViewModel
 val RootScreens = listOf(
     Screen.Dashboard,
     Screen.Scan,
-    Screen.Settings
+    Screen.Settings,
 )
 
 sealed class Screen(
@@ -114,6 +114,12 @@ sealed class Screen(
         title = "Login",
         icon = Icons.Filled.Lock,
         route = "Login"
+    )
+
+    object Register : Screen(
+        title = "Register",
+        icon = Icons.Filled.Lock,
+        route = "Register"
     )
 
     object SessionList : Screen(

@@ -32,7 +32,13 @@ interface RequestService {
     @POST("api/login")
     fun login(
         @Body body: LoginBody
-    ): Call<LoginResponse>
+    ): Call<AuthResponse>
+
+    @POST("api/register")
+    fun register(
+        @Body body: RegisterBody
+    ): Call<AuthResponse>
+
 
     @POST("api/qr/scan")
     fun scan(

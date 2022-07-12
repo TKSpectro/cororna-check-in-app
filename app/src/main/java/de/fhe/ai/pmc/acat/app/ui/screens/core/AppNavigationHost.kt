@@ -13,6 +13,8 @@ import de.fhe.ai.pmc.acat.app.ui.screens.dashboard.DashboardScreen
 import de.fhe.ai.pmc.acat.app.ui.screens.dashboard.DashboardScreenViewModel
 import de.fhe.ai.pmc.acat.app.ui.screens.detail.DetailScreen
 import de.fhe.ai.pmc.acat.app.ui.screens.detail.DetailScreenViewModel
+import de.fhe.ai.pmc.acat.app.ui.screens.register.RegisterScreen
+import de.fhe.ai.pmc.acat.app.ui.screens.register.RegisterScreenViewModel
 import de.fhe.ai.pmc.acat.app.ui.screens.roomdetails.RoomDetailsScreen
 import de.fhe.ai.pmc.acat.app.ui.screens.roomdetails.RoomDetailsScreenViewModel
 import de.fhe.ai.pmc.acat.app.ui.screens.roomlist.RoomListScreen
@@ -87,6 +89,12 @@ fun AppNavigationHost(
 
             onNavigation( Screen.Login )
             LoginScreen( vm )
+        }
+        composable(Screen.Register.route){
+            val vm by viewModel<RegisterScreenViewModel>()
+
+            onNavigation( Screen.Register )
+            RegisterScreen( vm )
         }
         composable(Screen.SessionList.route){
             val vm by viewModel<SessionListScreenViewModel>()
