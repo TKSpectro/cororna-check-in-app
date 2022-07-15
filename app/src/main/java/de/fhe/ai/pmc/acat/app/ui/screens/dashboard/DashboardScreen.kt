@@ -50,13 +50,6 @@ fun DashboardScreen(vm: DashboardScreenViewModel) {
             Text("Session 2")
             Text("Session 3")
         }
-        CustomCard(heading = "Rooms", modifier = Modifier.clickable { vm.navigateToRoomDetails() }) {
-            LazyColumn{
-                itemsIndexed(items = estateList!!) { _, item: Room ->
-                    Text(text = item.name)
-                }
-            }
-        }
     }
 }
 
