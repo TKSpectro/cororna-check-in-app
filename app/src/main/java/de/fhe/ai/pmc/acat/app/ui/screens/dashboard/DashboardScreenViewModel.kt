@@ -7,7 +7,9 @@ import androidx.lifecycle.ViewModel
 import de.fhe.ai.pmc.acat.app.network.Network
 import de.fhe.ai.pmc.acat.app.ui.screens.core.NavigationManager
 import de.fhe.ai.pmc.acat.app.ui.screens.core.Screen
-import de.fhe.ai.pmc.acat.domain.Room
+import de.fhe.ai.pmc.acat.domain.Session
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -23,21 +25,56 @@ class DashboardScreenViewModel(
         navigationManager.navigate(Screen.RoomList.navigationCommand())
     }
 
-    private var _roomItems = MutableLiveData(listOf<Room>())
-    val roomItems: LiveData<List<Room>> = _roomItems
+    fun navigateToSession(sessionId: String ) {
+        // TODO: Create session page
+        // navigationManager.navigate( Screen.SessionDetail.navigationCommand( sessionId ) )
+    }
 
-    fun getRooms(context: Context){
+    private var _currentSession = MutableLiveData<Session>()
+    val currentSessionItems: LiveData<Session> = _currentSession;
+
+    private val _loading = MutableStateFlow(false)
+    val loading: StateFlow<Boolean> = _loading
+
+    private var _session = MutableLiveData(listOf<Session>())
+    val sessionItems: LiveData<List<Session>> = _session
+
+    fun getCurrentSession(context: Context){
+        _loading.value = true
         val sharedPref = context.getSharedPreferences("ccn", Context.MODE_PRIVATE)
         val token = sharedPref.getString("auth_token", null)
 
-        Network.service.listRooms("Bearer " + token.toString()).enqueue(object: Callback<List<Room>>{
-            override fun onResponse(call: Call<List<Room>>, response: Response<List<Room>>) {
+        Network.service.getCurrentSession("Bearer " + token.toString()).enqueue(object: Callback<Session> {
+            override fun onResponse(call: Call<Session>, response: Response<Session>) {
+                _loading.value = false
                 response.body()?.let { it ->
-                    _roomItems.value = it.toMutableList()
+                    _currentSession.value = it
                 }
             }
 
-            override fun onFailure(call: Call<List<Room>>, t: Throwable) {
+            override fun onFailure(call: Call<Session>, t: Throwable) {
+                _loading.value = false
+                t.printStackTrace()
+                println("request wrong")
+            }
+        })
+    }
+
+    fun getSessions(context: Context){
+        _loading.value = true
+        val sharedPref = context.getSharedPreferences("ccn", Context.MODE_PRIVATE)
+        val token = sharedPref.getString("auth_token", null)
+
+        Network.service.getDashboardSessions("Bearer " + token.toString()).enqueue(object: Callback<List<Session>>{
+            override fun onResponse(call: Call<List<Session>>, response: Response<List<Session>>) {
+                  _loading.value = false
+                response.body()?.let { it ->
+                    _session.value = it.toMutableList()
+                }
+            }
+
+            override fun onFailure(call: Call<List<Session>>, t: Throwable) {
+                 _loading.value = false
                 t.printStackTrace()
                 println("request wrong")
             }

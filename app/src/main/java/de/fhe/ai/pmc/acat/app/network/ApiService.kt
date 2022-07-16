@@ -24,8 +24,18 @@ interface RequestService {
         @Path("id") id: String
     ): Call<Room>
 
+    @GET("api/sessions/current-session")
+    fun getCurrentSession(
+        @Header("Authorization") token: String,
+    ): Call<Session>
+
     @GET("api/sessions?includeRoom=true")
     fun listSessions(
+        @Header("Authorization") token: String
+    ): Call<List<Session>>
+
+    @GET("api/sessions?includeRoom=true&limit=5")
+    fun getDashboardSessions(
         @Header("Authorization") token: String
     ): Call<List<Session>>
 
