@@ -34,7 +34,7 @@ interface RequestService {
         @Header("Authorization") token: String
     ): Call<List<Session>>
 
-    @GET("api/sessions?includeRoom=true&limit=5")
+    @GET("api/sessions?includeRoom=true&limit=3")
     fun getDashboardSessions(
         @Header("Authorization") token: String
     ): Call<List<Session>>

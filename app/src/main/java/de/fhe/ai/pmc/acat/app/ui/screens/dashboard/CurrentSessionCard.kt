@@ -47,33 +47,27 @@ fun CurrentSessionCard(
                 modifier = modifier.fillMaxWidth()
             ) {
                 if (heading != null && color != Color.Black) {
-                    Heading(heading, color, size = 18)
+                    Heading(heading, color, size = 16)
                 }
             }
             Spacer(modifier = Modifier.height(12.dp))
             TabRowDefaults.Divider(color = MaterialTheme.colors.primary, thickness = 1.dp);
 
             Column(modifier = boxModifier.padding(12.dp)) {
-
                 currentSessionRow("Room:", currentSession.room?.name ?: "")
-
                 divider();
                 currentSessionRow(
                     "Joined at:",
                     currentSession.startTime.hour.toString() + ":" + minute + " Uhr"
                 )
-
                 divider();
                 currentSessionRow("Remaining time:", remainingTime.toString() + " Min")
-
                 divider();
                 currentSessionRow("Participants:", currentSession.room?.maxParticipants.toString())
             }
         }
     }
-    Spacer(modifier = Modifier.height(10.dp))
 }
-
 
 @Composable
 fun divider() {
@@ -98,13 +92,3 @@ fun currentSessionRow(text: String, value: String) {
         }
     }
 }
-
-
-//@Preview
-//@Composable
-//fun PreviewCrrentSessionCard(
-//) {
-//    CurrentSessionCard(heading = "Current Session", color = MaterialTheme.colors.primary) {
-//
-//    }
-//}

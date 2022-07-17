@@ -1,23 +1,29 @@
 package de.fhe.ai.pmc.acat.app.ui.components
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import de.fhe.ai.pmc.acat.app.ui.theme.lightGreen
 
 @Composable
-fun CustomCard(modifier: Modifier = Modifier, boxModifier: Modifier = Modifier, heading: String? = null, color : Color = Color.Black  ,content: @Composable () -> Unit){
+fun CustomCard(modifier: Modifier = Modifier, boxModifier: Modifier = Modifier, heading: String? = null, color : Color = Color.Black, backgroundColor : Color = Color.White  ,content: @Composable () -> Unit){
     Card(
         elevation = 8.dp,
         shape = RoundedCornerShape(8.dp),
         modifier = modifier
             .padding(8.dp)
-            .fillMaxWidth()
+            .fillMaxWidth(),
+            backgroundColor = (backgroundColor)
     ) {
         Box(modifier = boxModifier.padding(8.dp)){
             Column {
@@ -45,8 +51,8 @@ fun PreviewCustomCard(
 @Composable
 fun PreviewCustomCardWithHeading(
 ) {
-    CustomCard(heading = "Heading"){
-        Text("Test")
+    CustomCard(heading = "Heading", color = MaterialTheme.colors.lightGreen){
+        Text("Test", color = MaterialTheme.colors.lightGreen)
     }
 }
 

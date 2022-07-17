@@ -9,6 +9,14 @@ val Purple500 = Color(0xFF6200EE)
 val Purple700 = Color(0xFF9551FE)
 val Teal200 = Color(0xFF03DAC5)
 val Divider = Color(0xFFDEE2E6)
+val GreenBackground = Color(0xFFE6FCF5)
+val LightGreen = Color(0xFF23B885)
 
 val Colors.divider
 get() = Divider
+
+val Colors.greenBackground
+get()  = GreenBackground
+
+val Colors.lightGreen
+    get()  = LightGreen
