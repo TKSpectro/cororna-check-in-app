@@ -1,6 +1,5 @@
 package de.fhe.ai.pmc.acat.app.ui.screens.core
 
-import android.util.Log
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
@@ -24,7 +23,15 @@ fun BottomBar(navController: NavController) {
                 selected = currentRoute == screen.route,
                 onClick = {
                     navController.navigate(screen.route) {
-                        if(screen.route == "Scan"){
+                        if(screen.route == "Dashboard"){
+                            navController.graph.startDestinationRoute?.let { route ->
+                                popUpTo(route) {
+                                    saveState = false
+                                }
+                            }
+                            launchSingleTop = true
+                            restoreState = true
+                        } else if(screen.route == "Scan"){
                             navController.graph.startDestinationRoute?.let { route ->
                                 popUpTo(route) {
                                     saveState = true
