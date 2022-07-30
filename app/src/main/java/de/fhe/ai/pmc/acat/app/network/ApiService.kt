@@ -29,6 +29,11 @@ interface RequestService {
         @Header("Authorization") token: String
     ): Call<List<Session>>
 
+    @GET("api/me")
+    fun me(
+        @Header("Authorization") token: String
+    ): Call<MeResponse>
+
     @POST("api/login")
     fun login(
         @Body body: LoginBody
