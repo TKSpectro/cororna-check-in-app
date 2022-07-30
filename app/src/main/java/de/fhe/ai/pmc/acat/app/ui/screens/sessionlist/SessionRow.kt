@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Button
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -28,6 +29,7 @@ fun SessionRow(
     modifier: Modifier = Modifier,
     onItemPressed: ( itemId: String ) -> Unit
 ) {
+    val shape = RoundedCornerShape(30.dp)
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier
@@ -46,7 +48,7 @@ fun SessionRow(
                     session.room?.name ?: "",
                     modifier = modifier
                         .align(Alignment.CenterVertically)
-                        .fillMaxWidth(0.9f))
+                        .fillMaxWidth(0.8f))
 
             }
             Row {
@@ -61,14 +63,15 @@ fun SessionRow(
                 }
             }
         }
-        Icon(
-            painter = painterResource(id = R.drawable.ic_baseline_arrow_forward_ios_24),
-            contentDescription = null,
-            modifier = modifier
-                .align(Alignment.CenterVertically)
-                .width(24.dp)
-                .height(24.dp)
-        )
+
+        Button(modifier = modifier
+            .align(Alignment.CenterVertically)
+            .width(80.dp)
+            , shape = shape, onClick = {
+
+        }) {
+            Text("Inf")
+        }
     }
 }
 
