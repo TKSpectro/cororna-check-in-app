@@ -19,7 +19,7 @@ fun LastSessionListCard(
     Card(
         elevation = 8.dp,
         shape = RoundedCornerShape(8.dp),
-        modifier = modifier.padding(8.dp)
+        modifier = modifier.padding(4.dp)
             .fillMaxWidth(),
     ) {
         Column(modifier = boxModifier.padding(12.dp).fillMaxWidth()) {

@@ -95,6 +95,10 @@ data class AuthResponse(
     val token: String,
 )
 
+data class InfectedResponse(
+    val message: String,
+)
+
 data class RegisterBody(
     val firstName : String,
     val lastName : String,

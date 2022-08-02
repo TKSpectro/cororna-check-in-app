@@ -39,6 +39,21 @@ interface RequestService {
         @Header("Authorization") token: String
     ): Call<List<Session>>
 
+    @GET("/api/cases")
+    fun setInfected(
+        @Header("Authorization") token: String
+    ): Call<InfectedResponse>
+
+    @GET("/api/cases/check-sessions")
+    fun checkSessions(
+        @Header("Authorization") token: String
+    ): Call<InfectedResponse>
+
+  @GET("/api/infection")
+    fun checkInfection(
+        @Header("Authorization") token: String
+    ): Call<InfectedResponse>
+
     @POST("api/login")
     fun login(
         @Body body: LoginBody
@@ -48,7 +63,6 @@ interface RequestService {
     fun register(
         @Body body: RegisterBody
     ): Call<AuthResponse>
-
 
     @POST("api/qr/scan")
     fun scan(
@@ -86,7 +100,7 @@ class Network {
             "https://coronacheckin-we.azurewebsites.net/"
 
         private var retrofit: Retrofit = Retrofit.Builder()
-            .baseUrl (BASE_URL)
+            .baseUrl(BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .client(client.build())
             .build()

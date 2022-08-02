@@ -21,7 +21,7 @@ fun CustomCard(modifier: Modifier = Modifier, boxModifier: Modifier = Modifier, 
         elevation = 8.dp,
         shape = RoundedCornerShape(8.dp),
         modifier = modifier
-            .padding(8.dp)
+            .padding(4.dp)
             .fillMaxWidth(),
             backgroundColor = (backgroundColor)
     ) {
