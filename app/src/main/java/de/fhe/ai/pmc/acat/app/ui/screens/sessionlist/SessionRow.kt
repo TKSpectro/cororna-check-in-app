@@ -48,7 +48,7 @@ fun SessionRow(
                     session.room?.name ?: "",
                     modifier = modifier
                         .align(Alignment.CenterVertically)
-                        .fillMaxWidth(0.8f))
+                        .fillMaxWidth(0.85f))
 
             }
             Row {
@@ -66,11 +66,11 @@ fun SessionRow(
 
         Button(modifier = modifier
             .align(Alignment.CenterVertically)
-            .width(80.dp)
+            .width(50.dp)
             , shape = shape, onClick = {
 
         }) {
-            Text("Inf")
+            Icon(painter = painterResource(id = R.drawable.ic_baseline_coronavirus_24), "mark as infected")
         }
     }
 }
