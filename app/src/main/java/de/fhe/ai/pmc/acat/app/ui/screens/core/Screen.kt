@@ -18,6 +18,7 @@ val RootScreens = listOf(
     Screen.Dashboard,
     Screen.Scan,
     Screen.Settings,
+    Screen.RoomList
 )
 
 sealed class Screen(
