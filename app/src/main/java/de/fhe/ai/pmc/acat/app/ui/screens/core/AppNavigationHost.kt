@@ -1,5 +1,7 @@
 package de.fhe.ai.pmc.acat.app.ui.screens.core
 
+import android.content.Context
+import android.widget.Toast
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
@@ -7,6 +9,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import de.fhe.ai.pmc.acat.app.network.Network
 import de.fhe.ai.pmc.acat.app.ui.screens.auth.LoginScreen
 import de.fhe.ai.pmc.acat.app.ui.screens.auth.LoginScreenViewModel
 import de.fhe.ai.pmc.acat.app.ui.screens.dashboard.DashboardScreen
@@ -26,9 +29,16 @@ import de.fhe.ai.pmc.acat.app.ui.screens.sessionlist.SessionsListScreen
 import de.fhe.ai.pmc.acat.app.ui.screens.settings.SettingsScreen
 import de.fhe.ai.pmc.acat.app.ui.screens.userlist.UserListScreen
 import de.fhe.ai.pmc.acat.app.ui.screens.userlist.UserListScreenViewModel
+import de.fhe.ai.pmc.acat.domain.MeResponse
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import org.koin.androidx.compose.inject
 import org.koin.androidx.compose.viewModel
 import org.koin.core.parameter.parametersOf
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 @Composable
 fun AppNavigationHost(
@@ -43,11 +53,52 @@ fun AppNavigationHost(
             navCtrl.navigate(command.destination)
     }
 
+    // If the user is already logged in we redirect to dashboard
+    val context = LocalContext.current
+    val sharedPref = context.getSharedPreferences("ccn", Context.MODE_PRIVATE)
+    val authToken = sharedPref.getString("auth_token", null)
+
     NavHost(
         navController = navCtrl,
-        startDestination = Screen.Login.route,
+        startDestination = if (authToken != null) Screen.Dashboard.route else Screen.Login.route,
         modifier = modifier
     ) {
+        suspend fun requestTokenValid() = coroutineScope {
+            launch {
+                Network.service.me("Bearer " + authToken).enqueue(object: Callback<MeResponse> {
+                    override fun onResponse(call: Call<MeResponse>, response: Response<MeResponse>) {
+                        response.raw().let { it ->
+                            if (it.code() == 401){
+                                Toast.makeText(
+                                    context,
+                                    "Please login again. Your last session expired",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+
+                                val editor = sharedPref.edit()
+                                editor.remove("auth_token")
+                                editor.apply()
+
+                                navigationManager.navigate(Screen.Login.navigationCommand())
+                            }
+                        }
+                    }
+
+                    override fun onFailure(call: Call<MeResponse>, t: Throwable) {
+                        t.printStackTrace()
+                    }
+                })
+            }
+        }
+
+        fun checkTokenValid() = runBlocking {
+            requestTokenValid()
+        }
+
+        if(authToken != null){
+            checkTokenValid()
+        }
+
         composable(Screen.UserList.route) {
             val vm by viewModel<UserListScreenViewModel>()
 

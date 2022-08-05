@@ -99,6 +99,10 @@ data class InfectedResponse(
     val message: String,
 )
 
+data class MeResponse(
+    val email: String,
+)
+
 data class RegisterBody(
     val firstName : String,
     val lastName : String,

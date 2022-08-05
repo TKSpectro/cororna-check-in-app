@@ -53,6 +53,11 @@ interface RequestService {
     fun checkInfection(
         @Header("Authorization") token: String
     ): Call<InfectedResponse>
+    
+    @GET("api/me")
+    fun me(
+        @Header("Authorization") token: String
+    ): Call<MeResponse>
 
     @POST("api/login")
     fun login(
