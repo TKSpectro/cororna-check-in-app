@@ -27,6 +27,7 @@ import de.fhe.ai.pmc.acat.app.ui.screens.scan.ScanScreenViewModel
 import de.fhe.ai.pmc.acat.app.ui.screens.sessionlist.SessionListScreenViewModel
 import de.fhe.ai.pmc.acat.app.ui.screens.sessionlist.SessionsListScreen
 import de.fhe.ai.pmc.acat.app.ui.screens.settings.SettingsScreen
+import de.fhe.ai.pmc.acat.app.ui.screens.settings.SettingsScreenViewModel
 import de.fhe.ai.pmc.acat.app.ui.screens.userlist.UserListScreen
 import de.fhe.ai.pmc.acat.app.ui.screens.userlist.UserListScreenViewModel
 import de.fhe.ai.pmc.acat.domain.MeResponse
@@ -132,8 +133,9 @@ fun AppNavigationHost(
             ScanScreen( vm )
         }
         composable(Screen.Settings.route) {
+            val vm by viewModel<SettingsScreenViewModel>()
             onNavigation( Screen.Settings )
-            SettingsScreen()
+            SettingsScreen( vm )
         }
         composable(Screen.Login.route){
             val vm by viewModel<LoginScreenViewModel>()
