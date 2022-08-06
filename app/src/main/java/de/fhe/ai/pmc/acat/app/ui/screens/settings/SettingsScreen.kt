@@ -35,6 +35,12 @@ fun SettingsScreen(vm: SettingsScreenViewModel) {
         }) {
             Text("Logout")
         }
+
+        Button(modifier = modifier, shape = shape, onClick = {
+            vm.removeProfile(context)
+        }) {
+            Text("Delete profile")
+        }
     }
 
 }
