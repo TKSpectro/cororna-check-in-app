@@ -102,6 +102,9 @@ data class InfectedResponse(
 data class MeResponse(
     val email: String,
 )
+data class RemoveProfileResponse(
+    val message: String,
+)
 
 data class RegisterBody(
     val firstName : String,
