@@ -44,6 +44,12 @@ interface RequestService {
         @Header("Authorization") token: String
     ): Call<InfectedResponse>
 
+    @GET("/api/cases/set-infected-session/{id}")
+    fun setOneSessionAsInfected(
+        @Header("Authorization") token: String,
+        @Path("id") id: String
+    ): Call<InfectedResponse>
+
     @GET("/api/cases/check-sessions")
     fun checkSessions(
         @Header("Authorization") token: String

@@ -1,5 +1,6 @@
 package de.fhe.ai.pmc.acat.app.ui.screens.sessionlist
 
+import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -14,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -30,9 +32,12 @@ import java.time.format.DateTimeFormatter
 fun SessionRow(
     session: Session,
     modifier: Modifier = Modifier,
-    onItemPressed: ( itemId: String ) -> Unit
+    onItemPressed: ( itemId: String ) -> Unit,
+    vm: SessionListScreenViewModel
 ) {
+    val context = LocalContext.current
     val shape = RoundedCornerShape(30.dp)
+
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier
@@ -71,20 +76,9 @@ fun SessionRow(
             .align(Alignment.CenterVertically)
             .width(50.dp)
             , shape = shape, onClick = {
-
+                vm.markAsInfected(context, session.id);
         }) {
             Icon(painter = painterResource(id = R.drawable.ic_baseline_coronavirus_24), "mark as infected")
         }
     }
-}
-
-@Preview(
-    showBackground = true,
-    backgroundColor = PREVIEW_BACKGROUND_COLOR
-)
-@Composable
-fun PreviewSessionRow(
-    @PreviewParameter(SessionPreviewParameterProvider::class, limit = 3) session: Session
-) {
-    SessionRow( session ) {}
 }
