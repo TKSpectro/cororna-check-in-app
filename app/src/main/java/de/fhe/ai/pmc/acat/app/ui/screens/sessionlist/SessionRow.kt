@@ -25,6 +25,8 @@ import androidx.compose.ui.unit.sp
 import de.fhe.ai.pmc.acat.app.R
 import de.fhe.ai.pmc.acat.app.ui.screens.util.PREVIEW_BACKGROUND_COLOR
 import de.fhe.ai.pmc.acat.app.ui.screens.util.SessionPreviewParameterProvider
+import de.fhe.ai.pmc.acat.app.ui.theme.lightRed
+import de.fhe.ai.pmc.acat.app.ui.theme.redBackground
 import de.fhe.ai.pmc.acat.domain.Session
 import java.time.format.DateTimeFormatter
 
@@ -37,6 +39,11 @@ fun SessionRow(
 ) {
     val context = LocalContext.current
     val shape = RoundedCornerShape(30.dp)
+    var backgroundColor = MaterialTheme.colors.surface
+
+    if(session.infected) {
+        backgroundColor = MaterialTheme.colors.redBackground
+    }
 
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -45,7 +52,7 @@ fun SessionRow(
             .shadow(elevation = 6.dp)
             .clip(RoundedCornerShape(8.dp))
             .clickable { onItemPressed(session.id) }
-            .background(MaterialTheme.colors.surface)
+            .background(backgroundColor)
             .padding(6.dp)
             .fillMaxWidth()
     ) {
@@ -72,13 +79,18 @@ fun SessionRow(
             }
         }
 
-        Button(modifier = modifier
-            .align(Alignment.CenterVertically)
-            .width(50.dp)
-            , shape = shape, onClick = {
+        if(!session.infected) {
+            Button(modifier = modifier
+                .align(Alignment.CenterVertically)
+                .width(50.dp), shape = shape, onClick = {
                 vm.markAsInfected(context, session.id);
-        }) {
-            Icon(painter = painterResource(id = R.drawable.ic_baseline_coronavirus_24), "mark as infected")
+
+            }) {
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_baseline_coronavirus_24),
+                    "mark as infected"
+                )
+            }
         }
     }
 }

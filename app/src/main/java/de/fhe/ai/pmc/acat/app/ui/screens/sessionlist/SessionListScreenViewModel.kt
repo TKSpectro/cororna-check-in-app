@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import de.fhe.ai.pmc.acat.app.network.Network
 import de.fhe.ai.pmc.acat.app.ui.screens.core.NavigationManager
+import de.fhe.ai.pmc.acat.app.ui.screens.core.Screen
 import de.fhe.ai.pmc.acat.domain.GetSessionsAsync
 import de.fhe.ai.pmc.acat.domain.InfectedResponse
 import de.fhe.ai.pmc.acat.domain.Session
@@ -69,6 +70,8 @@ class SessionListScreenViewModel(
                             Toast.LENGTH_SHORT
                         ).show()
                     }
+                    //navigationManager.navigate(Screen.SessionList.navigationCommand())
+                    getSessions(context)
                 }
 
                 override fun onFailure(call: Call<InfectedResponse>, t: Throwable) {
