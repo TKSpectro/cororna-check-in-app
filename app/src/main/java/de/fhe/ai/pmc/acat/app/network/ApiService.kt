@@ -39,12 +39,12 @@ interface RequestService {
         @Header("Authorization") token: String
     ): Call<List<Session>>
 
-    @GET("/api/cases")
+    @PUT("/api/cases")
     fun setInfected(
         @Header("Authorization") token: String
     ): Call<InfectedResponse>
 
-    @GET("/api/cases/set-infected-session/{id}")
+    @PUT("/api/cases/set-infected-session/{id}")
     fun setOneSessionAsInfected(
         @Header("Authorization") token: String,
         @Path("id") id: String
