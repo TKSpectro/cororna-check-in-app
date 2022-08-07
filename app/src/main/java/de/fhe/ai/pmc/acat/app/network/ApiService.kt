@@ -75,10 +75,9 @@ interface RequestService {
         @Body body: RegisterBody
     ): Call<AuthResponse>
 
-    @GET("api/accounts/remove-profile/{id}")
+    @DELETE("api/accounts")
     fun removeProfile(
-        @Header("Authorization") token: String,
-        @Path("id") id: String
+        @Header("Authorization") token: String
     ): Call<RemoveProfileResponse>
 
     @POST("api/qr/scan")
