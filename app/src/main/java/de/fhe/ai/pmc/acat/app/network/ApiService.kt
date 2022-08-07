@@ -69,7 +69,7 @@ interface RequestService {
         @Body body: RegisterBody
     ): Call<AuthResponse>
 
-    @GET("api/accounts/remove-profile")
+    @DELETE("api/accounts")
     fun removeProfile(
         @Header("Authorization") token: String
     ): Call<RemoveProfileResponse>
