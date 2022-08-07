@@ -69,6 +69,11 @@ interface RequestService {
         @Body body: RegisterBody
     ): Call<AuthResponse>
 
+    @DELETE("api/accounts")
+    fun removeProfile(
+        @Header("Authorization") token: String
+    ): Call<RemoveProfileResponse>
+
     @POST("api/qr/scan")
     fun scan(
         @Header("Authorization") token: String,
