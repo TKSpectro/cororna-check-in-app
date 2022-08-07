@@ -13,12 +13,14 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import de.fhe.ai.pmc.acat.app.R
 import de.fhe.ai.pmc.acat.app.ui.components.Heading
 
 
@@ -68,14 +70,15 @@ fun LoginScreen(vm: LoginScreenViewModel) {
             trailingIcon = {
                 val image = if (passwordVisible)
                 // TODO: Get better icons eye and crossed through eye
-                    Icons.Filled.CheckCircle
-                else Icons.Filled.AddCircle
+                    painterResource(id = R.drawable.ic_baseline_visibility_off_24)
+                else
+                    painterResource(id = R.drawable.ic_baseline_visibility_24)
 
                 // Please provide localized description for accessibility services
                 val description = if (passwordVisible) "Hide password" else "Show password"
 
                 IconButton(onClick = { passwordVisible = !passwordVisible }) {
-                    Icon(imageVector = image, description)
+                    Icon(painter = image, description)
                 }
             }
         )
