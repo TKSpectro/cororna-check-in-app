@@ -13,7 +13,7 @@ class LocalDateTimeAdapter {
 
     @FromJson
     fun fromJson(value: String): LocalDateTime {
-        return LocalDateTime.parse(value)
+        return LocalDateTime.parse(value).plusHours(2)
     }
 
     companion object {
