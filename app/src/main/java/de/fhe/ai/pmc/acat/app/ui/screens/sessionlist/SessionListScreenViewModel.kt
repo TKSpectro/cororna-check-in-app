@@ -70,7 +70,6 @@ class SessionListScreenViewModel(
                             Toast.LENGTH_SHORT
                         ).show()
                     }
-                    //navigationManager.navigate(Screen.SessionList.navigationCommand())
                     getSessions(context)
                 }
 
