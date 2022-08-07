@@ -31,7 +31,6 @@ class RoomDetailsScreenViewModel (
         val sharedPref = context.getSharedPreferences("ccn", Context.MODE_PRIVATE)
         val token = sharedPref.getString("auth_token", null)
 
-        // TODO: replace hardcoded id with dynamic id
         Network.service.getRoomById("Bearer " + token.toString(), roomId).enqueue(object:
             Callback<Room> {
             override fun onResponse(call: Call<Room>, response: Response<Room>) {

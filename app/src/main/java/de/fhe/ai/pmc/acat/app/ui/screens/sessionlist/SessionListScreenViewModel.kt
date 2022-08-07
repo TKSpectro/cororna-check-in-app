@@ -1,12 +1,15 @@
 package de.fhe.ai.pmc.acat.app.ui.screens.sessionlist
 
 import android.content.Context
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import de.fhe.ai.pmc.acat.app.network.Network
 import de.fhe.ai.pmc.acat.app.ui.screens.core.NavigationManager
+import de.fhe.ai.pmc.acat.app.ui.screens.core.Screen
 import de.fhe.ai.pmc.acat.domain.GetSessionsAsync
+import de.fhe.ai.pmc.acat.domain.InfectedResponse
 import de.fhe.ai.pmc.acat.domain.Session
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -50,8 +53,30 @@ class SessionListScreenViewModel(
         })
     }
 
-    fun navigateToSession(sessionId: String ) {
-        // TODO: Create session page
-        // navigationManager.navigate( Screen.SessionDetail.navigationCommand( sessionId ) )
+    fun markAsInfected(context: Context, sessionId: String) {
+        val sharedPref = context.getSharedPreferences("ccn", Context.MODE_PRIVATE)
+        val token = sharedPref.getString("auth_token", null)
+
+        Network.service.setOneSessionAsInfected("Bearer " + token.toString(), sessionId)
+            .enqueue(object : Callback<InfectedResponse> {
+                override fun onResponse(
+                    call: Call<InfectedResponse>,
+                    response: Response<InfectedResponse>
+                ) {
+                    response.body()?.let { it ->
+                        Toast.makeText(
+                            context,
+                            it.message + "",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    getSessions(context)
+                }
+
+                override fun onFailure(call: Call<InfectedResponse>, t: Throwable) {
+                    t.printStackTrace()
+                    println("request wrong")
+                }
+            })
     }
 }

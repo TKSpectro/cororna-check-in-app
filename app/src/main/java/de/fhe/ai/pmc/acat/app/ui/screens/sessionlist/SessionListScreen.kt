@@ -38,7 +38,7 @@ fun SessionsListScreen(vm: SessionListScreenViewModel, modifier: Modifier = Modi
 
             LazyColumn(state = scrollState, modifier = modifier) {
                 items(sessionList!!) { item ->
-                    SessionRow( item, modifier = modifier, onItemPressed = { vm.navigateToSession(item.id) } )
+                    SessionRow( item, modifier = modifier, onItemPressed = { }, vm )
                 }
             }
         }

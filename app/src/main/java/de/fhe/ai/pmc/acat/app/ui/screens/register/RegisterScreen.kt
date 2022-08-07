@@ -88,7 +88,6 @@ fun RegisterScreen(vm: RegisterScreenViewModel) {
             shape = shape,
             trailingIcon = {
                 val image = if (passwordVisible)
-                // TODO: Get better icons eye and crossed through eye
                     Icons.Filled.CheckCircle
                 else Icons.Filled.AddCircle
 

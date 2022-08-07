@@ -27,7 +27,7 @@ import de.fhe.ai.pmc.acat.app.ui.components.Heading
 @Composable
 fun LoginScreen(vm: LoginScreenViewModel) {
     val context = LocalContext.current
-    // TODO: Remove default values after implementing actual login
+
     var email by remember { mutableStateOf("admin@ethereal.com") }
     var password by remember { mutableStateOf("CoronaCheckIn1!") }
     var passwordVisible by remember { mutableStateOf(false) }
@@ -69,7 +69,6 @@ fun LoginScreen(vm: LoginScreenViewModel) {
             shape = shape,
             trailingIcon = {
                 val image = if (passwordVisible)
-                // TODO: Get better icons eye and crossed through eye
                     painterResource(id = R.drawable.ic_baseline_visibility_off_24)
                 else
                     painterResource(id = R.drawable.ic_baseline_visibility_24)

@@ -18,7 +18,6 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun NetworkError(modifier: Modifier = Modifier, text: String, description: String? = null){
     CustomCard {
-        // TODO: Style this better, especially when description is given
         Box(modifier = Modifier.padding(8.dp)){
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(Icons.Outlined.Warning, contentDescription = null, tint = Color.Red, )
