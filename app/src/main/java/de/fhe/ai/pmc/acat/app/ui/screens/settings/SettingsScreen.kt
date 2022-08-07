@@ -2,10 +2,7 @@ package de.fhe.ai.pmc.acat.app.ui.screens.settings
 
 import android.util.Patterns
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
@@ -23,7 +20,9 @@ import de.fhe.ai.pmc.acat.app.ui.theme.lightRed
 fun SettingsScreen(vm: SettingsScreenViewModel) {
     val context = LocalContext.current
 
-    val modifier = Modifier.padding(vertical = 8.dp)
+    val modifier = Modifier
+        .padding(vertical = 8.dp)
+        .width(180.dp)
     val shape = RoundedCornerShape(30.dp)
 
     Column(
