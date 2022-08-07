@@ -8,13 +8,16 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import de.fhe.ai.pmc.acat.app.ui.theme.lightRed
 
 @Composable
 fun SettingsScreen(vm: SettingsScreenViewModel) {
@@ -30,13 +33,23 @@ fun SettingsScreen(vm: SettingsScreenViewModel) {
             .background(MaterialTheme.colors.background)
             .fillMaxSize()
     ) {
-        Button(modifier = modifier, shape = shape, onClick = {
+        Button(
+            modifier = modifier,
+            shape = shape,
+            onClick = {
             vm.logout(context)
         }) {
             Text("Logout")
         }
 
-        Button(modifier = modifier, shape = shape, onClick = {
+        Button(
+            modifier = modifier,
+            shape = shape,
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = MaterialTheme.colors.lightRed,
+                contentColor = Color.White
+            ),
+            onClick = {
             vm.removeProfile(context)
         }) {
             Text("Delete profile")

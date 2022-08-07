@@ -28,8 +28,7 @@ class SettingsScreenViewModel(
         val sharedPref = context.getSharedPreferences("ccn", Context.MODE_PRIVATE)
         val token = sharedPref.getString("auth_token", null)
 
-        // TODO: add real user id
-        Network.service.removeProfile("Bearer " + token.toString(), "123123123")
+        Network.service.removeProfile("Bearer " + token.toString())
             .enqueue(object : Callback<RemoveProfileResponse> {
                 override fun onResponse(
                     call: Call<RemoveProfileResponse>,
@@ -52,7 +51,7 @@ class SettingsScreenViewModel(
                 override fun onFailure(call: Call<RemoveProfileResponse>, t: Throwable) {
                     Toast.makeText(
                         context,
-                        "Profile could'nt be deleted",
+                        "Profile couldn't be deleted",
                         Toast.LENGTH_SHORT
                     ).show()
 
